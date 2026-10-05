@@ -59,3 +59,47 @@ def test_pages_and_metric_callbacks(monkeypatch,tmp_path):
         assert result[0]
         assert result[2]
     assert metric_chart('cfo',list(data.COMPANIES),'2025Q4','standard','no') is not None
+
+def test_roce_golden_and_leases():
+    from radar.domain import roce
+    rows=[dict(period=f'2025Q{i}',ebit_adjusted=100,operating_tax=25,
+               capital_employed_open=900,capital_employed_close=1100,
+               leases_open=100,leases=100) for i in range(1,5)]
+    assert roce(rows)==Decimal('30')
+    assert roce(rows,True)==Decimal(300)/Decimal(1100)*100
+    rows[-1]['operating_tax']=None
+    assert roce(rows) is None
+
+def test_roce_unavailable_and_negative_profit():
+    from radar.domain import roce
+    rows=[dict(period=f'2025Q{i}',ebit_adjusted=-100,operating_tax=-20,
+               capital_employed_open=1000,capital_employed_close=1000) for i in range(1,5)]
+    assert roce(rows)==Decimal('-32')
+    assert roce(rows[:3]) is None
+    rows[-1]['period']='2026Q1'
+    assert roce(rows) is None
+    rows[-1]['period']='2025Q4'
+    rows[0]['capital_employed_open']=0
+    rows[-1]['capital_employed_close']=0
+    assert roce(rows) is None
+
+def test_demo_rates_and_migration(monkeypatch,tmp_path):
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    frame=data.facts()
+    for company,rate in [('Chevron','.10'),('Shell','.20'),('Petrobras','.25'),('Equinor','.25')]:
+        row=frame[frame.company==company].iloc[0]
+        assert Decimal(str(row.tax_rate))==Decimal(rate)
+        assert abs(row.operating_tax-row.ebit_adjusted*float(rate))<0.000001
+    assert all(r['roce'] is not None for r in data.metrics('2025Q4',list(data.COMPANIES)))
+    assert all(r['roce'] is None for r in data.metrics('2024Q3',list(data.COMPANIES)))
+    import duckdb
+    with duckdb.connect(str(tmp_path/'database/radar.duckdb')) as db:
+        db.execute('UPDATE facts SET ebit_adjusted=NULL')
+    data.initialize()
+    assert len(data.facts())==64
+    data.initialize()
+    assert len(data.facts())==64
+    assert data.facts()[data.facts().version==1].ebit_adjusted.isna().all()
+    assert all(r['roce'] is not None for r in data.metrics('2025Q4',list(data.COMPANIES)))

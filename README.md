@@ -18,7 +18,7 @@ Abra http://127.0.0.1:8050. Sem credenciais, a execução local utiliza modo de 
 - Nove páginas: resumo, trajetória, comparação, drivers, ponte de caixa, qualidade, metodologia, regras e carga.
 - Filtros de empresas, período, visão e sensibilidade de leases.
 - Cálculos decimais de FCO LTM, dívida líquida/EBITDA, CAPEX/FCO, distribuições/FCO, FCL e caixa residual.
-- ROCE padronizado indisponível até resolução do OPEN-03; visão reportada sintética separada.
+- Hierarquia de imposto operacional aprovada (OPEN-03); ROCE calculado no cenário sintético com alíquotas fictícias específicas por empresa; dados reais pendentes; visão reportada sintética separada.
 - DuckDB com chave empresa/período/versão e valores DECIMAL(28,6).
 - Upload de originais com SHA-256, idempotência, tamanho limitado, URL/locator e histórico de revisão. Arquivos nunca são executados nem publicados automaticamente como fatos.
 - Exportação CSV/Parquet do mesmo dataset tabular, para uso local no Power BI.
