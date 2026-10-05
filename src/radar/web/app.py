@@ -65,9 +65,9 @@ def graph(fig):
     fig.update_layout(template='plotly_white',font=dict(family='system-ui',color='#53615b',size=12),margin=dict(l=45,r=24,t=20,b=38),paper_bgcolor='white',plot_bgcolor='white',legend=dict(orientation='h',y=1.12,x=0),height=300)
     fig.update_xaxes(showgrid=False); fig.update_yaxes(gridcolor='#edf1ee',zerolinecolor='#edf1ee')
     return dcc.Graph(figure=fig,config={'displayModeBar':False,'responsive':True})
-def table(rows):
+def table(rows, column_labels=None):
     if not rows: return html.P('Nenhum registro disponível.',className='empty')
-    return dash_table.DataTable(data=rows,columns=[{'name':k.replace('_',' ').capitalize(),'id':k} for k in rows[0]],style_table={'overflowX':'auto'},style_cell={'fontFamily':'system-ui','textAlign':'left','padding':'16px','fontSize':13,'border':'none','color':'#344b40'},style_header={'backgroundColor':'#f5f8f6','fontWeight':600,'border':'none'},style_data_conditional=[{'if':{'row_index':'odd'},'backgroundColor':'#fafcfb'}],page_size=12)
+    return dash_table.DataTable(data=rows,columns=[{'name':(column_labels or {}).get(k,k.replace('_',' ').capitalize()),'id':k} for k in rows[0]],style_table={'overflowX':'auto'},style_cell={'fontFamily':'system-ui','textAlign':'left','padding':'16px','fontSize':13,'border':'none','color':'#344b40'},style_header={'backgroundColor':'#f5f8f6','fontWeight':600,'border':'none'},style_data_conditional=[{'if':{'row_index':'odd'},'backgroundColor':'#fafcfb'}],page_size=12)
 app.layout=html.Div([
     dcc.Location(id='location'),
     html.A('Ir para o conteúdo',href='#content',className='skip'),
@@ -89,12 +89,12 @@ def render(path,companies,period,view,leases):
         content.append(panel('As empresas, lado a lado',comparison(rows,view),'Perspectivas complementares, sem ranking composto. Clique em uma empresa para consultar as definições.'))
         content.append(html.Div([panel('Uma leitura em cinco etapas',html.Div([html.Span(x) for x in ['01  Posição','02  Trajetória','03  Resiliência','04  Geração de valor','05  Decisão']],className='journey')),panel('Transparência em cada indicador',html.Div([badge('DEMONSTRAÇÃO','warning'),html.P('ROCE calculado com componentes sintéticos e alíquotas fictícias: Chevron 10%, Shell 20%, Petrobras e Equinor 25%. Os valores reportados do exemplo são sintéticos.'),html.A('Consultar metodologia  →',href='/method')]))],className='two-col'))
     elif key in ('trajectory','compare'):
-        content.append(panel('Indicador em análise',dcc.Dropdown([{'label':v['name'],'value':k} for k,v in RULES['metrics'].items()],'cfo',id='metric',clearable=False)))
+        content.append(panel('Indicador em análise',dcc.Dropdown([{'label':v['name'],'value':k} for k,v in RULES['metrics'].items()],'cfo',id='metric',clearable=False,persistence=True,persistence_type='memory')))
         content.append(html.Div(id='metric-chart'))
         content.append(panel('Comparação no período',comparison(rows,view)))
     elif key=='cash':
         content.append(panel('Do caixa operacional ao caixa residual',cash_chart(rows,colors),'LTM · US$ bilhões · FCL = FCO − CAPEX orgânico de caixa'))
-        content.append(panel('Ponte por empresa',table([{'empresa':r['company'],'FCO':fmt(r['cfo']),'CAPEX':fmt((r['cfo'] or 0)*(r['capex'] or 0)/100),'FCL':fmt(r['fcf']),'distribuições':fmt((r['cfo'] or 0)*(r['distribution'] or 0)/100),'caixa residual':fmt(r['residual'])} for r in rows])))
+        content.append(panel('Ponte por empresa',table([{'empresa':r['company'],'FCO':fmt(r['cfo']),'CAPEX':fmt((r['cfo'] or 0)*(r['capex'] or 0)/100),'FCL':fmt(r['fcf']),'distribuições':fmt((r['cfo'] or 0)*(r['distribution'] or 0)/100),'caixa residual':fmt(r['residual'])} for r in rows],column_labels={'FCO':'FCO','CAPEX':'CAPEX','FCL':'FCL'}),'Valores em US$ milhões · fluxos acumulados nos últimos 12 meses (LTM) · dados demonstrativos'))
     elif key=='drivers':
         content.append(html.Div([panel('Ciclo e preço do petróleo',html.P('Brent, preços realizados e margens de refino afetam o caixa. Séries públicas de contexto ainda não foram carregadas.')),panel('Capital de giro e impostos',html.P('Shell: trading e capital de giro. Equinor: calendário fiscal. Esses fatores exigem reconciliação e não são ajustes automáticos.')),panel('Investimento e perímetro',html.P('Separar CAPEX orgânico, M&A e alienações. Mudanças de perímetro devem criar flags e versões.')),panel('Normas contábeis',table([{'empresa':c,'norma':data.COMPANIES[c][1],'país':data.COMPANIES[c][2]} for c in companies or []]))],className='two-col'))
     elif key=='quality':
