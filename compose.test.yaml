@@ -1,0 +1,7 @@
+services:
+  tests:
+    build:
+      context: .
+      target: test
+    image: radar:test
+    init: true

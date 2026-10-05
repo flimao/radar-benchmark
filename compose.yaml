@@ -1,9 +1,18 @@
 services:
   radar:
-    build: .
-    ports: ["127.0.0.1:8050:8050"]
+    build:
+      context: .
+      target: production
+    image: radar:local
+    ports:
+      - "127.0.0.1:${RADAR_PORT:-8051}:8050"
     env_file: .env
-    volumes: ["radar-data:/var/lib/radar"]
+    environment:
+      RADAR_ENV: production
+    volumes:
+      - radar-data:/var/lib/radar
     restart: unless-stopped
+    init: true
+    stop_grace_period: 30s
 volumes:
   radar-data:

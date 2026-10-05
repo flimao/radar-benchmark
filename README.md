@@ -43,19 +43,16 @@ pytest -q
 
 ## Container / VPS
 
-Configuração aprovada para a PoC: **2 vCPUs, 4 GB RAM e 80 GB SSD**, Ubuntu Server última LTS. Poucos arquivos Excel/PDF e concorrência muito baixa.
+Configuração aprovada: **2 vCPUs, 4 GB RAM e 80 GB SSD**, Ubuntu Server última LTS.
 
-Copie `.env.example` para `.env` e configure os dois segredos. `docker compose up --build -d`. O container exige credenciais e usa volume persistente em `/var/lib/radar`. Configure Caddy/Nginx com HTTPS encaminhando para `127.0.0.1:8050`, e mantenha `RADAR_HTTPS=1`.
-
-Configuração Caddy mínima:
-
-```text
-radar.seu-dominio.com {
-    reverse_proxy 127.0.0.1:8050
-}
+```bash
+.venv/bin/python scripts/configure_container.py
+docker compose -f compose.test.yaml build
+docker compose -f compose.test.yaml run --rm tests
+docker compose up --build -d --wait
 ```
 
-Um worker evita múltiplos processos escrevendo no DuckDB. Para backup, pare o serviço antes de copiar o volume, incluindo database, originais, curated e evidence. Restaure o volume com os mesmos arquivos e novos segredos. A atualização das regras em `config/rules.json` exige revisão de metodologia e reinício; não aprova retroativamente fatos.
+Abra http://127.0.0.1:8051/login. O container usa seu próprio volume persistente e requer senha. Para macOS com Docker Desktop fora do PATH, e para HTTPS/VPS, consulte [runbook do container](docs/container-runbook.md).
 
 ## Estado do DRS
 
