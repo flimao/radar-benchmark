@@ -95,3 +95,31 @@ docker compose up -d --build radar
 Não usar `docker compose down -v`: isso remove os dados persistidos.
 A senha compartilhada temporária foi entregue em arquivo local protegido,
 fora do repositório; não incluir credenciais em commits.
+
+## Atualização com dados reais — 05/10/2026
+
+Commit implantado: `4cb349f`, branch `test-real-data`. Build AMD64 na VPS,
+43 testes aprovados na imagem Linux/Python 3.12. Container de produção saudável.
+
+Foram transferidos os seis lotes publicados da TotalEnergies, preservando
+revisor, datas, versões de regras, metadados e documentos por SHA-256. Importação
+por Parquet em transação, acrescentando registros ao volume existente sem
+substituir o banco inteiro. Inclui a carga 2024 e o complemento de dívida sem
+leases que permite cinco janelas LTM de 2024Q4 a 2025Q4. Cálculos conferidos
+na VPS: ROCE 14,75%, 13,26%, 12,49%, 12,56%, 12,71%. Dívida líquida/EBITDA
+mantém NÃO COMPARÁVEL segundo a alternativa aprovada.
+
+Selecionar `Reais · aprovados` no filtro Base de dados; os outros peers ainda
+não possuem dados reais publicados. Sensibilidades permanecem sujeitas à
+completude dos componentes documentados.
+
+Validação externa aprovada: HTTPS, /health, bloqueio anônimo, login, páginas,
+CSS, layout Dash e exportação REAL com os oito trimestres 2024–2025 e saldo
+inicial 2023Q4. Segredos e configuração HTTPS preservados.
+
+Backup consistente do volume e do código anterior:
+`/opt/radar-deploy-20261005/volume-before.tar.gz` e `code-before.tar.gz`.
+Imagem anterior preservada como `radar:before-real-data`.
+Diretório de deploy acessível somente ao root. O pacote inicial continha
+arquivos auxiliares AppleDouble (`._*`); removidos apenas da área de importação,
+antes de conferir os hashes dos documentos reais.
