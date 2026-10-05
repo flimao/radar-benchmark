@@ -2,3 +2,6 @@
 /* Non-comparability is communicated with text, weight, border and contrast. */
 .non-comparable{background:#fff0e8!important;color:#852800!important;border:2px solid #a33b0a;border-radius:6px;padding:12px;line-height:1.6;overflow-wrap:anywhere}.metric-row.non-comparable{flex-wrap:wrap;font-size:11px}.metric-row.non-comparable>span,.metric-row.non-comparable>strong{color:#852800;font-weight:750;white-space:normal}.comparability-warning{flex-basis:100%;display:flex;flex-direction:column;gap:5px;color:#852800;font-size:11px}.comparability-warning strong{font-size:11px}.non-comparable ul{margin-bottom:0}
 .sensitivity-hint{display:block;margin-top:7px;font-size:9px;line-height:1.4;color:#52685b}
+.driver-sources{display:flex;flex-wrap:wrap;gap:16px;font-size:12px}
+.driver-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:24px;align-items:stretch}.driver-grid>.panel{margin-bottom:0;height:auto}.driver-grid .dash-graph{min-height:460px}@media(max-width:1100px){.driver-grid{grid-template-columns:minmax(0,1fr)}}
+.overlay-help{font-size:11px;margin:12px 0 0}

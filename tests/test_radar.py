@@ -143,3 +143,32 @@ def test_goodwill_filter_preserves_other_metrics(monkeypatch,tmp_path):
         chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',option)
         expected=data.metrics('2025Q4',['Petrobras'],'include_leases' in (option or []),'exclude_goodwill' in (option or []))[0]['roce']
         assert chart.children[1].children[0].figure.data[0].y[-1]==expected
+
+def test_driver_figures_follow_company_and_period_filters():
+    from radar.web.drivers import figures
+    colors={'Petrobras':'#008542','Shell':'#b28700'}
+    subset=figures('2025Q2',['Shell'],colors)
+    assert subset['brent'].data[0].x[-1]=='2025Q2'
+    assert len(subset['brent'].data[0].x)==6
+    assert len(subset['margin'].data)==1
+    assert subset['margin'].data[0].name=='Shell'
+    assert sum(trace.y[0] for trace in subset['gas'].data)==100
+    empty=figures('2025Q2',[],colors)
+    assert not empty['margin'].data
+    assert empty['brent'].data[0].y==subset['brent'].data[0].y
+
+def test_driver_kpi_overlay_axes_and_sensitivities(monkeypatch,tmp_path):
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    from radar.web.app import driver_charts
+    base=driver_charts('none',['Petrobras'],'2025Q4','standard',[])
+    overlay=driver_charts('roce',['Petrobras'],'2025Q4','standard',['exclude_goodwill'])
+    for index in (0,1,3):
+        fig=overlay[0].children[index].children[1].figure
+        assert fig.data[-1].yaxis=='y2'
+        assert fig.data[-1].line.dash=='dash'
+        assert fig.layout.yaxis2.side=='right'
+        assert fig.data[-1].y[-1]==data.metrics('2025Q4',['Petrobras'],exclude_goodwill=True)[0]['roce']
+        assert len(fig.data)==len(base[0].children[index].children[1].figure.data)+1
+    assert len(overlay[0].children[2].children[1].figure.data)==2

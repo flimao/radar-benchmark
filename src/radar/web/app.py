@@ -6,6 +6,7 @@ from werkzeug.security import check_password_hash
 from dash import Dash, html, dcc, Input, Output, State, dash_table, no_update
 import plotly.graph_objects as go
 from radar import data
+from radar.web.drivers import figures as driver_figures
 ROOT=Path(os.environ.get('RADAR_PROJECT_DIR', '.')).resolve()
 RULES=json.loads((ROOT/'config/rules.json').read_text())
 server=Flask(__name__)
@@ -61,10 +62,14 @@ app=Dash(__name__,server=server,title='RADAR · Benchmarking de energia',assets_
 NAV=[('overview','◫','Resumo executivo'),('trajectory','↗','Posição e trajetória'),('compare','≋','Comparação por KPI'),('drivers','◎','Drivers e contexto'),('cash','⇄','Ponte de caixa'),('quality','◇','Qualidade dos dados'),('method','▤','Metodologia e fontes'),('rules','⤺','Regras e revisões'),('upload','⊕','Administração de carga')]
 def badge(text,kind=''): return html.Span(text,className='badge '+kind)
 def panel(title,children,subtitle=None): return html.Section([html.Div([html.H3(title),html.P(subtitle) if subtitle else None],className='panel-head'),children],className='panel')
-def graph(fig):
-    fig.update_layout(template='plotly_white',font=dict(family='system-ui',color='#53615b',size=12),margin=dict(l=45,r=24,t=20,b=38),paper_bgcolor='white',plot_bgcolor='white',legend=dict(orientation='h',y=1.12,x=0),height=300)
+def graph(fig, height=300):
+    fig.update_layout(template='plotly_white',font=dict(family='system-ui',color='#53615b',size=12),margin=dict(l=45,r=24,t=20,b=38),paper_bgcolor='white',plot_bgcolor='white',legend=dict(orientation='h',y=1.12,x=0),height=height)
     fig.update_xaxes(showgrid=False); fig.update_yaxes(gridcolor='#edf1ee',zerolinecolor='#edf1ee')
-    return dcc.Graph(figure=fig,config={'displayModeBar':False,'responsive':True})
+    if height > 300:
+        fig.update_layout(margin=dict(l=85,r=30,t=65,b=75),legend=dict(orientation='h',y=1.12,x=0))
+        fig.update_yaxes(automargin=True,nticks=6,title_standoff=18)
+        fig.update_xaxes(automargin=True,tickangle=-30)
+    return dcc.Graph(style={'height':f'{height}px'},figure=fig,config={'displayModeBar':False,'responsive':True})
 def table(rows, column_labels=None, flagged_cells=None):
     if not rows: return html.P('Nenhum registro disponível.',className='empty')
     return dash_table.DataTable(data=rows,columns=[{'name':(column_labels or {}).get(k,k.replace('_',' ').capitalize()),'id':k} for k in rows[0]],style_table={'overflowX':'auto'},style_cell={'fontFamily':'system-ui','textAlign':'left','padding':'16px','fontSize':13,'border':'none','color':'#344b40'},style_header={'backgroundColor':'#f5f8f6','fontWeight':600,'border':'none'},style_data_conditional=[{'if':{'row_index':'odd'},'backgroundColor':'#fafcfb'}]+[{'if':{'row_index':index,'column_id':key},'backgroundColor':'#fff0e8','color':'#852800','fontWeight':'bold','border':'2px solid #a33b0a','whiteSpace':'normal'} for index,key in (flagged_cells or [])],page_size=12)
@@ -96,7 +101,24 @@ def render(path,companies,period,view,sensitivities):
         content.append(panel('Do caixa operacional ao caixa residual',cash_chart(rows,colors),'LTM · US$ bilhões · FCL = FCO − CAPEX orgânico de caixa'))
         content.append(panel('Ponte por empresa',cash_table(rows),'Valores em US$ milhões · fluxos acumulados nos últimos 12 meses (LTM) · dados demonstrativos'))
     elif key=='drivers':
-        content.append(html.Div([panel('Ciclo e preço do petróleo',html.P('Brent, preços realizados e margens de refino afetam o caixa. Séries públicas de contexto ainda não foram carregadas.')),panel('Capital de giro e impostos',html.P('Shell: trading e capital de giro. Equinor: calendário fiscal. Esses fatores exigem reconciliação e não são ajustes automáticos.')),panel('Investimento e perímetro',html.P('Separar CAPEX orgânico, M&A e alienações. Mudanças de perímetro devem criar flags e versões.')),panel('Normas contábeis',table([{'empresa':c,'norma':data.COMPANIES[c][1],'país':data.COMPANIES[c][2]} for c in companies or []]))],className='two-col'))
+        content.append(panel('KPI para comparar com os drivers',html.Div([
+            dcc.Dropdown([{'label':'Sem sobreposição','value':'none'}]+[{'label':v['name'],'value':k} for k,v in RULES['metrics'].items()],
+                         'none',id='driver-kpi',clearable=False,persistence=True,persistence_type='memory'),
+            html.P('Driver no eixo esquerdo (linha contínua); KPI por empresa no eixo direito (linha tracejada). Fluxos e razões usam LTM; ROCE reportado segue a visão selecionada. A sobreposição não demonstra causalidade.',className='overlay-help'),
+        ])))
+        content.append(html.Div(id='driver-charts'))
+        content.append(panel('Brent de equilíbrio (breakeven)',html.Div([
+            badge('INDISPONÍVEL','warning'),
+            html.P('Ainda não há série trimestral homologada com a mesma definição entre as empresas. Breakeven de projeto, equilíbrio do caixa orgânico e equilíbrio após distribuições são conceitos diferentes.'),
+            html.P('O RADAR não estima esse preço a partir dos KPIs de caixa. Precisamos de divulgação pública, escopo, período e premissas verificáveis antes de desenhar a comparação.'),
+        ])))
+        content.append(panel('Como ler os drivers',html.Div([
+            html.P('Brent e câmbio são contexto comum: não mudam ao filtrar empresas. Mix de produção e margem de refino respondem à seleção de empresas; o trimestre limita o histórico e define o recorte do mix.'),
+            html.P('Mix de gás é participação no volume de produção em boe, não na receita. As séries aqui são inteiramente sintéticas, sem correlação calculada com o desempenho financeiro. Leases, goodwill e visão financeira não alteram esses drivers.'),
+            html.P('Fontes candidatas para a carga real (não são origem dos valores fictícios):'),
+            html.Div([html.A('Bacen · PTAX ↗',href=RULES['fx']['source_url'],target='_blank',rel='noopener noreferrer'),html.A('Shell · databooks e contexto ↗',href='https://www.shell.com/investors/results-and-reporting/data-supplements.html',target='_blank',rel='noopener noreferrer'),html.A('Equinor · resultados trimestrais ↗',href=data.SOURCES['Equinor'],target='_blank',rel='noopener noreferrer')],className='driver-sources'),
+        ])))
+        content.append(html.Div([panel('Capital de giro e impostos',html.P('Shell: trading e capital de giro. Equinor: calendário fiscal. Esses fatores exigem reconciliação e não são ajustes automáticos.')),panel('Investimento e perímetro',html.P('Separar CAPEX orgânico, M&A e alienações. Mudanças de perímetro devem gerar flags e versões.'))],className='two-col'))
     elif key=='quality':
         content.append(html.Div([panel('Estado da publicação',html.Div([badge('BLOQUEADO PARA USO FINANCEIRO','warning'),html.P('O dataset é sintético. Nenhum registro foi aprovado como resultado financeiro público.') ])),panel('Cobertura temporal',html.Div([badge('4 EMPRESAS · 8 TRIMESTRES'),html.P('LTM disponível apenas após quatro trimestres consecutivos. Valores indisponíveis não são substituídos por zero.')]))],className='two-col'))
         content.append(panel('Controles e evidências',table([{'controle':k,'estado':s,'evidência':e} for k,s,e in [('Completude temporal','APROVADO','8 períodos consecutivos no exemplo'),('Unicidade','APROVADO','Chave empresa + período + versão'),('Origem financeira pública','BLOQUEADO','Dataset demonstrativo'),('Reconciliação','REVISAO','Aguardando fatos e locators públicos'),('ROCE sintético','DEMONSTRAÇÃO','Fórmula implementada; alíquotas fictícias e capital empregado sintético'),('Original imutável','ATIVO','Upload preservado por SHA-256')]])))
@@ -191,6 +213,45 @@ def metric_chart(metric,companies,period,view,sensitivities):
                 vals.append(value)
         fig.add_scatter(x=periods,y=vals,name=company,mode='lines+markers',connectgaps=False,line=dict(color=data.COMPANIES[company][0],width=3),marker=dict(size=7))
     return panel(RULES['metrics'][metric]['name'],html.Div([graph(fig),html.Div([html.Strong('⚠ NÃO COMPARÁVEL — pontos excluídos da série'),html.Ul(warnings)],className='non-comparable') if warnings else None]),RULES['metrics'][metric]['formula']+' · '+RULES['metrics'][metric]['unit'])
+
+@app.callback(Output('driver-charts','children'),Input('driver-kpi','value'),Input('companies','value'),Input('period','value'),Input('view','value'),Input('sensitivities','value'))
+def driver_charts(metric,companies,period,view,sensitivities):
+    companies=companies or []
+    figures=driver_figures(period,companies,{c:v[0] for c,v in data.COMPANIES.items()})
+    warnings=[]
+    if metric and metric != 'none':
+        periods=[p for p in data.PERIODS if p<=period]
+        for company in companies:
+            values=[]
+            for p in periods:
+                row=data.metrics(p,[company],'include_leases' in (sensitivities or []),
+                                 exclude_goodwill='exclude_goodwill' in (sensitivities or []))[0]
+                quality=metric_quality(row,metric,view)
+                value=row['reported_roce'] if metric=='roce' and view=='reported' else row[metric]
+                if quality.get('status')=='NAO_COMPARAVEL':
+                    warnings.append(html.Li(f"{company} · {p}: {fmt(value)} {RULES['metrics'][metric]['unit']} — {quality['reason']}"))
+                    value=None
+                values.append(value)
+            for key in ('brent','fx','margin'):
+                figures[key].add_scatter(x=periods,y=values,name=company+' · '+RULES['metrics'][metric]['name'],
+                    yaxis='y2',mode='lines+markers',connectgaps=False,
+                    line=dict(color=data.COMPANIES[company][0],dash='dash',width=2),marker=dict(symbol='diamond',size=6),
+                    hovertemplate='%{x}<br>%{y:.2f} '+RULES['metrics'][metric]['unit']+'<extra>%{fullData.name}</extra>')
+                figures[key].update_layout(yaxis2=dict(title=RULES['metrics'][metric]['name']+' · '+RULES['metrics'][metric]['unit'],
+                    overlaying='y',side='right',showgrid=False,automargin=True,nticks=6,zeroline=False))
+    cards=[]
+    for key,title,subtitle in [
+        ('brent','Brent · cenário demonstrativo','US$/barril · média trimestral fictícia'),
+        ('fx','Câmbio BRL/USD · cenário demonstrativo','R$/US$ · média trimestral fictícia; PTAX Bacen ainda não carregada'),
+        ('gas','Mix de produção · gás e líquidos','% da produção em boe · '+period+' · dados fictícios'),
+        ('margin','Margem de refino · cenário demonstrativo','US$/barril · margem unitária fictícia em base comum')]:
+        chart=graph(figures[key],height=560 if metric!='none' and key!='gas' else 460)
+        if metric!='none' and key!='gas':
+            chart.figure.update_layout(margin=dict(l=85,r=100,t=30,b=160),
+                                       legend=dict(orientation='h',y=-.3,x=0,font=dict(size=10)))
+        cards.append(panel(title,chart,subtitle))
+    return [html.Div(cards,className='driver-grid'),
+            html.Div([html.Strong('⚠ NÃO COMPARÁVEL — pontos excluídos da sobreposição'),html.Ul(warnings)],className='non-comparable') if warnings else None]
 
 @app.callback(Output('upload-result','children'),Input('upload-file','contents'),State('upload-file','filename'),State('upload-company','value'),State('upload-period','value'),State('source-url','value'),State('locator','value'),prevent_initial_call=True)
 def upload(contents,filename,company,period,url,locator):
