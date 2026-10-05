@@ -2,7 +2,7 @@
 
 Autorizado pelo usuário em 05/10/2026. Dados e alíquotas são fictícios e não descrevem o regime fiscal ou os resultados das empresas.
 
-- Chevron: 10%; Shell: 20%; Petrobras e Equinor: 25%.
+- Chevron: 10%; Shell: 20%; Petrobras e TotalEnergies: 25%.
 - EBIT ajustado trimestral sintético = 65% do EBITDA sintético. A diferença representa DD&A fictício; itens especiais iguais a zero.
 - Imposto operacional trimestral = EBIT ajustado × alíquota fictícia.
 - NOPAT LTM = soma de EBIT ajustado menos imposto de quatro trimestres consecutivos.

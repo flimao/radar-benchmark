@@ -88,7 +88,7 @@ def test_demo_rates_and_migration(monkeypatch,tmp_path):
     monkeypatch.setattr(data,'ROOT',tmp_path)
     data.initialize()
     frame=data.facts()
-    for company,rate in [('Chevron','.10'),('Shell','.20'),('Petrobras','.25'),('Equinor','.25')]:
+    for company,rate in [('Chevron','.10'),('Shell','.20'),('Petrobras','.25'),('TotalEnergies','.25')]:
         row=frame[frame.company==company].iloc[0]
         assert Decimal(str(row.tax_rate))==Decimal(rate)
         assert abs(row.operating_tax-row.ebit_adjusted*float(rate))<0.000001
@@ -172,3 +172,24 @@ def test_driver_kpi_overlay_axes_and_sensitivities(monkeypatch,tmp_path):
         assert fig.data[-1].y[-1]==data.metrics('2025Q4',['Petrobras'],exclude_goodwill=True)[0]['roce']
         assert len(fig.data)==len(base[0].children[index].children[1].figure.data)+1
     assert len(overlay[0].children[2].children[1].figure.data)==2
+
+def test_peer_replacement_preserves_history_and_seeds_totalenergies(monkeypatch,tmp_path):
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    import duckdb
+    with duckdb.connect(str(tmp_path/'database/radar.duckdb')) as db:
+        db.execute("UPDATE facts SET company='Equinor' WHERE company='TotalEnergies'")
+    data.initialize()
+    data.initialize()
+    frame=data.facts()
+    assert set(frame.company)=={'Petrobras','TotalEnergies','Chevron','Shell'}
+    assert len(frame)==32
+    peer=frame[frame.company=='TotalEnergies']
+    assert len(peer)==8
+    assert all(peer.tax_rate==0.25)
+    assert data.COMPANIES['TotalEnergies'][1:]==('IFRS','França')
+    assert data.SOURCES['TotalEnergies']=='https://totalenergies.com/investors/results'
+    with duckdb.connect(str(tmp_path/'database/radar.duckdb')) as db:
+        assert db.execute("SELECT count(*) FROM facts WHERE company='Equinor'").fetchone()[0]==8
+    assert set(data.export().company)==set(data.COMPANIES)

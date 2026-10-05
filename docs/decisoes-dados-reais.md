@@ -29,7 +29,7 @@ Implementação: `radar.fx` converte BRL→USD e soma trimestres convertidos; `r
 
 - OPEN-01 aprovado: PoC em produção na VPS em 06/10/2026 às 10h (America/Sao_Paulo, UTC−03:00). Prazo registrado, implantação ainda pendente; não equivale a implantação realizada ou garantia de aceite integral.
 - OPEN-04 resolvido: Ubuntu Server na última versão LTS, sem metas quantitativas de desempenho por ser PoC. Referência verificada: Ubuntu 26.04.1 LTS, https://releases.ubuntu.com/. Testes funcionais, segurança e persistência não foram dispensados.
-- Seleção das empresas em aberto: Petrobras, Equinor, Chevron e Shell são provisórias. OPEN-06 trata de cores, não da escolha das empresas; permanece pendente até definição do conjunto e aprovação do mapeamento.
+- Seleção das empresas em aberto: Petrobras, TotalEnergies, Chevron e Shell são provisórias. OPEN-06 trata de cores, não da escolha das empresas; permanece pendente até definição do conjunto e aprovação do mapeamento.
 - OPEN-02 continua parcialmente resolvida: saldo é uma posição em uma data (caixa, dívida, patrimônio, goodwill), diferente de fluxo acumulado no trimestre (FCO, CAPEX, EBIT). Para saldos, proposta ainda não aprovada: PTAX venda de fechamento da data do balanço, ou última publicação anterior quando não houver cotação. Fluxos continuam na média trimestral já aprovada.
 - Para a implantação são necessários endereço/acesso da VPS, domínio e configuração de segredos. Não registrar credenciais neste documento.
 

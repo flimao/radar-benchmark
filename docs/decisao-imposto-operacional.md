@@ -11,4 +11,4 @@ Para NOPAT = EBIT ajustado − imposto operacional, usar impostos correntes e di
 
 Não aplicar alíquota única às quatro empresas. Não usar automaticamente impostos pagos no fluxo de caixa. Registrar fonte, locator, ajustes, reconciliação e versão por cálculo.
 
-A decisão aprova a metodologia. Não aprova dados, alíquotas, reconciliações ou cálculos específicos. Em atualização posterior na mesma data, o usuário autorizou o cálculo sintético com alíquotas fictícias: Chevron 10%, Shell 20%, Petrobras e Equinor 25%. A fórmula foi implementada em regras v1.2.0. Coleta e validação dos componentes reais continuam necessárias.
+A decisão aprova a metodologia. Não aprova dados, alíquotas, reconciliações ou cálculos específicos. Em atualização posterior na mesma data, o usuário autorizou o cálculo sintético com alíquotas fictícias: Chevron 10%, Shell 20%, Petrobras e TotalEnergies 25%. A fórmula foi implementada em regras v1.2.0. Coleta e validação dos componentes reais continuam necessárias.

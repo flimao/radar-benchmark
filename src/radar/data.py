@@ -5,15 +5,15 @@ import duckdb
 import pandas as pd
 from radar.domain import calculate
 ROOT = Path(os.environ.get('RADAR_DATA_DIR', '.'))
-COMPANIES = {'Petrobras':('#008542','IFRS','Brasil'), 'Equinor':('#008e91','IFRS','Noruega'), 'Chevron':('#006298','US GAAP','Estados Unidos'), 'Shell':('#b28700','IFRS','Reino Unido')}
-SOURCES = {'Petrobras':'https://www.investidorpetrobras.com.br/resultados-e-comunicados/central-de-resultados/', 'Equinor':'https://www.equinor.com/investors/quarterly-results', 'Chevron':'https://www.chevron.com/investors', 'Shell':'https://www.shell.com/investors/results-and-reporting/quarterly-results.html'}
+COMPANIES = {'Petrobras':('#008542','IFRS','Brasil'), 'TotalEnergies':('#008e91','IFRS','França'), 'Chevron':('#006298','US GAAP','Estados Unidos'), 'Shell':('#b28700','IFRS','Reino Unido')}
+SOURCES = {'Petrobras':'https://www.investidorpetrobras.com.br/resultados-e-comunicados/central-de-resultados/', 'TotalEnergies':'https://totalenergies.com/investors/results', 'Chevron':'https://www.chevron.com/investors', 'Shell':'https://www.shell.com/investors/results-and-reporting/quarterly-results.html'}
 RULES = json.loads((Path(os.environ.get('RADAR_PROJECT_DIR', '.'))/'config/rules.json').read_text())
 ROCE_FIELDS = ['ebit_adjusted','operating_tax','tax_rate','capital_employed_open','capital_employed_close','leases_open','goodwill_open','goodwill_close']
 PERIODS=['2024Q1','2024Q2','2024Q3','2024Q4','2025Q1','2025Q2','2025Q3','2025Q4']
 
 def demo_rows():
     rows=[]
-    bases={'Petrobras':(8900,3000,4300,16500,11200), 'Equinor':(6000,2700,3000,7300,9400), 'Chevron':(8200,4100,4900,21900,10300), 'Shell':(11200,5100,6100,33700,14600)}
+    bases={'Petrobras':(8900,3000,4300,16500,11200), 'TotalEnergies':(6000,2700,3000,7300,9400), 'Chevron':(8200,4100,4900,21900,10300), 'Shell':(11200,5100,6100,33700,14600)}
     for company, base in bases.items():
         for i,p in enumerate(PERIODS):
             f=[1.04,0.94,1.10,1.03,0.96,1.06,1.02,1.12][i]
@@ -56,6 +56,9 @@ def initialize():
             names = ','.join(seed.columns)
             db.execute(f'INSERT INTO facts ({names}) SELECT {names} FROM seed')
         else:
+            # Seed newly selected peers; never rename old company facts or sources.
+            names = ','.join(seed.columns)
+            db.execute(f'INSERT INTO facts ({names}) SELECT {names} FROM seed s WHERE NOT EXISTS (SELECT 1 FROM facts f WHERE f.company=s.company AND f.period=s.period)')
             # Add a demo revision, preserving original version 1 and all real records.
             fields = ','.join(ROCE_FIELDS)
             db.execute(f"""INSERT INTO facts
@@ -68,7 +71,7 @@ def initialize():
 
 def facts():
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
-        return db.execute('SELECT * FROM facts ORDER BY company,period,version').df()
+        return db.execute('SELECT * FROM facts WHERE company IN ('+','.join('?' for _ in COMPANIES)+') ORDER BY company,period,version',list(COMPANIES)).df()
 
 def assessments(period, company, view):
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:

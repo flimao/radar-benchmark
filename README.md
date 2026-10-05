@@ -1,6 +1,6 @@
 # RADAR — benchmarking de óleo e gás
 
-Aplicação local Python/Flask/Dash criada a partir do DRS v2.0. Interface em português para Petrobras, Equinor, Chevron e Shell, sem ranking composto e sem uso de logomarcas corporativas.
+Aplicação local Python/Flask/Dash criada a partir do DRS v2.0. Interface em português para Petrobras, TotalEnergies, Chevron e Shell, sem ranking composto e sem uso de logomarcas corporativas.
 
 ## Executar
 
