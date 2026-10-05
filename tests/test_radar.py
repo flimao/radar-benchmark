@@ -243,3 +243,15 @@ def test_direct_ltm_nopat_is_used_once_and_broad_capex_blocks_jv():
     result=calculate(rows,include_jv=True)
     assert result['capex'] is None and result['fcf'] is None and result['residual'] is None
     assert result['distribution']==10
+
+
+def test_compare_uses_only_selected_quarter_ltm():
+    from radar.web.app import metric_chart
+    from radar import data
+    result=metric_chart('cfo',['Petrobras','Shell'],'2025Q4','standard',[],pathname='/compare')
+    fig=result.children[0].children[1].figure
+    expected=data.metrics('2025Q4',['Petrobras','Shell'])
+    assert [trace.type for trace in fig.data]==['bar','bar']
+    assert [trace.y[0] for trace in fig.data]==[row['cfo'] for row in expected]
+    assert [trace.x[0] for trace in fig.data]==['Petrobras','Shell']
+    assert len(result.children[1].children[1].data)==2

@@ -96,7 +96,7 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
     elif key in ('trajectory','compare'):
         content.append(panel('Indicador em análise',dcc.Dropdown([{'label':v['name'],'value':k} for k,v in RULES['metrics'].items()],'cfo',id='metric',clearable=False,persistence=True,persistence_type='memory')))
         content.append(html.Div(id='metric-chart'))
-        content.append(panel('Comparação no período',comparison(rows,view)))
+        if key=='trajectory':content.append(panel('Comparação no período',comparison(rows,view)))
     elif key=='cash':
         content.append(panel('Do caixa operacional ao caixa residual',cash_chart(rows,colors),'LTM · US$ bilhões · FCL = FCO − CAPEX orgânico de caixa'))
         content.append(panel('Ponte por empresa',cash_table(rows),'Valores em US$ milhões · fluxos acumulados nos últimos 12 meses (LTM) · '+('reais aprovados' if dataset=='REAL' else 'dados demonstrativos')))
@@ -213,6 +213,27 @@ def cash_table(rows):
     result=table(records,column_labels={'FCO':'FCO','CAPEX':'CAPEX','FCL':'FCL'},flagged_cells=flagged)
     return html.Div([result,comparability_notice('⚠ NÃO COMPARÁVEL — Ponte de Caixa',html.Ul(notices))]) if notices else result
 
+def period_comparison(metric, rows, view, period_label):
+    """Compare one common reference period without a historical trajectory."""
+    name=RULES['metrics'][metric]['name'];unit=RULES['metrics'][metric]['unit']
+    fig=go.Figure();records=[];warnings=[]
+    for row in rows:
+        quality=metric_quality(row,metric,view)
+        value=row['reported_roce'] if metric=='roce' and view=='reported' else row[metric]
+        flagged=quality.get('status')=='NAO_COMPARAVEL'
+        fig.add_bar(x=[row['company']],y=[value],name=row['company'],showlegend=False,
+                    marker_color=data.COMPANIES[row['company']][0],marker_pattern_shape='/' if flagged else '',
+                    customdata=['NÃO-COMPARÁVEL' if flagged else ''],
+                    hovertemplate='%{x}<br>%{y:.2f} '+unit+'<br>%{customdata}<extra></extra>')
+        records.append({'empresa':row['company'],'valor':fmt(value),'unidade':unit,
+                        'situação': 'Indisponível' if value is None else 'NÃO COMPARÁVEL' if flagged else 'Comparável'})
+        if flagged:warnings.append(html.Li(row['company']+': '+quality['reason']))
+    fig.update_yaxes(title_text=unit)
+    return html.Div([panel(name+' · '+period_label,graph(fig),'Comparação entre empresas na mesma referência'),
+                     panel('Valores por empresa',table(records)),
+                     comparability_notice('⚠ NÃO COMPARÁVEL — barras com hachuras',html.Ul(warnings)) if warnings else None])
+
+
 def cash_chart(rows,colors):
     fig=go.Figure()
     for label,key,color in [('FCO','cfo','#008542'),('FCL','fcf','#00a397'),('Caixa residual','residual','#b9c9bd')]:
@@ -227,8 +248,11 @@ def cash_chart(rows,colors):
                     hovertemplate='%{x}<br>%{y:.2f} US$ bi<br>%{customdata}<extra>'+label+'</extra>')
     fig.update_layout(barmode='group',bargap=.35); return graph(fig)
 
-@app.callback(Output('metric-chart','children'),Input('metric','value'),Input('companies','value'),Input('period','value'),Input('view','value'),Input('sensitivities','value'),Input('dataset','value'))
-def metric_chart(metric,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
+@app.callback(Output('metric-chart','children'),Input('metric','value'),Input('companies','value'),Input('period','value'),Input('view','value'),Input('sensitivities','value'),Input('dataset','value'),Input('location','pathname'))
+def metric_chart(metric,companies,period,view,sensitivities,dataset="DEMONSTRACAO",pathname="/trajectory"):
+    if pathname=="/compare":
+        rows=data.metrics(period,companies or [],'include_leases' in (sensitivities or []),exclude_goodwill='exclude_goodwill' in (sensitivities or []),dataset=dataset,include_jv='include_jv' in (sensitivities or []))
+        return period_comparison(metric,rows,view,period+" · LTM")
     fig=go.Figure()
     warnings=[]
     for company in companies or []:
