@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+database/*.duckdb*
+data/original/*
+data/curated/*
+*.egg-info/
+.DS_Store

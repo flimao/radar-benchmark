@@ -1,0 +1,9 @@
+services:
+  radar:
+    build: .
+    ports: ["127.0.0.1:8050:8050"]
+    env_file: .env
+    volumes: ["radar-data:/var/lib/radar"]
+    restart: unless-stopped
+volumes:
+  radar-data:
