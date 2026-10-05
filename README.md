@@ -43,6 +43,8 @@ pytest -q
 
 ## Container / VPS
 
+Configuração aprovada para a PoC: **2 vCPUs, 4 GB RAM e 80 GB SSD**, Ubuntu Server última LTS. Poucos arquivos Excel/PDF e concorrência muito baixa.
+
 Copie `.env.example` para `.env` e configure os dois segredos. `docker compose up --build -d`. O container exige credenciais e usa volume persistente em `/var/lib/radar`. Configure Caddy/Nginx com HTTPS encaminhando para `127.0.0.1:8050`, e mantenha `RADAR_HTTPS=1`.
 
 Configuração Caddy mínima:

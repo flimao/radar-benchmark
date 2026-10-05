@@ -1,5 +1,5 @@
 {
-  "version": "1.3.1",
+  "version": "1.3.4",
   "currency": "USD",
   "scale": "milhões",
   "leases": "excluídos",
@@ -87,15 +87,19 @@
     "source": "Banco Central do Brasil (Bacen)",
     "source_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
     "approved_on": "2026-10-05",
-    "approved_scope": "Fonte Bacen; BRL→USD por divisão pela cotação R$/USD; converter cada trimestre antes da soma LTM. Média trimestral das cotações diárias PTAX venda confirmada pelo usuário.",
+    "approved_scope": "Fonte Bacen; BRL→USD por divisão pela cotação R$/USD; converter cada trimestre antes da soma LTM. Média trimestral das cotações diárias PTAX venda confirmada pelo usuário. Saldos: PTAX venda na data do balanço, ou última cotação anterior quando não houver publicação.",
     "pending": [
-      "Fechamento em dia sem publicação e moedas diferentes de BRL/USD."
+      "Tratamento de moedas diferentes de BRL/USD."
     ],
     "pair": "BRL_PER_USD",
     "operation": "DIVIDE",
     "ltm": "SUM_CONVERTED_QUARTERS",
     "flow_series": "PTAX venda diária de fechamento",
-    "flow_aggregation": "ARITHMETIC_MEAN_PUBLISHED_DAYS"
+    "flow_aggregation": "ARITHMETIC_MEAN_PUBLISHED_DAYS",
+    "balance_series": "PTAX venda diária de fechamento",
+    "balance_date_rule": "Última publicação disponível em data menor ou igual à data do balanço.",
+    "balance_status": "APROVADO",
+    "balance_approved_on": "2026-10-05"
   },
   "capital_policy": {
     "decision_id": "OPEN-05",
@@ -133,5 +137,44 @@
       "ALERTA_ACEITO"
     ],
     "implementation_status": "AVALIADOR_IMPLEMENTADO_WORKFLOW_REAL_PENDENTE"
+  },
+  "delivery": {
+    "decision_id": "OPEN-01",
+    "status": "APROVADO",
+    "deadline": "2026-10-06T10:00:00-03:00",
+    "timezone": "America/Sao_Paulo",
+    "target": "PoC em produção na VPS",
+    "deployment_status": "PENDENTE",
+    "approved_on": "2026-10-05"
+  },
+  "deployment": {
+    "os": "Ubuntu Server última versão LTS",
+    "reference_release": "26.04.1 LTS",
+    "release_checked_on": "2026-10-05",
+    "performance_decision_id": "OPEN-04",
+    "performance_status": "RESOLVIDO_SEM_META_POC",
+    "performance_requirement": null,
+    "note": "Sem metas quantitativas de desempenho na PoC; controles funcionais, segurança e persistência continuam exigidos.",
+    "vps": {
+      "status": "APROVADO",
+      "approved_on": "2026-10-05",
+      "vcpus": 2,
+      "ram_gb": 4,
+      "disk_gb": 80,
+      "disk_type": "SSD",
+      "expected_concurrency": "Muito baixa",
+      "dataset_scope": "Poucos arquivos Excel e PDF"
+    }
+  },
+  "company_selection": {
+    "status": "PENDENTE",
+    "current_companies_are_provisional": true,
+    "companies": [
+      "Petrobras",
+      "Equinor",
+      "Chevron",
+      "Shell"
+    ],
+    "note": "Seleção final não aprovada; OPEN-06 de cores permanece pendente até definição das empresas."
   }
 }

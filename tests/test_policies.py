@@ -37,3 +37,14 @@ def test_goodwill_sensitivity_missing_components():
     assert roce(rows,exclude_goodwill=True)==40
     assert roce([{**r,'goodwill_open':None} for r in rows],exclude_goodwill=True) is None
 
+
+def test_balance_rate_exact_previous_and_no_future():
+    from radar.fx import balance_ptax_sale, convert_balance_brl_to_usd
+    rates={'2026-10-02':'5','2026-10-05':'6'}
+    assert balance_ptax_sale('2026-10-02',rates)==('2026-10-02',Decimal(5))
+    converted=convert_balance_brl_to_usd(100,'2026-10-04',rates)
+    assert converted['value_usd']==20
+    assert converted['fx_publication_date']=='2026-10-02'
+    assert converted['fallback_previous_publication'] is True
+    assert convert_balance_brl_to_usd(100,'2026-10-01',rates) is None
+    with pytest.raises(ValueError): balance_ptax_sale('2026-10-02',{'2026-10-02':'0'})

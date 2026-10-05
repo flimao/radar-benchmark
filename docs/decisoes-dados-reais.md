@@ -2,11 +2,11 @@
 
 ## Aprovação recebida
 
-Fonte cambial oficial: publicação do Banco Central do Brasil (Bacen), para uso consistente na normalização. OPEN-02: fonte, conversão BRL/USD e fluxos aprovados; saldos em dias sem publicação e demais moedas ainda pendentes. Não altera conversões já reportadas pelas empresas em USD, nem cria dados cambiais automaticamente.
+Fonte cambial oficial: publicação do Banco Central do Brasil (Bacen), para uso consistente na normalização. OPEN-02: fonte, conversão BRL/USD e fluxos aprovados; saldos aprovados na atualização abaixo; demais moedas ainda pendentes. Não altera conversões já reportadas pelas empresas em USD, nem cria dados cambiais automaticamente.
 
 Aprovado: PTAX venda de fechamento diário; fluxos BRL convertidos dividindo pela média aritmética das cotações R$/USD dos dias publicados no trimestre. Calcular trimestre na moeda original antes da conversão e somar trimestres convertidos para LTM. Valores originalmente reportados em USD permanecem reportados; reconstrução em USD via Bacen fica separada quando houver componentes e necessidade defensável.
 
-Pendente: confirmar taxa de fechamento para saldos e regra de última publicação anterior em dia sem cotação, além das outras moedas. Nenhuma taxa foi baixada nesta etapa.
+Saldos aprovados: PTAX venda na data do balanço ou última publicação anterior. Permanece pendente o tratamento das outras moedas. Nenhuma taxa foi baixada nesta etapa.
 
 ## Políticas aprovadas pelo usuário
 
@@ -24,3 +24,19 @@ Pendente: confirmar taxa de fechamento para saldos e regra de última publicaç�
 Limites e políticas aprovados para PoC; não equivalem a auditoria contábil. Regras v1.3.0. Avaliador de controles e visualização de não comparabilidade implementados; fluxo de aprovação e ingestão de fatos reais continuam pendentes.
 
 Implementação: `radar.fx` converte BRL→USD e soma trimestres convertidos; `radar.quality` avalia controles, reconciliação, variação e elegibilidade. Avaliações de comparabilidade são versionadas em `metric_assessment` por empresa/período/KPI/visão. Dados sintéticos não foram marcados artificialmente como não comparáveis. Na versão 1.3.1, o seletor expõe as quatro combinações de leases e goodwill. O cenário sintético utiliza goodwill fictício de 10% do capital empregado, explicitamente documentado; valores reais continuam pendentes.
+
+## Prazo, ambiente e empresas — atualização de 05/10/2026
+
+- OPEN-01 aprovado: PoC em produção na VPS em 06/10/2026 às 10h (America/Sao_Paulo, UTC−03:00). Prazo registrado, implantação ainda pendente; não equivale a implantação realizada ou garantia de aceite integral.
+- OPEN-04 resolvido: Ubuntu Server na última versão LTS, sem metas quantitativas de desempenho por ser PoC. Referência verificada: Ubuntu 26.04.1 LTS, https://releases.ubuntu.com/. Testes funcionais, segurança e persistência não foram dispensados.
+- Seleção das empresas em aberto: Petrobras, Equinor, Chevron e Shell são provisórias. OPEN-06 trata de cores, não da escolha das empresas; permanece pendente até definição do conjunto e aprovação do mapeamento.
+- OPEN-02 continua parcialmente resolvida: saldo é uma posição em uma data (caixa, dívida, patrimônio, goodwill), diferente de fluxo acumulado no trimestre (FCO, CAPEX, EBIT). Para saldos, proposta ainda não aprovada: PTAX venda de fechamento da data do balanço, ou última publicação anterior quando não houver cotação. Fluxos continuam na média trimestral já aprovada.
+- Para a implantação são necessários endereço/acesso da VPS, domínio e configuração de segredos. Não registrar credenciais neste documento.
+
+## Saldos — aprovação de 05/10/2026
+
+O usuário aprovou PTAX venda de fechamento na data do balanço, ou última cotação publicada anterior se não houver publicação nessa data. Converter BRL→USD por divisão. Registrar data do saldo, data efetiva da cotação, taxa e uso de publicação anterior. Ausência de cotação anterior mantém indisponibilidade, sem usar taxa futura. Implementado em `radar.fx`, regras v1.3.3. Coleta de taxas e integração com fatos reais continuam pendentes. Esta aprovação substitui a pendência de saldos registrada anteriormente; outras moedas continuam em aberto.
+
+## Dimensionamento da VPS — aprovação de 05/10/2026
+
+O usuário escolheu 2 vCPUs, 4 GB RAM e 80 GB SSD para poucos arquivos Excel/PDF e concorrência muito baixa. Ubuntu Server última LTS, conforme decisão anterior. Não há metas quantitativas de desempenho na PoC. Dimensionamento registrado; provisionamento, implantação e medição de responsividade continuam pendentes. Swap e limites de memória do DuckDB não foram aprovados nem configurados por esta decisão.
