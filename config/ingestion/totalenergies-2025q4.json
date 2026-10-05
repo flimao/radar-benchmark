@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "company": "TotalEnergies",
+  "accounting_standard": "IFRS",
+  "mapping_version": "total-2025q4-cfo-v1",
+  "mapping_note": "Teste parcial: FCO estatutário, incluindo capital de giro. Conciliação independente PDF vs XLSX; nenhum CAPEX/EBIT/imposto inferido.",
+  "documents": [
+    {
+      "id": "accounts",
+      "format": "pdf",
+      "filename": "total-2025q4-accounts.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_accounts-q4-2025_2026_en.pdf",
+      "period": "2025Q4",
+      "expected_hash": "979d28a69ee470cf974641aacbdb5698b813b1be9df5b5537187984265ab0a5a"
+    },
+    {
+      "id": "databook",
+      "format": "xlsx",
+      "filename": "total-2025q4-databook.xlsx",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_databook-q4-2025_2026_en.xlsx",
+      "period": "2025Q4",
+      "expected_hash": "344a7731e7ed383712269925cd192d4be0535009ccb873663af35cf15d0d8b24"
+    }
+  ],
+  "observations": [
+    {
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q4",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "document": "accounts",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "4th quarter",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-ref",
+      "document": "databook",
+      "selector": {
+        "sheet": "§2",
+        "cell": "B25",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          },
+          {
+            "cell": "F25",
+            "equals": "Cash flow from operating activities"
+          }
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "cfo-pdf-xlsx",
+      "reference": "cfo-ref",
+      "terms": [
+        {
+          "observation": "cfo-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-q4"
+      ],
+      "reason": "FCO estatutário trimestral: PDF de contas versus databook XLSX."
+    }
+  ]
+}

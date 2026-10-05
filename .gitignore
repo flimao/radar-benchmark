@@ -7,3 +7,4 @@ data/original/*
 data/curated/*
 *.egg-info/
 .DS_Store
+evidence/ingestion-*.json

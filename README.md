@@ -56,4 +56,12 @@ Abra http://127.0.0.1:8051/login. O container usa seu próprio volume persistent
 
 ## Estado do DRS
 
-Esta entrega é uma base funcional demonstrativa, **não o aceite integral da PoC financeira**. Consulte [docs/estado-do-drs.md](docs/estado-do-drs.md) para pendências. O arquivo `.pbix` exige Power BI Desktop e ainda não foi criado; há tema e dataset exportável. Não há coleta/extrator automático homologado nem quatro trimestres reais aprovados.
+Esta entrega é uma base funcional demonstrativa, **não o aceite integral da PoC financeira**. Consulte [docs/estado-do-drs.md](docs/estado-do-drs.md) para pendências. O arquivo `.pbix` exige Power BI Desktop e ainda não foi criado; há tema e dataset exportável. Há pipeline com mapeamento explícito e um teste real de quatro trimestres em revisão. A homologação financeira completa dos peers permanece pendente.
+
+## Ingestão real
+
+A pipeline de PDF/XLSX/CSV/JSON e APIs Bacen, Yahoo (contexto) e SEC (XBRL)
+prepara lotes rastreáveis para revisão e publicação. Use o seletor de base para
+consultar dados reais aprovados sem misturar com a demonstração.
+Veja [pipeline de ingestão](docs/pipeline-ingestao.md) e os exemplos em
+`config/ingestion/`. O lote real de FCO TotalEnergies 2025 permanece em revisão.

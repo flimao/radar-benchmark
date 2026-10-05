@@ -27,7 +27,13 @@ def test_auth_and_export(monkeypatch,tmp_path):
     monkeypatch.setenv('RADAR_SESSION_SECRET','test-secret')
     from werkzeug.security import generate_password_hash
     monkeypatch.setenv('RADAR_PASSWORD_HASH',generate_password_hash('test-password'))
-    from radar.web.app import server
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    from radar.web import app as web
+    server=web.server
+    monkeypatch.setattr(web,'PASSWORD_HASH',generate_password_hash('test-password'))
+    monkeypatch.setitem(server.config,'SECRET_KEY','test-secret')
     client=server.test_client()
     assert client.get('/').status_code==302
     assert client.get('/export').status_code==302
@@ -193,3 +199,25 @@ def test_peer_replacement_preserves_history_and_seeds_totalenergies(monkeypatch,
     with duckdb.connect(str(tmp_path/'database/radar.duckdb')) as db:
         assert db.execute("SELECT count(*) FROM facts WHERE company='Equinor'").fetchone()[0]==8
     assert set(data.export().company)==set(data.COMPANIES)
+
+def test_add_quarter_persisted_without_fabricating_facts(monkeypatch,tmp_path):
+    import pytest
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    before=len(data.facts())
+    assert data.add_period('2026Q1')
+    assert not data.add_period('2026Q1')
+    with pytest.raises(ValueError): data.add_period('2026Q5')
+    data.initialize()
+    assert '2026Q1' in data.periods()
+    assert len(data.facts())==before
+    for row in data.metrics('2026Q1',list(data.COMPANIES)):
+        assert row['roce'] is None
+        assert row['cfo'] is None
+        assert row['reported_roce'] is None
+    from radar.web.app import register_period, refresh_period_options, driver_charts
+    result=register_period(1,' 2026q2 ')
+    assert '2026Q2' in result[2]
+    assert '2026Q2' in refresh_period_options('/upload',result[1])
+    assert driver_charts('roce',['TotalEnergies'],'2026Q2','standard',[])

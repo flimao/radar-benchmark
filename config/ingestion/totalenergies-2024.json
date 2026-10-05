@@ -1,0 +1,2075 @@
+{
+  "schema_version": 1,
+  "company": "TotalEnergies",
+  "accounting_standard": "IFRS",
+  "mapping_version": "total-2024-evolution-approved-basis-v3",
+  "mapping_note": "Regras aprovadas: FCO estatutário; CAPEX consolidado de caixa; NOPAT e EBITDA ajustados divulgados; CE reconstruído subtraindo 100% caixa. Dívida CP/LP intermediária diretamente das linhas explicitamente sem leases da tabela 10.5, sem usar a dívida líquida ou leases líquidos do gearing. Fechamentos anuais conciliam dívida com/sem leases e obrigação bruta das notas. Complementa dívida CP/LP sem leases de 2025Q1/Q2/Q3 para viabilizar as cinco janelas LTM da evolução.",
+  "documents": [
+    {
+      "id": "accounts",
+      "format": "pdf",
+      "filename": "total-2024-accounts.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_accounts-q4-2024_2025_en.pdf",
+      "period": "2024Q4",
+      "expected_hash": "d88a2b866c788046382f48219158bd8ff785ec41fc1f0f4e20f215b413965ec7"
+    },
+    {
+      "id": "accounts-h1",
+      "format": "pdf",
+      "filename": "total-2024-accounts-h1.pdf",
+      "url": "https://totalenergies.com/system/files/documents/2024-07/totalenergies_2q-2024-financial-statements_2024_en_pdf.pdf",
+      "period": "2024Q2",
+      "expected_hash": "257df23d141d0c963edd9f9823feb7011a40dc5a8aa0c429e684938df0dcdd20"
+    },
+    {
+      "id": "release-q2",
+      "format": "pdf",
+      "filename": "total-2024-release-q2.pdf",
+      "url": "https://totalenergies.com/system/files/documents/2024-07/totalenergies_2q-2024-results-press-release_2024_en_pdf.pdf",
+      "period": "2024Q2",
+      "expected_hash": "873ca8c1263d9b3ba32967dd3a6cd6f0375e425d7af7cb9ed62089b0e6f132f2"
+    },
+    {
+      "id": "release-q4",
+      "format": "pdf",
+      "filename": "total-2024-release-q4.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_pr-results-q4-2024_2025_en.pdf",
+      "period": "2024Q4",
+      "expected_hash": "bf83cb92dd7ab5f5987e881016a9605f317dfd9bc0d78bee2b645cdf92210605"
+    },
+    {
+      "id": "urd-2024",
+      "format": "pdf",
+      "filename": "total-2024-urd-2024.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_universal-registration-document-2024_2025_en.pdf",
+      "period": "2024Q4",
+      "expected_hash": "c0294fa903042125e9347c0592847defd97f5da88182a640162598828d33b4f0"
+    },
+    {
+      "id": "release-q2-2025",
+      "format": "pdf",
+      "filename": "release-q2.pdf",
+      "period": "2025Q2",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_2Q25-results-press-release_2025_en.pdf",
+      "expected_hash": "edd0180ccb52533dee4fa09e4ecb65c59bb0bd860b8cc19342e7ba09cb9fea4f"
+    },
+    {
+      "id": "release-q4-2025",
+      "format": "pdf",
+      "filename": "release-q4.pdf",
+      "period": "2025Q4",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_pr-results-q4-2025_2026_en.pdf",
+      "expected_hash": "e339b5d433a3a525de66b7465354a918f914bbd254fcbb0e0450937fc88473a7"
+    }
+  ],
+  "observations": [
+    {
+      "period": "2024Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q4",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "document": "accounts",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2024",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q1",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 1,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2024",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q2",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2024",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q3",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q3",
+      "document": "accounts",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 1,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2024",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "annual-cfo-ref",
+      "period": "2024Q4",
+      "document": "accounts",
+      "selector": {
+        "page": 7,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2024",
+          "Year"
+        ]
+      }
+    },
+    {
+      "id": "dividends_paid-q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-annual",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 7,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1
+    },
+    {
+      "id": "buybacks-q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-annual",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 7,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "sign": -1
+    },
+    {
+      "id": "cash-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2024Q1",
+      "period": "2024Q1",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 21,
+        "label": "Current borrowings *",
+        "column": 1,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "03/31/2024"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "financial_debt_long-2024Q1",
+      "period": "2024Q1",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 21,
+        "label": "Non-current financial debt *",
+        "column": 1,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "03/31/2024"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "cash-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2024Q2",
+      "period": "2024Q2",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 21,
+        "label": "Current borrowings *",
+        "column": 0,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "03/31/2024"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "financial_debt_long-2024Q2",
+      "period": "2024Q2",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 21,
+        "label": "Non-current financial debt *",
+        "column": 0,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "03/31/2024"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "cash-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2024Q3",
+      "period": "2024Q3",
+      "document": "release-q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Current borrowings *",
+        "column": 1,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "09/30/2024"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "financial_debt_long-2024Q3",
+      "period": "2024Q3",
+      "document": "release-q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Non-current financial debt *",
+        "column": 1,
+        "guards": [
+          "10.5 Gearing ratio",
+          "Excludes leases receivables and leases debts.",
+          "09/30/2024"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Linha de dívida CP/LP explicitamente exclui dívidas de leases (nota * da tabela 10.5). Usar apenas essas linhas; não usar net debt divulgado nem leases (c), líquidos de outros componentes. Caixa integral segue a aproximação aprovada."
+    },
+    {
+      "id": "cash-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-nonoperating-2023Q4",
+      "period": "2023Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 2,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-capex-q1",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 1,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q2",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q3",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 1,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q4",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-annual",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 7,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "Year",
+          "2024",
+          "CASH FLOW USED IN INVESTING ACTIVITIES"
+        ]
+      }
+    },
+    {
+      "id": "nopat-q1",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2024Q1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "accounts-h1",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 10,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2024",
+          "Corporate"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "ebitda-alt-q1",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2024Q1",
+      "period_type": "QUARTER",
+      "document": "release-q2",
+      "selector": {
+        "page": 19,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 1,
+        "guards": [
+          "2Q24",
+          "10.2.1"
+        ]
+      },
+      "policy_note": "Alternativa aprovada: EBITDA ajustado divulgado; equivalência ao EBIT + DD&A padronizados não comprovada. Dívida líquida/EBITDA NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat-q2",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2024Q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "accounts-h1",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 9,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2024",
+          "Corporate"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "ebitda-alt-q2",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2024Q2",
+      "period_type": "QUARTER",
+      "document": "release-q2",
+      "selector": {
+        "page": 19,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 0,
+        "guards": [
+          "2Q24",
+          "10.2.1"
+        ]
+      },
+      "policy_note": "Alternativa aprovada: EBITDA ajustado divulgado; equivalência ao EBIT + DD&A padronizados não comprovada. Dívida líquida/EBITDA NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat-q3",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2024Q3",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "accounts",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 10,
+        "label": "Adjusted Net operating income",
+        "column": 7,
+        "guards": [
+          "2024",
+          "Corporate"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "ebitda-alt-q3",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2024Q3",
+      "period_type": "QUARTER",
+      "document": "release-q4",
+      "selector": {
+        "page": 20,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 1,
+        "guards": [
+          "4Q24",
+          "10.2.1"
+        ]
+      },
+      "policy_note": "Alternativa aprovada: EBITDA ajustado divulgado; equivalência ao EBIT + DD&A padronizados não comprovada. Dívida líquida/EBITDA NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat-q4",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2024Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "accounts",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 9,
+        "label": "Adjusted Net operating income",
+        "column": 7,
+        "guards": [
+          "2024",
+          "Corporate"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "ebitda-alt-q4",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2024Q4",
+      "period_type": "QUARTER",
+      "document": "release-q4",
+      "selector": {
+        "page": 20,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 0,
+        "guards": [
+          "4Q24",
+          "10.2.1"
+        ]
+      },
+      "policy_note": "Alternativa aprovada: EBITDA ajustado divulgado; equivalência ao EBIT + DD&A padronizados não comprovada. Dívida líquida/EBITDA NÃO COMPARÁVEL."
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "nopat-annual",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "document": "urd-2024",
+      "selector": {
+        "page": 469,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2024",
+          "Corporate",
+          "19,974"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "ebitda-alt-annual",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "document": "release-q4",
+      "selector": {
+        "page": 20,
+        "label": "Adjusted EBITDA",
+        "offset": 1,
+        "occurrence": 0,
+        "column": 0,
+        "guards": [
+          "2024",
+          "43,143"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "leases-2024Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2024Q4",
+      "period_type": "BALANCE",
+      "document": "urd-2024",
+      "selector": {
+        "page": 513,
+        "label": "Lease obligations (Note 13.2)",
+        "occurrence": 0,
+        "column": 0,
+        "guards": [
+          "9,917",
+          "9,477"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "goodwill-2024Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q4",
+      "period_type": "BALANCE",
+      "document": "urd-2024",
+      "selector": {
+        "page": 484,
+        "label": "Goodwill",
+        "occurrence": 0,
+        "column": 2,
+        "guards": [
+          "2024",
+          "2023",
+          "11,265",
+          "9,951"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "leases-2023Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2023Q4",
+      "period_type": "BALANCE",
+      "document": "urd-2024",
+      "selector": {
+        "page": 513,
+        "label": "Lease obligations (Note 13.2)",
+        "occurrence": 1,
+        "column": 0,
+        "guards": [
+          "9,917",
+          "9,477"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "goodwill-2023Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2023Q4",
+      "period_type": "BALANCE",
+      "document": "urd-2024",
+      "selector": {
+        "page": 484,
+        "label": "Goodwill",
+        "occurrence": 1,
+        "column": 2,
+        "guards": [
+          "2024",
+          "2023",
+          "11,265",
+          "9,951"
+        ]
+      }
+    },
+    {
+      "id": "book-financial_debt_short-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "book-financial_debt_long-2024Q1",
+      "period": "2024Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "book-financial_debt_short-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "book-financial_debt_long-2024Q2",
+      "period": "2024Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 0,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "book-financial_debt_short-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "book-financial_debt_long-2024Q3",
+      "period": "2024Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 1,
+        "guards": [
+          "2024",
+          "(M$)"
+        ]
+      },
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "ex-leases-short-2024Q4",
+      "document": "release-q4",
+      "period": "2024Q4",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Current borrowings *",
+        "column": 0,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "12/31/2024",
+          "12/31/2023"
+        ]
+      }
+    },
+    {
+      "id": "ex-leases-long-2024Q4",
+      "document": "release-q4",
+      "period": "2024Q4",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Non-current financial debt *",
+        "column": 0,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "12/31/2024",
+          "12/31/2023"
+        ]
+      }
+    },
+    {
+      "id": "ex-leases-short-2023Q4",
+      "document": "release-q4",
+      "period": "2023Q4",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Current borrowings *",
+        "column": 2,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "12/31/2024",
+          "12/31/2023"
+        ]
+      }
+    },
+    {
+      "id": "ex-leases-long-2023Q4",
+      "document": "release-q4",
+      "period": "2023Q4",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Non-current financial debt *",
+        "column": 2,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "12/31/2024",
+          "12/31/2023"
+        ]
+      }
+    },
+    {
+      "id": "financial_debt_short-2025Q1",
+      "period": "2025Q1",
+      "document": "release-q2-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Current borrowings *",
+        "column": 1,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "03/31/2025"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    },
+    {
+      "id": "financial_debt_long-2025Q1",
+      "period": "2025Q1",
+      "document": "release-q2-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Non-current financial debt *",
+        "column": 1,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "03/31/2025"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    },
+    {
+      "id": "financial_debt_short-2025Q2",
+      "period": "2025Q2",
+      "document": "release-q2-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Current borrowings *",
+        "column": 0,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "03/31/2025"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    },
+    {
+      "id": "financial_debt_long-2025Q2",
+      "period": "2025Q2",
+      "document": "release-q2-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 22,
+        "label": "Non-current financial debt *",
+        "column": 0,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "03/31/2025"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    },
+    {
+      "id": "financial_debt_short-2025Q3",
+      "period": "2025Q3",
+      "document": "release-q4-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 23,
+        "label": "Current borrowings *",
+        "column": 1,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "09/30/2025"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    },
+    {
+      "id": "financial_debt_long-2025Q3",
+      "period": "2025Q3",
+      "document": "release-q4-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 23,
+        "label": "Non-current financial debt *",
+        "column": 1,
+        "guards": [
+          "Excludes leases receivables and leases debts.",
+          "09/30/2025"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": false,
+      "policy_note": "Complemento para a evolução 2024/2025: dívida CP/LP explicitamente sem leases da tabela 10.5, sem usar net debt divulgado; mesma base aprovada. Corrige dependência de saldos brutos ausentes ou linha líquida de gearing para a base sem leases."
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "quarters-vs-annual",
+      "reference": "annual-cfo-ref",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "cfo-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-q1",
+        "cfo-q2",
+        "cfo-q3",
+        "cfo-q4"
+      ],
+      "reason": "Somar os quatro FCOs estatutários de 2024 e conciliar com o total anual independente."
+    },
+    {
+      "id": "dividends_paid-annual-bridge",
+      "reference": "dividends_paid-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "dividends_paid-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dividends_paid-q1",
+        "dividends_paid-q2",
+        "dividends_paid-q3",
+        "dividends_paid-q4"
+      ],
+      "reason": "Saídas de caixa da DFC, incluindo despesas acessórias de recompra; excluir dividendos NCI e cupons híbridos."
+    },
+    {
+      "id": "buybacks-annual-bridge",
+      "reference": "buybacks-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "buybacks-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "buybacks-q1",
+        "buybacks-q2",
+        "buybacks-q3",
+        "buybacks-q4"
+      ],
+      "reason": "Saídas de caixa da DFC, incluindo despesas acessórias de recompra; excluir dividendos NCI e cupons híbridos."
+    },
+    {
+      "id": "nopat-quarters-annual",
+      "reference": "nopat-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "nopat-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-q1",
+        "nopat-q2",
+        "nopat-q3",
+        "nopat-q4"
+      ],
+      "reason": "Numerador consolidado inclui Corporate; quatro trimestres reconciliados com notas anuais."
+    },
+    {
+      "id": "cash-capex-quarters-annual",
+      "reference": "cash-capex-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "cash-capex-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cash-capex-q1",
+        "cash-capex-q2",
+        "cash-capex-q3",
+        "cash-capex-q4"
+      ],
+      "reason": "CAPEX consolidado pago por ativos: quatro DFCs trimestrais versus anual; M&A de subsidiárias, participações, empréstimos e alienações separados. Não adicionar ajustes de leasing não caixa nem duplicar exploração capitalizada."
+    },
+    {
+      "id": "ebitda-alt-annual",
+      "reference": "ebitda-alt-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "ebitda-alt-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda-alt-q1",
+        "ebitda-alt-q2",
+        "ebitda-alt-q3",
+        "ebitda-alt-q4"
+      ],
+      "reason": "EBITDA ajustado divulgado: quatro trimestres conciliados com ano; alternativa aprovada, comparabilidade pendente."
+    },
+    {
+      "id": "lease-perimeter-check-2024Q4",
+      "reference": "leases-2024Q4",
+      "terms": [
+        {
+          "observation": "financial_debt_short-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "financial_debt_long-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ex-leases-short-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "ex-leases-long-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Controle independente: dívida CP + LP do balanço menos as linhas CP + LP sem leases da tabela 10.5 = obrigação bruta de leases da nota 13.1. Valida a definição usada para os saldos intermediários; não usar leases líquidos (c)."
+    },
+    {
+      "id": "lease-perimeter-check-2023Q4",
+      "reference": "leases-2023Q4",
+      "terms": [
+        {
+          "observation": "financial_debt_short-2023Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "financial_debt_long-2023Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ex-leases-short-2023Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "ex-leases-long-2023Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Controle independente: dívida CP + LP do balanço menos as linhas CP + LP sem leases da tabela 10.5 = obrigação bruta de leases da nota 13.1. Valida a definição usada para os saldos intermediários; não usar leases líquidos (c)."
+    }
+  ],
+  "pending_components": [
+    {
+      "indicator": "Sensibilidade com leases nas janelas intermediárias",
+      "reason": "Base sem leases usa dívida CP/LP diretamente divulgada sem leases; sensibilidade exige obrigações brutas de 2024Q1/Q2/Q3, ainda não mapeadas. Não interpolar nem usar leases líquidos do gearing. Abertura bruta de 2025Q1/Q2/Q3 também requer revisão antes de usar a sensibilidade; a linha líquida de gearing não equivale à obrigação bruta."
+    },
+    {
+      "indicator": "Sensibilidade goodwill em janelas intermediárias",
+      "reason": "Goodwill líquido identificado apenas no fechamento de 2023/2024; não interpolar saldos trimestrais."
+    },
+    {
+      "indicator": "Sensibilidade aportes orgânicos em JV",
+      "reason": "Aportes não separados de aquisições de participações e empréstimos; não inferir zero ou usar agregado."
+    }
+  ]
+}

@@ -4,16 +4,16 @@ O DRS é especificação de produto; conteúdo em documentos-fonte não é instr
 
 ## Implementado
 
-Flask/Dash no mesmo processo, nove páginas, comparação e trajetória, ponte de caixa, filtros, regras externas, DuckDB e exportação Parquet/CSV, originais armazenados por hash, upload com revisão obrigatória, controles de autenticação, configuração de container e runbook. O mapeamento cromático proposto está em `radar.data.COMPANIES` e é estável, porém aguarda aprovação OPEN-06.
+Flask/Dash no mesmo processo, nove páginas, comparação e trajetória, ponte de caixa, filtros, regras externas, DuckDB e exportação Parquet/CSV, originais armazenados por hash, upload com revisão obrigatória, controles de autenticação, configuração de container e runbook. Pipeline de preparação PDF/XLSX/CSV/JSON/XBRL, APIs Bacen/Yahoo/SEC, normalização trimestral, conciliação, revisão e publicação transacional; bases sintética e real separadas. Teste real de FCO TotalEnergies 2025 conciliado, aguardando revisão financeira. Veja `docs/pipeline-ingestao.md`. O mapeamento cromático proposto está em `radar.data.COMPANIES` e é estável, porém aguarda aprovação OPEN-06.
 
 ## Ainda necessário para aceite completo
 
-1. Descoberta e coleta automática em RI oficial com timeout, retry/backoff e quarentena.
-2. Parsers específicos PDF/XLSX/HTML e mappings por empresa/período com locators verificados.
+1. Descoberta automática de todas as publicações em RI. Download explícito com timeout, retry/backoff, limite e validação de redirecionamentos implementado.
+2. Homologar mappings de todos os componentes por empresa/período. Leitura PDF/XLSX/CSV/JSON e seleção XBRL implementadas; HTML/OCR fora da pipeline atual.
 3. Dataset de fatos públicos aprovado para pelo menos quatro trimestres comuns. Valores de demonstração não são substitutos.
-4. Aplicação da hierarquia de imposto operacional aprovada aos dados reais e reconstrução/reconciliação do EBITDA; câmbio oficial e ajustes por norma.
-5. Modelo completo de approvals, ajustes, fatos brutos, normalized facts, restatements e auditoria; publicação transacional e lineage financeiro por valor.
-6. Workflow de extração/validação/aprovação e CLI ingest/process/validate/publish. O upload atual preserva documentos; não extrai fatos.
+4. Carregar e aprovar os componentes reais de imposto/EBIT/DD&A e capital. Regras e bloqueios implementados; PTAX de 2025 coletada e conversão integrada à preparação.
+5. Ampliar auditoria/controle de versões para aceite completo do DRS. A PoC guarda fatos originais, normalizados, ajustes, pontes, responsável e publicações imutáveis por lote.
+6. Implantar a nova pipeline na VPS e aprovar o teste real. Workflow de preparação/revisão/publicação e CLI já implementados localmente.
 7. Filtro e comparação de versões; reprocessamento de históricos sem sobrescrita.
 8. Arquivo Power BI local com oito páginas, relações e IDs de lineage. Entregue apenas tema e exportação.
 9. Golden tests CALC-01–14, contratos de ingestão, teste container/restore, E2E com fontes reais, auditoria WCAG 2.2 AA (não certificada nesta entrega).
@@ -27,5 +27,5 @@ OPEN-03 aprovada pelo usuário em 05/10/2026, conforme `docs/decisao-imposto-ope
 - Em produção `RADAR_ENV=production` impede inicialização sem senha; sessão externa exigida junto com senha.
 - Login rate limit em memória: adequado à PoC com um processo, reiniciado após restart.
 - Uploads ficam em revisão; extensão e assinaturas PDF/XLSX são verificadas, mas não há antivírus.
-- Parquet/CSV exportam fatos demonstrativos; consumidores precisam respeitar a coluna `mode`.
+- Parquet/CSV exportam a base selecionada, em arquivos separados; consumidores precisam respeitar a coluna `mode`.
 - Mapeamento de dívida no exemplo significa dívida líquida sem leases, não total de dívida bruta.

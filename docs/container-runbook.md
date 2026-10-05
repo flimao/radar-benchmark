@@ -54,3 +54,44 @@ Para repetir a verificação descartável após construir `radar:local`:
 ```bash
 .venv/bin/python scripts/verify_container.py
 ```
+
+## Cadastro de trimestre
+
+Em Administração da Carga, use Adicionar trimestre (exemplo: 2026Q1). O período é persistido no DuckDB do volume e aparece nos filtros e no upload. Cadastro repetido não duplica o registro; formatos inválidos são rejeitados. Nenhum fato financeiro é criado. Até a carga, indicadores trimestrais/TTM ficam indisponíveis; drivers não repetem o mix do último período disponível.
+
+Após alterações no código, atualizar a imagem e o container com `docker compose up --build -d --wait`. O volume permanece preservado.
+
+## Publicação v0 na VPS — 2026-10-05
+
+URL: https://radar-benchmark.felipeloliveira.com.br. A v0 usa dados sintéticos.
+Servidor acessível por `ssh radar-vps`, Ubuntu 24.04.5 LTS, x86_64,
+2 vCPUs, 4 GB RAM e 80 GB SSD. Docker 29.1.3, Compose 2.40.3 e
+Caddy foram instalados pelos repositórios Ubuntu. Código em `/opt/radar`.
+
+Caddy (`/etc/caddy/Caddyfile`) termina HTTPS com certificado automático
+renovável e encaminha para `127.0.0.1:8051`. O container não expõe a porta
+8051 publicamente. Docker e Caddy iniciam com o sistema; o serviço RADAR
+usa `restart: unless-stopped`. O volume `radar_radar-data` mantém o banco
+ e arquivos enviados. Credenciais ficam em `/opt/radar/.env`, modo 0600,
+com hash da senha, segredo de sessão e `RADAR_HTTPS=1`.
+
+Validação: 20 testes passaram na imagem Linux/Python 3.12 da VPS;
+container saudável; certificado validado pelo cliente HTTPS; redirecionamento
+HTTP para HTTPS; bloqueio sem autenticação; login com cookie Secure;
+páginas principais, layout Dash, CSS e exportação responderam HTTP 200.
+A publicação inclui o cadastro de trimestre ainda não comitado.
+
+Operação:
+
+```bash
+ssh radar-vps
+cd /opt/radar
+docker compose ps
+docker compose logs --tail=100 radar
+# Após enviar código atualizado:
+docker compose up -d --build radar
+```
+
+Não usar `docker compose down -v`: isso remove os dados persistidos.
+A senha compartilhada temporária foi entregue em arquivo local protegido,
+fora do repositório; não incluir credenciais em commits.

@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "Petrobras": {
+    "accounting_standard": "IFRS",
+    "currency": "BRL",
+    "source": "https://www.investidorpetrobras.com.br/resultados-e-comunicados/central-de-resultados/",
+    "notes": [
+      "Preferir DFC estatutária em BRL; converter trimestre isolado com PTAX média.",
+      "Mapear juros/dividendos e classificação IFRS explicitamente; preservar diferenças versus US GAAP.",
+      "Não usar alíquota sintética de 25% em fatos reais."
+    ]
+  },
+  "TotalEnergies": {
+    "accounting_standard": "IFRS",
+    "currency": "USD",
+    "source": "https://totalenergies.com/investors/results",
+    "notes": [
+      "FCO estatutário difere de CFFO sem capital de giro e DACF.",
+      "Organic investments e net investments não são automaticamente CAPEX orgânico de caixa.",
+      "Perpetual subordinated notes seguem classificação divulgada; cupons e NCI separados."
+    ]
+  },
+  "Chevron": {
+    "accounting_standard": "US GAAP",
+    "currency": "USD",
+    "source": "https://www.chevron.com/investors/reports-and-filings",
+    "notes": [
+      "Não equiparar capital expenditures and investments a CAPEX orgânico de caixa sem ponte.",
+      "Acumulados de DFC devem virar trimestres antes do LTM.",
+      "Separar contribuições a afiliadas, M&A e mudanças de perímetro."
+    ]
+  },
+  "Shell": {
+    "accounting_standard": "IFRS",
+    "currency": "USD",
+    "source": "https://www.shell.com/investors/results-and-reporting/quarterly-results.html",
+    "notes": [
+      "Usar CFO estatutário, preservando capital de giro e efeitos de trading.",
+      "Cash capital expenditure requer ponte para a definição orgânica.",
+      "Adjusted EBITDA e ROACE reportados exigem conciliação; não substituem cálculo padronizado."
+    ]
+  }
+}

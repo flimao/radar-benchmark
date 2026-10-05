@@ -1,4 +1,4 @@
-import hashlib, json, os
+import hashlib, json, os, re
 from decimal import Decimal
 from pathlib import Path
 import duckdb
@@ -46,6 +46,9 @@ def initialize():
         db.execute('CREATE TABLE IF NOT EXISTS facts(company VARCHAR, period VARCHAR, cfo DECIMAL(28,6), capex DECIMAL(28,6), distribution DECIMAL(28,6), debt DECIMAL(28,6), ebitda DECIMAL(28,6), leases DECIMAL(28,6), roce DECIMAL(28,6), version INTEGER, mode VARCHAR, PRIMARY KEY(company,period,version))')
         db.execute('CREATE TABLE IF NOT EXISTS documents(hash VARCHAR PRIMARY KEY, filename VARCHAR, company VARCHAR, period VARCHAR, source_url VARCHAR, locator VARCHAR, status VARCHAR, created_at TIMESTAMP DEFAULT current_timestamp)')
         db.execute('CREATE TABLE IF NOT EXISTS metric_assessment(company VARCHAR, period VARCHAR, metric VARCHAR, view VARCHAR, version INTEGER, status VARCHAR, reason VARCHAR NOT NULL, PRIMARY KEY(company,period,metric,view,version))')
+        db.execute('CREATE TABLE IF NOT EXISTS reporting_period(period VARCHAR PRIMARY KEY, created_at TIMESTAMP DEFAULT current_timestamp)')
+        db.executemany('INSERT INTO reporting_period(period) VALUES (?) ON CONFLICT DO NOTHING',[(p,) for p in PERIODS])
+        db.execute('INSERT INTO reporting_period(period) SELECT DISTINCT period FROM facts ON CONFLICT DO NOTHING')
         columns = {r[1] for r in db.execute("PRAGMA table_info('facts')").fetchall()}
         for name in ROCE_FIELDS:
             if name not in columns:
@@ -69,22 +72,51 @@ def initialize():
                   AND f.version=(SELECT max(f2.version) FROM facts f2 WHERE f2.company=f.company AND f2.period=f.period)
                 """)
 
-def facts():
+def facts(dataset="DEMONSTRACAO"):
+    if dataset == "REAL":
+        from radar.ingestion.financials import facts as real_facts
+        return real_facts()
+    if dataset != "DEMONSTRACAO":
+        raise ValueError("Base de dados inválida.")
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
-        return db.execute('SELECT * FROM facts WHERE company IN ('+','.join('?' for _ in COMPANIES)+') ORDER BY company,period,version',list(COMPANIES)).df()
+        return db.execute("SELECT * FROM facts WHERE mode='DEMONSTRACAO' AND company IN ("+','.join('?' for _ in COMPANIES)+') ORDER BY company,period,version',list(COMPANIES)).df()
 
 def assessments(period, company, view):
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
         rows = db.execute('SELECT metric,status,reason FROM metric_assessment WHERE company=? AND period=? AND view=? QUALIFY row_number() OVER (PARTITION BY metric ORDER BY version DESC)=1',[company,period,view]).fetchall()
     return {metric:{'status':status,'reason':reason} for metric,status,reason in rows}
 
-def metrics(period, selected, leases=False, exclude_goodwill=False):
-    df=facts(); result=[]
-    periods=sorted(df.period.unique()); end=periods.index(period)
+def periods():
+    with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
+        return [r[0] for r in db.execute('SELECT period FROM reporting_period ORDER BY period').fetchall()]
+
+
+def add_period(period):
+    if not isinstance(period,str) or not re.fullmatch(r'[12][0-9]{3}Q[1-4]',period):
+        raise ValueError('Use o formato AAAAQ1 a AAAAQ4 (exemplo: 2026Q1).')
+    with duckdb.connect(str(ROOT/'database/radar.duckdb')) as db:
+        inserted=db.execute('INSERT INTO reporting_period(period) VALUES (?) ON CONFLICT DO NOTHING RETURNING period',[period]).fetchone()
+    return bool(inserted)
+
+
+def metrics(period, selected, leases=False, exclude_goodwill=False, dataset="DEMONSTRACAO", include_jv=False):
+    df=facts(dataset); result=[]
+    registered=periods()
+    if period not in registered: raise ValueError("Trimestre não cadastrado.")
+    year,quarter=int(period[:4]),int(period[-1])
+    end=year*4+quarter-1
+    window=[f"{i//4}Q{i%4+1}" for i in range(end-3,end+1)]
     for company in selected:
-        rows=df[(df.company==company)&(df.period.isin(periods[max(0,end-3):end+1]))].sort_values(['period','version']).drop_duplicates('period',keep='last').to_dict('records')
-        values=calculate(rows,leases,exclude_goodwill)
-        result.append(dict(company=company,quality=assessments(period,company,'standard'),reported_quality=assessments(period,company,'reported'),**{k:float(v) if v is not None else None for k,v in values.items()},reported_roce=float(rows[-1]['roce']) if rows else None))
+        rows=df[(df.company==company)&(df.period.isin(window))].sort_values(['period','version']).drop_duplicates('period',keep='last').to_dict('records')
+        values=calculate(rows,leases,exclude_goodwill,include_jv)
+        if dataset == 'REAL':
+            from radar.ingestion.financials import quality as real_quality
+            quality = {metric:real_quality(rows,metric,leases,exclude_goodwill,include_jv) for metric in values}
+            reported_quality = {'roce':rows[-1].get('_quality',{}).get('reported_roce',{})} if rows and rows[-1]['period']==period else {}
+        else:
+            quality=assessments(period,company,'standard')
+            reported_quality=assessments(period,company,'reported')
+        result.append(dict(company=company,quality=quality,reported_quality=reported_quality,**{k:float(v) if v is not None else None for k,v in values.items()},reported_roce=float(rows[-1]['roce']) if rows and rows[-1]['period']==period and pd.notna(rows[-1]['roce']) else None))
     return result
 
 def preserve(content, filename, company, period, url, locator):
@@ -99,6 +131,7 @@ def preserve(content, filename, company, period, url, locator):
 def documents():
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db: return db.execute('SELECT * FROM documents ORDER BY created_at DESC').df()
 
-def export():
-    frame=facts(); frame.to_parquet(ROOT/'data/curated/facts.parquet',index=False); frame.to_csv(ROOT/'data/curated/facts.csv',index=False)
+def export(dataset="DEMONSTRACAO"):
+    frame=facts(dataset);
+    frame=frame.drop(columns=["_quality","_scope"],errors="ignore"); name='facts-real' if dataset=='REAL' else 'facts'; frame.to_parquet(ROOT/f'data/curated/{name}.parquet',index=False); frame.to_csv(ROOT/f'data/curated/{name}.csv',index=False)
     return frame

@@ -1,0 +1,1911 @@
+{
+  "schema_version": 1,
+  "company": "TotalEnergies",
+  "accounting_standard": "IFRS",
+  "mapping_version": "total-2025-ebitda-alternative-v7",
+  "mapping_note": "CAPEX consolidado de caixa pela DFC; NOPAT ajustado divulgado e CE reconstruído. Investimentos orgânicos publicados ficam como referência, sem substituir CAPEX.",
+  "documents": [
+    {
+      "id": "accounts",
+      "format": "pdf",
+      "filename": "total-2025q4-accounts.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_accounts-q4-2025_2026_en.pdf",
+      "period": "2025Q4",
+      "expected_hash": "979d28a69ee470cf974641aacbdb5698b813b1be9df5b5537187984265ab0a5a"
+    },
+    {
+      "id": "databook",
+      "format": "xlsx",
+      "filename": "total-2025q4-databook.xlsx",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_databook-q4-2025_2026_en.xlsx",
+      "period": "2025Q4",
+      "expected_hash": "344a7731e7ed383712269925cd192d4be0535009ccb873663af35cf15d0d8b24"
+    },
+    {
+      "id": "accounts-h1",
+      "format": "pdf",
+      "period": "2025Q2",
+      "filename": "total-2025q2-accounts.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_financial-statements-2Q25_2025_en.pdf",
+      "expected_hash": "24f403e83427b198e1f1c35be0682cdd68f7c19938dbdc5af5534324e357a9b4"
+    },
+    {
+      "id": "urd-2025",
+      "format": "pdf",
+      "filename": "total-urd-2025.pdf",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_universal-registration-document-2025_2026_en.pdf",
+      "period": "2025Q4",
+      "expected_hash": "6a15f2d83d5cb910cc7111f23715fec0f68ad00ee892a72042d59a8418c58ca7"
+    },
+    {
+      "id": "release-q4",
+      "format": "pdf",
+      "filename": "release-q4.pdf",
+      "period": "2025Q4",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_pr-results-q4-2025_2026_en.pdf",
+      "expected_hash": "e339b5d433a3a525de66b7465354a918f914bbd254fcbb0e0450937fc88473a7"
+    },
+    {
+      "id": "release-q2",
+      "format": "pdf",
+      "filename": "release-q2.pdf",
+      "period": "2025Q2",
+      "url": "https://totalenergies.com/system/files/documents/totalenergies_2Q25-results-press-release_2025_en.pdf",
+      "expected_hash": "edd0180ccb52533dee4fa09e4ecb65c59bb0bd860b8cc19342e7ba09cb9fea4f"
+    }
+  ],
+  "observations": [
+    {
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q4",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "document": "accounts",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "4th quarter",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-ref",
+      "document": "databook",
+      "selector": {
+        "sheet": "§2",
+        "cell": "B25",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          },
+          {
+            "cell": "F25",
+            "equals": "Cash flow from operating activities"
+          }
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q1",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 1,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q2",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "cfo-q3",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2025Q3",
+      "document": "accounts",
+      "selector": {
+        "page": 6,
+        "label": "Cash flow from operating activities",
+        "column": 1,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "(M$)"
+        ]
+      }
+    },
+    {
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "id": "annual-cfo-ref",
+      "period": "2025Q4",
+      "document": "accounts",
+      "selector": {
+        "page": 7,
+        "label": "Cash flow from operating activities",
+        "column": 0,
+        "guards": [
+          "CONSOLIDATED STATEMENT OF CASH FLOW",
+          "2025",
+          "Year"
+        ]
+      }
+    },
+    {
+      "id": "dividends_paid-q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1,
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "dividends_paid-annual",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 7,
+        "label": "- Parent company shareholders",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ],
+        "occurrence": 1
+      },
+      "sign": -1
+    },
+    {
+      "id": "buybacks-q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 6,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "sign": -1,
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "buybacks-annual",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 7,
+        "label": "- Treasury shares",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "sign": -1
+    },
+    {
+      "id": "cash-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "cash-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "equity_total-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Total shareholders' equity",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "nci-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-controlling interests",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "nci",
+      "concept": "NCI"
+    },
+    {
+      "id": "financial_debt_short-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Current borrowings",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Non-current financial debt",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2024Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2024Q4",
+      "document": "urd-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 511,
+        "label": "Lease obligations (note 13.2)",
+        "occurrence": 1,
+        "column": 0,
+        "guards": [
+          "2025",
+          "2024",
+          "9,927",
+          "9,917"
+        ]
+      }
+    },
+    {
+      "id": "leases-2025Q3",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.5",
+        "cell": "D18",
+        "guards": [
+          {
+            "cell": "B18",
+            "equals": "Leases (c)"
+          },
+          {
+            "cell": "D2",
+            "equals": "09/30/2025"
+          }
+        ]
+      }
+    },
+    {
+      "id": "leases-2025Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2025Q4",
+      "document": "urd-2025",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 511,
+        "label": "Lease obligations (note 13.2)",
+        "occurrence": 0,
+        "column": 0,
+        "guards": [
+          "2025",
+          "2024",
+          "9,927",
+          "9,917"
+        ]
+      }
+    },
+    {
+      "id": "organic-investment-reference-2025Q3",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "comparable": false,
+      "comparability_reason": "Investimento publicado inclui ajustes de leasing, financiamentos de projetos e empréstimos; ponte para CAPEX orgânico em caixa pendente.",
+      "selector": {
+        "sheet": "§10.3",
+        "cell": "C14",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          },
+          {
+            "cell": "F14",
+            "equals": "of which organic investments ( h )"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-3-8",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "C8",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-3-9",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "C9",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-3-10",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "C10",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-3-13",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "C13",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "organic-investment-reference-2025Q4",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "comparable": false,
+      "comparability_reason": "Investimento publicado inclui ajustes de leasing, financiamentos de projetos e empréstimos; ponte para CAPEX orgânico em caixa pendente.",
+      "selector": {
+        "sheet": "§10.3",
+        "cell": "B14",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          },
+          {
+            "cell": "F14",
+            "equals": "of which organic investments ( h )"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-4-8",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "B8",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-4-9",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "B9",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-4-10",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "B10",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-reference-4-13",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "B13",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cash-nonoperating-2024Q4",
+      "period": "2024Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 2,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2025Q1",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2025Q2",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2025Q3",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 1,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "cash-nonoperating-2025Q4",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "BALANCE",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 5,
+        "label": "Cash and cash equivalents",
+        "column": 0,
+        "guards": [
+          "2025",
+          "(M$)"
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito."
+    },
+    {
+      "id": "nopat-q1",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2025Q1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "release-q2",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 36,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2025",
+          "Corporate",
+          "Total"
+        ]
+      }
+    },
+    {
+      "id": "nopat-q2",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2025Q2",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "release-q2",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 35,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2025",
+          "Corporate",
+          "Total"
+        ]
+      }
+    },
+    {
+      "id": "nopat-q3",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2025Q3",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "release-q4",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 38,
+        "label": "Adjusted Net operating income",
+        "column": 7,
+        "guards": [
+          "2025",
+          "Corporate",
+          "Total"
+        ]
+      }
+    },
+    {
+      "id": "nopat-q4",
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "release-q4",
+      "policy_note": "Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído. Inclui Corporate e afiliadas líquidas de imposto; não equivale a EBIT e imposto separadamente reconstruídos.",
+      "selector": {
+        "page": 37,
+        "label": "Adjusted Net operating income",
+        "column": 7,
+        "guards": [
+          "2025",
+          "Corporate",
+          "Total"
+        ]
+      }
+    },
+    {
+      "id": "nopat-annual",
+      "period": "2025Q4",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "document": "urd-2025",
+      "selector": {
+        "page": 468,
+        "label": "Adjusted net operating income",
+        "column": 7,
+        "guards": [
+          "2025",
+          "Corporate",
+          "17,827"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q1",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q1",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 1,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2025"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q2",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q2",
+      "document": "accounts-h1",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2025"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q3",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q3",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 1,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2025"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-q4",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "QUARTER",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 6,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "CASH FLOW USED IN INVESTING ACTIVITIES",
+          "Acquisitions of subsidiaries, net of cash acquired",
+          "Investments in equity affiliates and other securities",
+          "2025"
+        ]
+      }
+    },
+    {
+      "id": "cash-capex-annual",
+      "period": "2025Q4",
+      "document": "accounts",
+      "currency": "USD",
+      "scale": "millions",
+      "period_type": "YTD",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "page": 7,
+        "label": "Intangible assets and property, plant and equipment additions",
+        "column": 0,
+        "guards": [
+          "Year",
+          "2025",
+          "CASH FLOW USED IN INVESTING ACTIVITIES"
+        ]
+      }
+    },
+    {
+      "id": "ebitda-alt-q1",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2025Q1",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "period_type": "QUARTER",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 20,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 1,
+        "guards": [
+          "10.2.1",
+          "2Q25",
+          "1Q25",
+          "9,690",
+          "10,504"
+        ]
+      }
+    },
+    {
+      "id": "ebitda-alt-q2",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2025Q2",
+      "document": "release-q2",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "period_type": "QUARTER",
+      "basis": "REPORTED",
+      "selector": {
+        "page": 20,
+        "label": "Adjusted EBITDA",
+        "occurrence": 0,
+        "offset": -4,
+        "column": 0,
+        "guards": [
+          "10.2.1",
+          "2Q25",
+          "1Q25",
+          "9,690",
+          "10,504"
+        ]
+      }
+    },
+    {
+      "id": "ebitda-alt-q3",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2025Q3",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "period_type": "QUARTER",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "C13",
+        "guards": [
+          {
+            "cell": "C2",
+            "equals": "3Q25"
+          },
+          {
+            "cell": "F13",
+            "equals": "Adjusted EBITDA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-alt-q4",
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "period_type": "QUARTER",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "B13",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4Q25"
+          },
+          {
+            "cell": "F13",
+            "equals": "Adjusted EBITDA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda-alt-annual",
+      "period": "2025Q4",
+      "document": "databook",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "period_type": "YTD",
+      "basis": "REPORTED",
+      "selector": {
+        "sheet": "§10.2.1",
+        "cell": "G13",
+        "guards": [
+          {
+            "cell": "G2",
+            "equals": "2025"
+          },
+          {
+            "cell": "F13",
+            "equals": "Adjusted EBITDA"
+          }
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "cfo-pdf-xlsx",
+      "reference": "cfo-ref",
+      "terms": [
+        {
+          "observation": "cfo-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-q4"
+      ],
+      "reason": "FCO estatutário trimestral: PDF de contas versus databook XLSX."
+    },
+    {
+      "id": "quarters-vs-annual",
+      "reference": "annual-cfo-ref",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "cfo-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-q1",
+        "cfo-q2",
+        "cfo-q3",
+        "cfo-q4"
+      ],
+      "reason": "Somar os quatro FCOs estatutários de 2025 e conciliar com o total anual independente."
+    },
+    {
+      "id": "dividends_paid-annual-bridge",
+      "reference": "dividends_paid-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "dividends_paid-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dividends_paid-q1",
+        "dividends_paid-q2",
+        "dividends_paid-q3",
+        "dividends_paid-q4"
+      ],
+      "reason": "Saídas de caixa da DFC, incluindo despesas acessórias de recompra; excluir dividendos NCI e cupons híbridos."
+    },
+    {
+      "id": "buybacks-annual-bridge",
+      "reference": "buybacks-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "buybacks-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "buybacks-q1",
+        "buybacks-q2",
+        "buybacks-q3",
+        "buybacks-q4"
+      ],
+      "reason": "Saídas de caixa da DFC, incluindo despesas acessórias de recompra; excluir dividendos NCI e cupons híbridos."
+    },
+    {
+      "id": "nopat-quarters-annual",
+      "reference": "nopat-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "nopat-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-q1",
+        "nopat-q2",
+        "nopat-q3",
+        "nopat-q4"
+      ],
+      "reason": "Numerador consolidado inclui Corporate; quatro trimestres reconciliados com notas anuais."
+    },
+    {
+      "id": "cash-capex-quarters-annual",
+      "reference": "cash-capex-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "cash-capex-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "cash-capex-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cash-capex-q1",
+        "cash-capex-q2",
+        "cash-capex-q3",
+        "cash-capex-q4"
+      ],
+      "reason": "CAPEX consolidado pago por ativos: quatro DFCs trimestrais versus anual; M&A de subsidiárias, participações, empréstimos e alienações separados. Não adicionar ajustes de leasing não caixa nem duplicar exploração capitalizada."
+    },
+    {
+      "id": "ebitda-alt-annual",
+      "reference": "ebitda-alt-annual",
+      "aggregation": "SUM_QUARTERS",
+      "terms": [
+        {
+          "observation": "ebitda-alt-q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda-alt-q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda-alt-q1",
+        "ebitda-alt-q2",
+        "ebitda-alt-q3",
+        "ebitda-alt-q4"
+      ],
+      "reason": "EBITDA ajustado divulgado: quatro trimestres conciliados com ano; alternativa aprovada, comparabilidade pendente."
+    }
+  ],
+  "pending_components": [
+    {
+      "indicator": "Dívida líquida/EBITDA",
+      "reason": "Normalizar perímetro do EBITDA; obter leases de Q1/Q2 para a base sem leases."
+    },
+    {
+      "indicator": "Sensibilidade goodwill",
+      "reason": "Obter saldos consolidados específicos nas notas de abertura e fechamento."
+    },
+    {
+      "indicator": "Sensibilidade CAPEX com aportes orgânicos em JVs",
+      "reason": "Desagregar aportes orgânicos de aquisições de participação e empréstimos financeiros; excluídos da base consolidada aprovada."
+    }
+  ]
+}

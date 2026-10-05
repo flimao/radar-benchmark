@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.7.0",
   "currency": "USD",
   "scale": "milhões",
   "leases": "excluídos",
@@ -9,7 +9,7 @@
       "name": "ROCE / ROACE",
       "unit": "%",
       "formula": "NOPAT LTM / capital empregado médio",
-      "note": "Demonstração: imposto = EBIT ajustado × alíquota fictícia (Chevron 10%, Shell 20%, Petrobras e TotalEnergies 25%). Goodwill incluído; leases excluídos na base. Dados reais continuam pendentes."
+      "note": "Base real: imposto operacional divulgado ou reconstruído, compatível com EBIT ajustado; sem base defensável, não comparável. Demonstração: alíquotas fictícias por empresa. Goodwill incluído; leases excluídos na base. Aproximação PoC: subtrair 100% do caixa e equivalentes do capital empregado."
     },
     "cfo": {
       "name": "Fluxo de caixa operacional",
@@ -21,13 +21,13 @@
       "name": "Dívida líquida / EBITDA",
       "unit": "x",
       "formula": "(dívida financeira − caixa) / EBITDA ajustado LTM",
-      "note": "Leases excluídos; EBITDA precisa de reconciliação."
+      "note": "Leases excluídos; EBITDA precisa de reconciliação. TotalEnergies: alternativa aprovada com EBITDA ajustado divulgado; comparabilidade entre peers pendente."
     },
     "capex": {
       "name": "CAPEX / FCO",
       "unit": "%",
       "formula": "CAPEX orgânico de caixa LTM / FCO LTM",
-      "note": "Exclui M&A e itens não caixa."
+      "note": "CAPEX orgânico de caixa no perímetro consolidado; excluir M&A, aplicações financeiras e itens sem caixa. Aportes orgânicos em JVs separados da base."
     },
     "distribution": {
       "name": "Distribuições / FCO",
@@ -64,7 +64,13 @@
       "Não substituir imposto operacional por impostos pagos no fluxo de caixa.",
       "Registrar fonte, locator, ajustes, reconciliação e versão da regra."
     ],
-    "implementation_status": "PENDENTE_DADOS_E_IMPLEMENTACAO"
+    "implementation_status": "PIPELINE_IMPLEMENTADA_COMPONENTES_REAIS_PENDENTES_DE_REVISAO",
+    "nopat_alternative": {
+      "status": "APROVADO",
+      "approved_on": "2026-10-05",
+      "method": "Numerador ajustado divulgado + capital empregado reconstruído",
+      "constraint": "Não fabricar EBIT/imposto separados; conciliar quatro trimestres com ano, incluir Corporate e afiliadas coerentes com capital. Avaliar comparabilidade entre peers separadamente."
+    }
   },
   "synthetic_roce": {
     "mode": "DEMONSTRACAO",
@@ -109,7 +115,9 @@
     "goodwill_sensitivity": "Excluir goodwill dos saldos inicial/final, mantendo NOPAT; identificar como sensibilidade de denominador.",
     "hybrids_base": "Seguir classificação contábil divulgada, evitando dupla contagem em patrimônio e dívida.",
     "hybrids_sensitivity": "Tratamento alternativo apenas por instrumento relevante e documentado.",
-    "implementation_status": "BASE_CONFIGURADA_SENSIBILIDADES_REAIS_PENDENTES_DE_DADOS"
+    "implementation_status": "RECONSTRUCAO_E_SENSIBILIDADES_IMPLEMENTADAS_MAPEAMENTOS_REAIS_PENDENTES",
+    "cash_nonoperating": "Aproximação aprovada para a PoC: considerar 100% do caixa e equivalentes como caixa não operacional e subtrair do capital empregado. Aplicar igualmente aos peers; não representa separação divulgada de caixa operacional/restrito.",
+    "operating_perimeter": "Manter contribuição operacional de afiliadas quando seu investimento integrar o capital empregado; excluir resultados de financiamento, classificando contratos pela natureza operacional. Não descontar novamente impostos de contribuição já líquida."
   },
   "quality_policy": {
     "status": "APROVADO",
@@ -136,7 +144,7 @@
       "APROVADO",
       "ALERTA_ACEITO"
     ],
-    "implementation_status": "AVALIADOR_IMPLEMENTADO_WORKFLOW_REAL_PENDENTE"
+    "implementation_status": "WORKFLOW_PREPARACAO_REVISAO_PUBLICACAO_IMPLEMENTADO"
   },
   "delivery": {
     "decision_id": "OPEN-01",
@@ -198,6 +206,24 @@
       "results_url": "https://totalenergies.com/investors/results",
       "accounting_reference_url": "https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2024-07/TotalEnergies_rapport_financier_semestriel_2024_en_pdf.pdf",
       "mapping_note": "Usar DFC estatutária; DACF e fluxo excluindo capital de giro permanecem separados. ROACE reportado não substitui cálculo padronizado."
+    }
+  },
+  "capex_policy": {
+    "status": "APROVADO",
+    "approved_on": "2026-10-05",
+    "base": "CAPEX orgânico de caixa no perímetro consolidado; excluir M&A, aplicações financeiras e itens sem caixa.",
+    "jv_sensitivity": "Adicionar somente aportes orgânicos de caixa em JVs identificados e conciliados, em sensibilidade separada; excluir aquisições de participação e empréstimos financeiros. Sem componentes, sensibilidade indisponível."
+  },
+  "ebitda_policy": {
+    "standard": "EBIT ajustado normalizado + DDA com mesmos ajustes.",
+    "disclosed_alternative": {
+      "status": "APROVADO",
+      "approved_on": "2026-10-05",
+      "companies": [
+        "TotalEnergies"
+      ],
+      "method": "Dívida líquida reconstruída / EBITDA ajustado divulgado, conciliado em quatro trimestres.",
+      "limitation": "Equivalência integral ao EBITDA normalizado não comprovada. Manter valor identificado como alternativa e NÃO COMPARÁVEL entre peers, fora da série comparável. Não fabricar EBIT nem usar NOPAT para inferir EBITDA."
     }
   }
 }
