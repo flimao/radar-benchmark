@@ -8,7 +8,7 @@ ROOT = Path(os.environ.get('RADAR_DATA_DIR', '.'))
 COMPANIES = {'Petrobras':('#008542','IFRS','Brasil'), 'Equinor':('#008e91','IFRS','Noruega'), 'Chevron':('#006298','US GAAP','Estados Unidos'), 'Shell':('#b28700','IFRS','Reino Unido')}
 SOURCES = {'Petrobras':'https://www.investidorpetrobras.com.br/resultados-e-comunicados/central-de-resultados/', 'Equinor':'https://www.equinor.com/investors/quarterly-results', 'Chevron':'https://www.chevron.com/investors', 'Shell':'https://www.shell.com/investors/results-and-reporting/quarterly-results.html'}
 RULES = json.loads((Path(os.environ.get('RADAR_PROJECT_DIR', '.'))/'config/rules.json').read_text())
-ROCE_FIELDS = ['ebit_adjusted','operating_tax','tax_rate','capital_employed_open','capital_employed_close','leases_open']
+ROCE_FIELDS = ['ebit_adjusted','operating_tax','tax_rate','capital_employed_open','capital_employed_close','leases_open','goodwill_open','goodwill_close']
 PERIODS=['2024Q1','2024Q2','2024Q3','2024Q4','2025Q1','2025Q2','2025Q3','2025Q4']
 
 def demo_rows():
@@ -35,6 +35,9 @@ def demo_rows():
         row['capital_employed_open'] = capital_at(i - 1)
         row['capital_employed_close'] = capital_at(i)
         row['leases_open'] = Decimal(str(row['leases']))
+        goodwill_fraction = Decimal(str(RULES['synthetic_roce']['goodwill_fraction_of_capital_employed']))
+        row['goodwill_open'] = row['capital_employed_open'] * goodwill_fraction
+        row['goodwill_close'] = row['capital_employed_close'] * goodwill_fraction
     return rows
 
 def initialize():
@@ -42,6 +45,7 @@ def initialize():
     with duckdb.connect(str(ROOT/'database/radar.duckdb')) as db:
         db.execute('CREATE TABLE IF NOT EXISTS facts(company VARCHAR, period VARCHAR, cfo DECIMAL(28,6), capex DECIMAL(28,6), distribution DECIMAL(28,6), debt DECIMAL(28,6), ebitda DECIMAL(28,6), leases DECIMAL(28,6), roce DECIMAL(28,6), version INTEGER, mode VARCHAR, PRIMARY KEY(company,period,version))')
         db.execute('CREATE TABLE IF NOT EXISTS documents(hash VARCHAR PRIMARY KEY, filename VARCHAR, company VARCHAR, period VARCHAR, source_url VARCHAR, locator VARCHAR, status VARCHAR, created_at TIMESTAMP DEFAULT current_timestamp)')
+        db.execute('CREATE TABLE IF NOT EXISTS metric_assessment(company VARCHAR, period VARCHAR, metric VARCHAR, view VARCHAR, version INTEGER, status VARCHAR, reason VARCHAR NOT NULL, PRIMARY KEY(company,period,metric,view,version))')
         columns = {r[1] for r in db.execute("PRAGMA table_info('facts')").fetchall()}
         for name in ROCE_FIELDS:
             if name not in columns:
@@ -58,7 +62,7 @@ def initialize():
                 SELECT f.company,f.period,f.cfo,f.capex,f.distribution,f.debt,f.ebitda,
                        f.leases,f.roce,f.version+1,f.mode,{','.join('s.'+k for k in ROCE_FIELDS)}
                 FROM facts f JOIN seed s ON f.company=s.company AND f.period=s.period
-                WHERE f.mode='DEMONSTRACAO' AND f.ebit_adjusted IS NULL
+                WHERE f.mode='DEMONSTRACAO' AND (f.ebit_adjusted IS NULL OR f.goodwill_open IS NULL OR f.goodwill_close IS NULL)
                   AND f.version=(SELECT max(f2.version) FROM facts f2 WHERE f2.company=f.company AND f2.period=f.period)
                 """)
 
@@ -66,13 +70,18 @@ def facts():
     with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
         return db.execute('SELECT * FROM facts ORDER BY company,period,version').df()
 
-def metrics(period, selected, leases=False):
+def assessments(period, company, view):
+    with duckdb.connect(str(ROOT/'database/radar.duckdb'),read_only=True) as db:
+        rows = db.execute('SELECT metric,status,reason FROM metric_assessment WHERE company=? AND period=? AND view=? QUALIFY row_number() OVER (PARTITION BY metric ORDER BY version DESC)=1',[company,period,view]).fetchall()
+    return {metric:{'status':status,'reason':reason} for metric,status,reason in rows}
+
+def metrics(period, selected, leases=False, exclude_goodwill=False):
     df=facts(); result=[]
     periods=sorted(df.period.unique()); end=periods.index(period)
     for company in selected:
         rows=df[(df.company==company)&(df.period.isin(periods[max(0,end-3):end+1]))].sort_values(['period','version']).drop_duplicates('period',keep='last').to_dict('records')
-        values=calculate(rows,leases)
-        result.append(dict(company=company,**{k:float(v) if v is not None else None for k,v in values.items()},reported_roce=float(rows[-1]['roce']) if rows else None))
+        values=calculate(rows,leases,exclude_goodwill)
+        result.append(dict(company=company,quality=assessments(period,company,'standard'),reported_quality=assessments(period,company,'reported'),**{k:float(v) if v is not None else None for k,v in values.items()},reported_roce=float(rows[-1]['roce']) if rows else None))
     return result
 
 def preserve(content, filename, company, period, url, locator):

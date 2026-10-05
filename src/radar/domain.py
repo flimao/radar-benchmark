@@ -9,7 +9,7 @@ def ltm(values):
 def quarter(ytd, previous_ytd=0):
     return Decimal(str(ytd)) - Decimal(str(previous_ytd))
 
-def roce(rows, leases=False):
+def roce(rows, leases=False, exclude_goodwill=False):
     """Return a percentage; missing components or incomplete periods remain unavailable."""
     if len(rows) != 4:
         return None
@@ -28,6 +28,13 @@ def roce(rows, leases=False):
     if start is None or end is None:
         return None
     start, end = Decimal(str(start)), Decimal(str(end))
+    if exclude_goodwill:
+        opening_goodwill = rows[0].get('goodwill_open')
+        closing_goodwill = rows[-1].get('goodwill_close')
+        if opening_goodwill is None or closing_goodwill is None:
+            return None
+        start -= Decimal(str(opening_goodwill))
+        end -= Decimal(str(closing_goodwill))
     if leases:
         opening_leases = rows[0].get('leases_open')
         closing_leases = rows[-1].get('leases')
@@ -41,9 +48,9 @@ def roce(rows, leases=False):
     return ratio(nopat, (start + end) / 2, 100)
 
 
-def calculate(rows, leases=False):
+def calculate(rows, leases=False, exclude_goodwill=False):
     if len(rows) != 4:
         return {k: None for k in ('cfo','leverage','capex','distribution','fcf','residual','roce')}
     cfo = ltm([r['cfo'] for r in rows]); capex = ltm([r['capex'] for r in rows]); distribution = ltm([r['distribution'] for r in rows]); ebitda = ltm([r['ebitda'] for r in rows])
     debt = Decimal(str(rows[-1]['debt'])) + (Decimal(str(rows[-1]['leases'])) if leases else 0)
-    return dict(cfo=cfo, leverage=ratio(debt, ebitda), capex=ratio(capex,cfo,100), distribution=ratio(distribution,cfo,100), fcf=cfo-capex, residual=cfo-capex-distribution, roce=roce(rows,leases))
+    return dict(cfo=cfo, leverage=ratio(debt, ebitda), capex=ratio(capex,cfo,100), distribution=ratio(distribution,cfo,100), fcf=cfo-capex, residual=cfo-capex-distribution, roce=roce(rows,leases,exclude_goodwill))

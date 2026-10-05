@@ -15,3 +15,9 @@ Autorizado pelo usuário em 05/10/2026. Dados e alíquotas são fictícios e nã
 A visão reportada sintética permanece separada. O modelo persiste EBIT, imposto, alíquota, saldos inicial/final e leases iniciais com DECIMAL(28,6), exportados em CSV/Parquet. A migração adiciona uma revisão dos fatos demonstrativos existentes, preservando a versão anterior e documentos. Novas bases recebem os componentes diretamente; inicializações repetidas não duplicam revisões.
 
 A hierarquia OPEN-03 continua aplicável aos dados reais. O cenário sintético é identificado como demonstração e não autoriza estimativas na visão padronizada real.
+
+## Sensibilidade de goodwill — v1.3.1
+
+O seletor oferece as quatro combinações de leases e goodwill. Para exercitar o cenário demonstrativo, goodwill fictício corresponde a 10% do capital empregado sintético inicial/final, sem alteração do capital base (o goodwill já está incluído nele). A visão sem goodwill subtrai esses saldos antes da média e mantém NOPAT. Demais KPIs e ROCE reportado permanecem iguais. A premissa não representa goodwill real das empresas. Componentes ausentes resultam em indisponível; saldos novos do exemplo são adicionados em revisão preservando a versão anterior.
+
+O filtro agora usa seleção múltipla: Incluir leases e Excluir goodwill. Nenhuma seleção corresponde à base sem leases e com goodwill. As opções podem ser combinadas ou removidas independentemente.

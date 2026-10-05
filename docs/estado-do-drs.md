@@ -19,7 +19,7 @@ Flask/Dash no mesmo processo, nove páginas, comparação e trajetória, ponte d
 9. Golden tests CALC-01–14, contratos de ingestão, teste container/restore, E2E com fontes reais, auditoria WCAG 2.2 AA (não certificada nesta entrega).
 10. Apresentação de 15 minutos e evidências financeiras homologadas.
 
-OPEN-03 aprovada pelo usuário em 05/10/2026, conforme `docs/decisao-imposto-operacional.md` e regras v1.2.0. ROCE sintético implementado com alíquotas fictícias autorizadas, conforme `docs/roce-sintetico.md`. OPEN-01, OPEN-02, OPEN-04, OPEN-05 e OPEN-06 seguem pendentes. Não há aproximação automática de ROCE, estimativas cambiais ou contexto de mercado fabricado. Dados de exemplo estão rotulados em cada tela e no campo `mode` do dataset.
+OPEN-03 aprovada pelo usuário em 05/10/2026, conforme `docs/decisao-imposto-operacional.md` e regras v1.2.0. ROCE sintético implementado com alíquotas fictícias autorizadas, conforme `docs/roce-sintetico.md`. OPEN-02: Bacen, PTAX venda média trimestral, divisão BRL/USD e soma após conversão aprovados; saldos e outras moedas pendentes. OPEN-05 e políticas de aprovação PoC aprovadas, com tratamento visual explícito para não comparabilidade. OPEN-01, OPEN-04 e OPEN-06 seguem pendentes. Não há aproximação automática de ROCE, estimativas cambiais ou contexto de mercado fabricado. Dados de exemplo estão rotulados em cada tela e no campo `mode` do dataset.
 
 ## Premissas operacionais
 

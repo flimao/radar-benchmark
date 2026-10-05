@@ -55,10 +55,10 @@ def test_pages_and_metric_callbacks(monkeypatch,tmp_path):
     data.initialize()
     from radar.web.app import render, metric_chart, NAV
     for key,_,_ in NAV:
-        result=render('/'+key,list(data.COMPANIES),'2025Q4','standard','no')
+        result=render('/'+key,list(data.COMPANIES),'2025Q4','standard',[])
         assert result[0]
         assert result[2]
-    assert metric_chart('cfo',list(data.COMPANIES),'2025Q4','standard','no') is not None
+    assert metric_chart('cfo',list(data.COMPANIES),'2025Q4','standard',[]) is not None
 
 def test_roce_golden_and_leases():
     from radar.domain import roce
@@ -103,3 +103,43 @@ def test_demo_rates_and_migration(monkeypatch,tmp_path):
     assert len(data.facts())==64
     assert data.facts()[data.facts().version==1].ebit_adjusted.isna().all()
     assert all(r['roce'] is not None for r in data.metrics('2025Q4',list(data.COMPANIES)))
+
+
+def test_non_comparable_preserves_value_and_excludes_chart_point(monkeypatch,tmp_path):
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    import duckdb
+    with duckdb.connect(str(tmp_path/'database/radar.duckdb')) as db:
+        db.execute("INSERT INTO metric_assessment VALUES ('Petrobras','2025Q4','roce','standard',1,'NAO_COMPARAVEL','Imposto operacional sem reconstrução defensável')")
+    from radar.web.app import metric_cell, metric_chart, cash_table
+    row=data.metrics('2025Q4',['Petrobras'])[0]
+    cell=metric_cell(row,'roce','standard')
+    assert 'non-comparable' in cell.className
+    assert '24,7%'==cell.children[1].children
+    chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',[])
+    figure=chart.children[1].children[0].figure
+    assert figure.data[0].y[-1] is None
+    assert chart.children[1].children[1].className=='non-comparable'
+    assert 'non-comparable' not in metric_cell(row,'roce','reported').className
+    row['quality']['cfo']={'status':'NAO_COMPARAVEL','reason':'Perímetro distinto'}
+    cash=cash_table([row])
+    assert 'NÃO COMPARÁVEL' in cash.data[0]['FCO']
+    assert 'NÃO COMPARÁVEL' in cash.data[0]['FCL']
+    assert any(style.get('color')=='#852800' for style in cash.style_data_conditional)
+
+def test_goodwill_filter_preserves_other_metrics(monkeypatch,tmp_path):
+    from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    baseline=data.metrics('2025Q4',['Petrobras'])[0]
+    without=data.metrics('2025Q4',['Petrobras'],exclude_goodwill=True)[0]
+    assert abs(without['roce']-baseline['roce']/0.9)<1e-8
+    for key in ('cfo','leverage','capex','distribution','fcf','residual','reported_roce'):
+        assert without[key]==baseline[key]
+    from radar.web.app import render, metric_chart
+    for option in ([],['include_leases'],['exclude_goodwill'],['include_leases','exclude_goodwill'],None):
+        assert render('/trajectory',['Petrobras'],'2025Q4','standard',option)[2]
+        chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',option)
+        expected=data.metrics('2025Q4',['Petrobras'],'include_leases' in (option or []),'exclude_goodwill' in (option or []))[0]['roce']
+        assert chart.children[1].children[0].figure.data[0].y[-1]==expected

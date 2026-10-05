@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.1",
   "currency": "USD",
   "scale": "milhões",
   "leases": "excluídos",
@@ -78,6 +78,60 @@
     "special_items": 0,
     "capital_employed": "patrimônio líquido + NCI + dívida financeira − caixa não operacional; goodwill incluído; leases excluídos",
     "lease_sensitivity": "Somar leases aos saldos inicial e final, mantendo NOPAT sintético.",
-    "approved_on": "2026-10-05"
+    "approved_on": "2026-10-05",
+    "goodwill_fraction_of_capital_employed": 0.1
+  },
+  "fx": {
+    "decision_id": "OPEN-02",
+    "status": "PARCIALMENTE_APROVADO",
+    "source": "Banco Central do Brasil (Bacen)",
+    "source_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
+    "approved_on": "2026-10-05",
+    "approved_scope": "Fonte Bacen; BRL→USD por divisão pela cotação R$/USD; converter cada trimestre antes da soma LTM. Média trimestral das cotações diárias PTAX venda confirmada pelo usuário.",
+    "pending": [
+      "Fechamento em dia sem publicação e moedas diferentes de BRL/USD."
+    ],
+    "pair": "BRL_PER_USD",
+    "operation": "DIVIDE",
+    "ltm": "SUM_CONVERTED_QUARTERS",
+    "flow_series": "PTAX venda diária de fechamento",
+    "flow_aggregation": "ARITHMETIC_MEAN_PUBLISHED_DAYS"
+  },
+  "capital_policy": {
+    "decision_id": "OPEN-05",
+    "status": "APROVADO",
+    "approved_on": "2026-10-05",
+    "goodwill_base": "INCLUDED",
+    "goodwill_sensitivity": "Excluir goodwill dos saldos inicial/final, mantendo NOPAT; identificar como sensibilidade de denominador.",
+    "hybrids_base": "Seguir classificação contábil divulgada, evitando dupla contagem em patrimônio e dívida.",
+    "hybrids_sensitivity": "Tratamento alternativo apenas por instrumento relevante e documentado.",
+    "implementation_status": "BASE_CONFIGURADA_SENSIBILIDADES_REAIS_PENDENTES_DE_DADOS"
+  },
+  "quality_policy": {
+    "status": "APROVADO",
+    "approved_on": "2026-10-05",
+    "required_checks": [
+      "source_official",
+      "document_hash",
+      "locator",
+      "company",
+      "period",
+      "currency",
+      "scale",
+      "unique",
+      "complete_window",
+      "valid_calculation"
+    ],
+    "reconciliation_absolute_usd_million": 1,
+    "reconciliation_relative": 0.001,
+    "variation_alert_relative": 0.3,
+    "rounding": "Usar o maior entre tolerância absoluta, relativa e arredondamento documentado.",
+    "reviewer": "Um responsável aprova mapeamento inicial, exceções e publicação.",
+    "non_comparable": "Preservar valor e motivo; exibir aviso escrito, negrito, cor de fonte/fundo e borda distintos; excluir da série comparativa regular.",
+    "publishable_states": [
+      "APROVADO",
+      "ALERTA_ACEITO"
+    ],
+    "implementation_status": "AVALIADOR_IMPLEMENTADO_WORKFLOW_REAL_PENDENTE"
   }
 }
