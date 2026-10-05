@@ -96,6 +96,13 @@ def rows():
             if not ebit or tax['details'].get('adjustment_set')!=ebit['details']['adjustment_set'] or tax['details']['scope']!=ebit['details']['scope']:
                 row['operating_tax']=None
                 quality['operating_tax']={'status':'NAO_COMPARAVEL','reason':'Imposto operacional incompatível com o EBIT ajustado.'}
+        alternative=data.RULES.get('operating_tax',{}).get('normalized_alternative',{})
+        if row['operating_tax'] is None and row['nopat_disclosed'] is None and company in alternative.get('companies',[]) and alternative.get('status')=='APROVADO' and row['ebit_adjusted'] is not None:
+            affiliates=compose('operating_tax',[('affiliates_net',1)])
+            if affiliates is not None and fields['affiliates_net']['details']['scope']==fields['ebit_adjusted']['details']['scope']:
+                row['operating_tax']=(row['ebit_adjusted']-affiliates)*Decimal(alternative['rate'])
+                row['_tax_method']='NORMALIZED_RATE'
+                quality['operating_tax']={'status':'NAO_COMPARAVEL','reason':'Alternativa Petrobras aprovada: imposto estimado normalizado de 34% sobre EBIT ajustado sem investidas; investidas mantidas já líquidas. Capital reconstruído RADAR; não reproduz ROCE divulgado nem imposto incorrido.'}
         row['_quality']=quality
         row['_scope']={k:p['details']['scope'] for k,p in fields.items()}
         result.append(row)

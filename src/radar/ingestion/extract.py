@@ -81,6 +81,23 @@ def extract(path, kind, selector):
                 raise ValueError('Posição PDF fora das linhas da página.')
             value = lines[index]
             return value, f"p.{page_number}; {selector['label']}; coluna {int(selector.get('column',0))+1}; ocorrência {occurrence+1}"
+    if kind == 'html':
+        from html.parser import HTMLParser
+        class TextParser(HTMLParser):
+            def __init__(self):
+                super().__init__(); self.parts=[]
+            def handle_data(self, value):
+                self.parts.append(value)
+        parser=TextParser(); parser.feed(path.read_text(encoding='utf-8'))
+        text=' '.join(' '.join(parser.parts).split())
+        if not selector.get('guards') or any(g not in text for g in selector['guards']):
+            raise ValueError('Contexto HTML mudou; revise o mapeamento.')
+        matches=list(re.finditer(selector['pattern'],text))
+        if selector.get('allow_identical_duplicates') and matches and len({m.group(1) for m in matches})==1:
+            matches=matches[:1]
+        if len(matches)!=1:
+            raise ValueError('Seletor HTML ausente/ambíguo.')
+        return matches[0].group(1), 'HTML; '+selector['pattern']
     if kind == 'csv':
         rows = list(csv.DictReader(io.StringIO(path.read_text(encoding='utf-8-sig')),
                                    delimiter=selector.get('delimiter', ',')))

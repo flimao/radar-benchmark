@@ -16,10 +16,11 @@ from radar.fx import brl_to_usd, mean_ptax_sales, balance_ptax_sale
 from radar.ingestion.extract import extract, number
 from radar.ingestion.sources import download, official, MAX_BYTES, fetch_ptax, fetch_yahoo, fetch_sec_companyfacts
 
-FLOW = {'jv_organic_contributions', 'nopat_disclosed', 'cfo', 'capex', 'dividends_paid', 'buybacks', 'ebit_adjusted', 'dda_adjusted', 'operating_tax', 'ebitda_reported'}
+FLOW = {'affiliates_net', 'jv_organic_contributions', 'nopat_disclosed', 'cfo', 'capex', 'dividends_paid', 'buybacks', 'ebit_adjusted', 'dda_adjusted', 'operating_tax', 'ebitda_reported'}
 BALANCE = {'financial_debt_short', 'financial_debt_long', 'cash', 'cash_nonoperating',
            'equity_parent', 'equity_total', 'nci', 'leases', 'goodwill'}
 CONCEPTS = {
+    'affiliates_net': {'NET_EQUITY_ACCOUNTED_INCOME'},
     'jv_organic_contributions': {'ORGANIC_JV_CASH_CONTRIBUTIONS'},
     'nopat_disclosed': {'ADJUSTED_OPERATING_INCOME_AFTER_TAX'},
     'cfo': {'STATUTORY_CFO', 'CFO_EX_WORKING_CAPITAL', 'DACF'},
@@ -140,7 +141,7 @@ def _validate_manifest(manifest):
     keys = set()
     for o in manifest['observations']:
         document=next((d for d in docs if d['id']==o['document']),None)
-        if document is None or document.get('format') not in ('pdf','xlsx','csv','json'):
+        if document is None or document.get('format') not in ('pdf','xlsx','csv','json','html'):
             raise ValueError('Documento/formato inválido no mapeamento.')
         if document['format'] in ('pdf','xlsx') and not o.get('selector',{}).get('guards'):
             raise ValueError('PDF/XLSX exige guards para verificar cabeçalhos/rótulos.')
@@ -346,7 +347,18 @@ def stage(manifest, *, base_dir=None, allow_download=False, client=None):
     for bridge in manifest.get('reconciliations', []):
         result = {**bridge, 'passed': False}
         try:
-            reference = raw[bridge['reference']]
+            reference_terms = bridge.get('reference_terms')
+            if reference_terms:
+                if bridge.get('reference') or not reference_terms:
+                    raise ValueError('Escolha referência única ou ponte de referência.')
+                reference_sources = [raw[t['observation']] for t in reference_terms]
+                reference = dict(reference_sources[0])
+                if not all(all(s[k] == reference[k] for k in ('currency','scope','period','period_type')) for s in reference_sources):
+                    raise ValueError('Componentes da referência usam bases incompatíveis.')
+                reference['value'] = str(sum(Decimal(s['value'])*number(t['coefficient']) for s,t in zip(reference_sources,reference_terms)))
+            else:
+                reference_sources = [raw[bridge['reference']]]
+                reference = reference_sources[0]
             terms = [raw[t['observation']] for t in bridge['terms']]
             sum_quarters=bridge.get('aggregation')=='SUM_QUARTERS'
             compatible=all(all(t[k]==reference[k] for k in ('currency','scope')) for t in terms)
@@ -357,9 +369,9 @@ def stage(manifest, *, base_dir=None, allow_download=False, client=None):
                 compatible=compatible and all(all(t[k]==reference[k] for k in ('period','period_type')) for t in terms)
             if not bridge.get('reason') or not terms or not compatible:
                 raise ValueError('Ponte exige motivo e bases compatíveis.')
-            if bridge['reference'] in [t['observation'] for t in bridge['terms']]:
+            if {s['id'] for s in reference_sources} & {t['observation'] for t in bridge['terms']}:
                 raise ValueError('Referência de conciliação deve ser independente dos termos.')
-            if not all(t['official'] for t in terms+[reference]):
+            if not all(t['official'] for t in terms+reference_sources):
                 raise ValueError('Ponte exige fontes oficiais.')
             calculated = sum(Decimal(t['value'])*number(term['coefficient']) for t,term in zip(terms,bridge['terms']))
             ref = Decimal(reference['value'])

@@ -323,3 +323,62 @@ def test_ebitda_alternative_warning_survives_dataframe(monkeypatch):
     window=financials.facts().to_dict('records')
     assert financials.quality(window,'leverage')['status']=='NAO_COMPARAVEL'
     assert 'Alternativa aprovada' in financials.quality(window,'leverage')['reason']
+
+
+def test_petrobras_provider_is_scoped_to_issuer():
+    from radar.ingestion.sources import official, permitted
+    url='https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/document?origin=2'
+    assert official(url,'Petrobras') and permitted(url,'Petrobras')
+    assert not official(url,'Shell')
+    assert not official(url.replace('25fdf098-34f5-4608-b7fa-17d60b2de47d','another-company'),'Petrobras')
+    assert not official(url.replace('api.mziq.com','api.mziq.com.evil.org'),'Petrobras')
+
+
+def test_component_reference_bridge_checks_independence_and_basis(prepared):
+    root,m=prepared
+    m['observations']=m['observations'][:1]
+    m['observations'][0]['basis']='RECONSTRUCTED'
+    for name,value_id in [('ref','q2'),('deduction','q1')]:
+        o=copy.deepcopy(m['observations'][0]);o.pop('field');o['id']=name
+        o['selector']={'where':{'id':value_id},'column':'value'};m['observations'].append(o)
+    bridge={'id':'multi','reference_terms':[{'observation':'ref','coefficient':1},{'observation':'deduction','coefficient':-1.5}],
+        'terms':[{'observation':'q1','coefficient':1}],'applies_to':['q1'],'reason':'Independent component bridge'}
+    m['reconciliations']=[bridge]
+    b=pipe.stage(m,base_dir=root)
+    assert b['report']['reconciliations'][0]['passed']
+    m['observations'][-1]['scope']='PARENT'
+    b=pipe.stage(m,base_dir=root)
+    assert not b['report']['reconciliations'][0]['passed']
+    m['observations'][-1]['scope']='CONSOLIDATED';bridge['reference_terms'][1]['observation']='q1'
+    b=pipe.stage(m,base_dir=root)
+    assert 'independente' in b['report']['reconciliations'][0]['error']
+
+def test_petrobras_normalized_tax_preserves_net_affiliates(monkeypatch):
+    from radar.ingestion import financials
+    from radar import data
+    from decimal import Decimal
+    points=[dict(company='Petrobras',period='2025Q1',field=f,value=Decimal(v),comparable=True,reason='',details={'scope':'CONSOLIDATED','adjustment_set':'same'}) for f,v in [('ebit_adjusted','100'),('affiliates_net','10')]]
+    monkeypatch.setattr(financials,'published_points',lambda:points)
+    row=financials.rows()[0]
+    assert row['operating_tax']==Decimal('30.60')
+    assert row['ebit_adjusted']-row['operating_tax']==Decimal('69.40')
+    assert row['_quality']['operating_tax']['status']=='NAO_COMPARAVEL'
+    points[1]['details']['scope']='PARENT'
+    assert financials.rows()[0]['operating_tax'] is None
+    points[1]['details']['scope']='CONSOLIDATED'
+    for p in points:p['company']='Shell'
+    assert financials.rows()[0]['operating_tax'] is None
+
+def test_official_html_numeric_selector_rejects_changed_or_ambiguous_values(tmp_path):
+    from radar.ingestion.extract import extract
+    import pytest
+    p=tmp_path/'source.html'
+    p.write_text('<p>Petrobras 80% preço R$ 123,00</p><p>preço R$ 123,00</p>')
+    sel={'guards':['Petrobras 80%'],'pattern':r'preço R\$ ([\d,]+)'}
+    with pytest.raises(ValueError,match='ambíguo'):extract(p,'html',sel)
+    sel['allow_identical_duplicates']=True
+    assert extract(p,'html',sel)[0]=='123,00'
+    p.write_text('<p>Petrobras 80% preço R$ 123,00 preço R$ 456,00</p>')
+    with pytest.raises(ValueError,match='ambíguo'):extract(p,'html',sel)
+    sel['guards']=['Petrobras 73,24%']
+    with pytest.raises(ValueError,match='Contexto'):extract(p,'html',sel)

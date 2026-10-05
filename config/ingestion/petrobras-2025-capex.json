@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "company": "Petrobras",
+  "accounting_standard": "IFRS",
+  "mapping_version": "petrobras-2025-organic-capex-v3",
+  "mapping_note": "Excluir aquisição Mero/Atapu aprovada: preço vencedor × participação Petrobras (80% Mero, 73,24% Atapu). Valor reconstruído R$ 6.966,9422999248 mi; percentuais divulgados, não recibo exato. Não somar Shell. Desembolso confirmado em dezembro no relatório anual.",
+  "documents": [
+    {
+      "id": "accounts-q4",
+      "format": "pdf",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/183b4d6e-fce6-9d05-8d22-19078c2dab81?origin=2",
+      "period": "2025Q4",
+      "filename": "petrobras-2025-accounts-q4.pdf",
+      "expected_hash": "2f76a20bf308a5ffca686bcc567383e93180c145a919700fa50bb37f967a18d4"
+    },
+    {
+      "id": "databook-q4",
+      "format": "xlsx",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/d9a02e45-d9a1-7325-5289-6248ca5cc07c?origin=2",
+      "period": "2025Q4",
+      "filename": "petrobras-2025-databook-q4.xlsx",
+      "expected_hash": "42219801a28494d48f96bd106b5e301aacff009fc32af541ebbc00508b2caa3e"
+    },
+    {
+      "id": "accounts-q3",
+      "format": "pdf",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/d0b1d34e-f1c4-e26f-eb43-7007c21de252?origin=2",
+      "period": "2025Q3",
+      "filename": "petrobras-2025-accounts-q3.pdf",
+      "expected_hash": "28ccf872e64adf597446ed1a5e365cd1d5bc45dcbcae9f654aa9494010782ed0"
+    },
+    {
+      "id": "databook-q3",
+      "format": "xlsx",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/bdcdc39c-e9f0-c7e7-3368-a8a37752bbbc?origin=2",
+      "period": "2025Q3",
+      "filename": "petrobras-2025-databook-q3.xlsx",
+      "expected_hash": "895f9e4c31cf89f9344bb901acec4c699b79715c7c8e0dcb88a1cb8d00f7fe34"
+    },
+    {
+      "id": "accounts-q2",
+      "format": "pdf",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/69caee11-5b4e-95af-f4ef-dbe6e4636189?origin=2",
+      "period": "2025Q2",
+      "filename": "petrobras-2025-accounts-q2.pdf",
+      "expected_hash": "5ffcf7a9edf7a2a92bdf39f5adb8498ca7e8f7be184d3f0f5be29ad73d5ee3d0"
+    },
+    {
+      "id": "databook-q2",
+      "format": "xlsx",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/95e6e233-033e-caba-037e-0164ef198a3a?origin=2",
+      "period": "2025Q2",
+      "filename": "petrobras-2025-databook-q2.xlsx",
+      "expected_hash": "6309dcb105e75938e801443aa5bcab47f13dd771b1aea9b82f37abc1c4024159"
+    },
+    {
+      "id": "databook-q1",
+      "format": "xlsx",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/276bd74f-95d4-8be4-780e-a1b19faa9b55?origin=2",
+      "period": "2025Q1",
+      "filename": "petrobras-2025-databook-q1.xlsx",
+      "expected_hash": "e44fbb09e4ce457ee42880765cc2f7b0195a374c8264cc48175b22fc9be800f4"
+    },
+    {
+      "id": "accounts-q1",
+      "format": "pdf",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/ae720e6e-365c-5d90-296f-7d72625a92e7?origin=2",
+      "period": "2025Q1",
+      "filename": "petrobras-2025-accounts-q1.pdf",
+      "expected_hash": "9c3ab9ec3036ee1f5d19ae29d8881fce54cb5c02e0e75d1dc6cb29130376f4b4"
+    },
+    {
+      "id": "auction",
+      "format": "html",
+      "url": "https://agencia.petrobras.com.br/pt/w/petrobras-informa-sobre-resultado-do-leil%C3%A3o-de-%C3%A1reas-n%C3%A3o-contratadas",
+      "period": "2025Q4",
+      "filename": "petrobras-auction-20251204.html",
+      "expected_hash": "b7a78178ec1d19f371b9fa9389fac41e69c43c68c1d3a8475f04f5caeef402b3"
+    }
+  ],
+  "observations": [
+    {
+      "currency": "BRL",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "capex-q4",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "document": "databook-q4",
+      "selector": {
+        "sheet": "DFC",
+        "cell": "B37",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "4T25"
+          },
+          {
+            "cell": "A37",
+            "equals": "Aquisições de ativos imobilizados e intangíveis"
+          },
+          {
+            "cell": "A2",
+            "equals": "R$ milhões"
+          }
+        ]
+      },
+      "sign": -1,
+      "policy_note": "Excluir aquisição Mero/Atapu aprovada: preço vencedor × participação Petrobras (80% Mero, 73,24% Atapu). Valor reconstruído R$ 6.966,9422999248 mi; percentuais divulgados, não recibo exato. Não somar Shell. Desembolso confirmado em dezembro no relatório anual.",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "comparable": true,
+      "adjustments": [
+        {
+          "observation": "mero-price",
+          "coefficient": "-0.80",
+          "reason": "Excluir aquisição; participação Petrobras divulgada 80%."
+        },
+        {
+          "observation": "atapu-price",
+          "coefficient": "-0.7324",
+          "reason": "Excluir aquisição; participação Petrobras divulgada 73,24%."
+        }
+      ]
+    },
+    {
+      "currency": "BRL",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "reference-capex-annual",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "document": "accounts-q4",
+      "selector": {
+        "page": 6,
+        "label": "Aquisições de ativos imobilizados e intangíveis",
+        "column": 1,
+        "guards": [
+          "200.333",
+          "2025",
+          "2024"
+        ]
+      },
+      "sign": -1,
+      "locale": "pt",
+      "dash_zero": true,
+      "policy_note": "Referência anual em BRL usada apenas para ponte Q4, não publicada como fluxo trimestral."
+    },
+    {
+      "currency": "BRL",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "reference-capex-q1",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "document": "databook-q1",
+      "selector": {
+        "sheet": "DFC",
+        "cell": "B36",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "1T25"
+          },
+          {
+            "cell": "A36",
+            "equals": "Aquisições de ativos imobilizados e intangíveis"
+          },
+          {
+            "cell": "A2",
+            "equals": "R$ milhões"
+          }
+        ]
+      },
+      "sign": -1,
+      "policy_note": "Fluxo trimestral anterior em BRL usado somente como parcela de ponte anual-Q1-Q2-Q3; não publicar como Q4."
+    },
+    {
+      "currency": "BRL",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "reference-capex-q2",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "document": "databook-q2",
+      "selector": {
+        "sheet": "DFC",
+        "cell": "B37",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "2T25"
+          },
+          {
+            "cell": "A37",
+            "equals": "Aquisições de ativos imobilizados e intangíveis"
+          },
+          {
+            "cell": "A2",
+            "equals": "R$ milhões"
+          }
+        ]
+      },
+      "sign": -1,
+      "policy_note": "Fluxo trimestral anterior em BRL usado somente como parcela de ponte anual-Q1-Q2-Q3; não publicar como Q4."
+    },
+    {
+      "currency": "BRL",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "reference-capex-q3",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "document": "databook-q3",
+      "selector": {
+        "sheet": "DFC",
+        "cell": "B37",
+        "guards": [
+          {
+            "cell": "B2",
+            "equals": "3T25"
+          },
+          {
+            "cell": "A37",
+            "equals": "Aquisições de ativos imobilizados e intangíveis"
+          },
+          {
+            "cell": "A2",
+            "equals": "R$ milhões"
+          }
+        ]
+      },
+      "sign": -1,
+      "policy_note": "Fluxo trimestral anterior em BRL usado somente como parcela de ponte anual-Q1-Q2-Q3; não publicar como Q4."
+    },
+    {
+      "id": "mero-price",
+      "document": "auction",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "currency": "BRL",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "locale": "pt",
+      "selector": {
+        "allow_identical_duplicates": true,
+        "pattern": "valor final de R\\$ (7\\.791\\.844\\.310,00)",
+        "guards": [
+          "Petrobras (80%)",
+          "Petrobras (73,24%)",
+          "dezembro de 2025"
+        ]
+      }
+    },
+    {
+      "id": "atapu-price",
+      "document": "auction",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "currency": "BRL",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "locale": "pt",
+      "selector": {
+        "allow_identical_duplicates": true,
+        "pattern": "valor final de R\\$ (1\\.001\\.456\\.652,00)",
+        "guards": [
+          "Petrobras (80%)",
+          "Petrobras (73,24%)",
+          "dezembro de 2025"
+        ]
+      }
+    },
+    {
+      "id": "payment-rounded",
+      "document": "auction",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "currency": "BRL",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "locale": "pt",
+      "selector": {
+        "allow_identical_duplicates": true,
+        "pattern": "pago em dezembro de 2025 pela Petrobras é de R\\$ (6,97) bilhões",
+        "guards": [
+          "Petrobras (80%)",
+          "Petrobras (73,24%)",
+          "dezembro de 2025"
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "organic-capex-q4",
+      "applies_to": [
+        "capex-q4"
+      ],
+      "reference_terms": [
+        {
+          "observation": "reference-capex-annual",
+          "coefficient": 1
+        },
+        {
+          "observation": "reference-capex-q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "reference-capex-q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "reference-capex-q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "payment-rounded",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "capex-q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "mero-price",
+          "coefficient": "-0.80"
+        },
+        {
+          "observation": "atapu-price",
+          "coefficient": "-0.7324"
+        }
+      ],
+      "reason": "CAPEX orgânico Q4 = desembolso Q4 menos preços×participações; controle independente: DFC anual menos Q1–Q3 menos pagamento de R$6,97bi arredondado divulgado. Diferença limitada ao arredondamento."
+    }
+  ],
+  "pending_components": [],
+  "fx": [
+    "652f42f16154f52d8fe3a8a0b6c5318f7d2e529bbc4ae9d0755dd84300084165",
+    "a43d901ef901408d52b616b71186009b6cac31a0a93d4e85c3902d89f08250f8"
+  ]
+}

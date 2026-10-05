@@ -24,6 +24,10 @@ MAX_BYTES = 20 * 1024 * 1024
 
 def official(url, company):
     host = urlparse(url).hostname or ''
+    # Petrobras' RI links to this tenant of its document hosting provider.
+    if company == 'Petrobras' and host == 'api.mziq.com':
+        return urlparse(url).scheme == 'https' and urlparse(url).path.startswith(
+            '/mzfilemanager/v2/d/25fdf098-34f5-4608-b7fa-17d60b2de47d/')
     if host=='data.sec.gov' and company in data.COMPANIES:
         return urlparse(url).scheme=='https' and urlparse(url).path.startswith('/api/xbrl/companyfacts/CIK')
     return urlparse(url).scheme == 'https' and any(

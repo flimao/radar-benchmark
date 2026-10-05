@@ -193,3 +193,12 @@ layout Dash e exportação; original, lote de teste aprovado/publicado e banco
 persistiram após recriação do container. Interface de inspeção de lote verificada
 na prévia isolada em http://127.0.0.1:8052/upload. Essa prévia guarda cópia dos
 originais e APIs em `/private/tmp/radar-ui-ingestion`, independente da VPS.
+
+## Petrobras 2025
+
+Mapeamento em `config/ingestion/petrobras-2025.json` e justificativas em
+`docs/fontes-petrobras-2025.md`. O provedor documental MZ é reconhecido somente
+no tenant Petrobras vinculado pelo RI oficial. Pontes aceitam `reference_terms`
+para uma referência composta independente: mesmos período/tipo/moeda/perímetro,
+fontes oficiais e nenhum fato compartilhado com os termos do cálculo. Continuam
+valendo os controles de correspondência com os ajustes do componente.
