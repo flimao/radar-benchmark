@@ -132,9 +132,13 @@ def test_non_comparable_preserves_value_and_highlights_chart_point(monkeypatch,t
     assert 'non-comparable' not in metric_cell(row,'roce','reported').className
     row['quality']['cfo']={'status':'NAO_COMPARAVEL','reason':'Perímetro distinto'}
     cash=cash_table([row])
-    assert 'NÃO COMPARÁVEL' in cash.data[0]['FCO']
-    assert 'NÃO COMPARÁVEL' in cash.data[0]['FCL']
-    assert any(style.get('color')=='#852800' for style in cash.style_data_conditional)
+    cash_grid=cash.children[0]
+    assert cash_grid.data[0]['FCO'].endswith(' ⚠')
+    assert cash_grid.data[0]['FCL'].endswith(' ⚠')
+    assert 'Perímetro distinto' not in str(cash_grid.data)
+    assert 'Perímetro distinto' in str(cash.children[1])
+    assert cash.children[1].open is False
+    assert any(style.get('color')=='#852800' for style in cash_grid.style_data_conditional)
 
 def test_goodwill_filter_preserves_other_metrics(monkeypatch,tmp_path):
     from radar import data
@@ -255,3 +259,18 @@ def test_compare_uses_only_selected_quarter_ltm():
     assert [trace.y[0] for trace in fig.data]==[row['cfo'] for row in expected]
     assert [trace.x[0] for trace in fig.data]==['Petrobras','Shell']
     assert len(result.children[1].children[1].data)==2
+
+
+def test_real_method_hides_synthetic_assumptions(monkeypatch,tmp_path):
+    from radar import data
+    from radar.web.app import render
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    def visible_text(value):
+        if isinstance(value,str):return value
+        if isinstance(value,(list,tuple)):return ' '.join(visible_text(v) for v in value)
+        return visible_text(getattr(value,'children',None)) if value is not None else ''
+    text=visible_text(render('/method',['Shell'],'2025Q4','standard',[],dataset='REAL')).lower()
+    assert 'sintét' not in text and 'fictíc' not in text
+    demo=visible_text(render('/method',['Shell'],'2025Q4','standard',[])).lower()
+    assert 'premissas do roce sintético' in demo
