@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import re
 import time
 from datetime import date, timedelta
 from decimal import Decimal
@@ -24,6 +25,9 @@ MAX_BYTES = 20 * 1024 * 1024
 
 def official(url, company):
     host = urlparse(url).hostname or ''
+    if company == 'Chevron' and host == 'www.sec.gov':
+        return urlparse(url).scheme == 'https' and bool(re.fullmatch(
+            r'/Archives/edgar/data/93410/[0-9]{18}/cvx-[0-9]{8}\.htm', urlparse(url).path))
     # Petrobras' RI links to this tenant of its document hosting provider.
     if company == 'Petrobras' and host == 'api.mziq.com':
         return urlparse(url).scheme == 'https' and urlparse(url).path.startswith(
@@ -46,7 +50,7 @@ def download(url, company, *, client=None):
     owned = client is None
     client = client or httpx.Client(timeout=30, follow_redirects=False)
     user_agent='RADAR-PoC/0.1'
-    if urlparse(url).hostname=='data.sec.gov':
+    if urlparse(url).hostname in ('data.sec.gov', 'www.sec.gov'):
         user_agent=os.environ.get('RADAR_SEC_USER_AGENT','')
         if not user_agent or '@' not in user_agent:
             if owned:client.close()

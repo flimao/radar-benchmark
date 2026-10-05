@@ -7,7 +7,18 @@ from radar import data
 from radar.ingestion.pipeline import period_dates, previous_period
 
 
-FIELDS = ['jv_organic_contributions','nopat_disclosed','cfo','capex','distribution','debt','ebitda','leases','roce'] + data.ROCE_FIELDS
+FIELDS = ['nopat_ltm','jv_organic_contributions','nopat_disclosed','cfo','capex','distribution','debt','ebitda','leases','roce'] + data.ROCE_FIELDS
+
+
+def unique_reasons(reasons):
+    """Collapse repeated component and quarterly explanations, preserving order."""
+    fragments={}
+    for reason in reasons:
+        for part in reason.split(';'):
+            part=part.strip().rstrip('.')
+            if part:fragments.setdefault(part.casefold(),part)
+    if len(fragments)>1:fragments.pop('acumulado anterior não comparável',None)
+    return '; '.join(fragments.values())+'.' if fragments else ''
 
 
 def published_points():
@@ -41,9 +52,9 @@ def rows():
                 return None
             noncomparable=[p for p in required if not p['comparable']]
             if noncomparable:
-                quality[target]={'status':'NAO_COMPARAVEL','reason':'; '.join(p['reason'] for p in noncomparable)}
+                quality[target]={'status':'NAO_COMPARAVEL','reason':unique_reasons(p['reason'] for p in noncomparable)}
             return sum(p['value']*Decimal(coefficient) for p,(_,coefficient) in zip(required,terms))
-        for field in ('jv_organic_contributions','nopat_disclosed','cfo','capex','leases','ebit_adjusted','operating_tax','goodwill_close'):
+        for field in ('nopat_ltm','jv_organic_contributions','nopat_disclosed','cfo','capex','leases','ebit_adjusted','operating_tax','goodwill_close'):
             source='goodwill' if field=='goodwill_close' else field
             row[field]=compose(field,[(source,1)])
         row['roce']=compose('reported_roce',[('roce_reported',1)])
@@ -56,6 +67,7 @@ def rows():
         if row['ebitda'] is not None and row.get('_ebitda_method')!='DISCLOSED_ALTERNATIVE' and fields['ebit_adjusted']['details']['adjustment_set']!=fields['dda_adjusted']['details']['adjustment_set']:
             row['ebitda']=None
             quality['ebitda']={'status':'NAO_COMPARAVEL','reason':'EBIT e DD&A usam conjuntos de ajustes distintos.'}
+        retained_finance = company in data.RULES.get('debt_policy',{}).get('retained_finance_leases',{}).get('companies',[]) and data.RULES.get('debt_policy',{}).get('retained_finance_leases',{}).get('status')=='APROVADO'
         debt_terms=[('financial_debt_short',1),('financial_debt_long',1)]
         debt=compose('financial_debt',debt_terms)
         if debt is not None:
@@ -65,7 +77,7 @@ def rows():
                 # Separate short/long lease split is required for mixed definitions.
                 debt=None
                 quality['financial_debt']={'status':'NAO_COMPARAVEL','reason':'Dívida CP/LP diverge quanto a leases; requer abertura por prazo.'}
-            elif short:
+            elif short and not retained_finance:
                 leases=compose('financial_debt',[('leases',1)])
                 debt=debt-leases if leases is not None else None
         cash=compose('debt',[('cash',1)])
@@ -79,16 +91,16 @@ def rows():
         equity=compose('capital_employed_close',equity_terms)
         nonoperating=compose('capital_employed_close',[('cash_nonoperating',1)])
         ce_fields=[f for f,_ in equity_terms]+['financial_debt_short','financial_debt_long','cash_nonoperating']
-        if debt is not None and fields['financial_debt_short']['details']['includes_leases']:
+        if debt is not None and fields['financial_debt_short']['details']['includes_leases'] and not retained_finance:
             ce_fields.append('leases')
         if debt is not None and equity is not None and nonoperating is not None:
             if len({fields[f]['details']['scope'] for f in ce_fields})==1:
                 row['capital_employed_close']=equity+debt-nonoperating
             else:
                 quality['capital_employed_close']={'status':'NAO_COMPARAVEL','reason':'Perímetros incompatíveis na composição do capital.'}
-        for target, dependencies in [('debt',['financial_debt_short','financial_debt_long','cash','leases'] if fields.get('financial_debt_short',{}).get('details',{}).get('includes_leases') else ['financial_debt_short','financial_debt_long','cash']),('capital_employed_close',ce_fields)]:
+        for target, dependencies in [('debt',['financial_debt_short','financial_debt_long','cash','leases'] if fields.get('financial_debt_short',{}).get('details',{}).get('includes_leases') and not retained_finance else ['financial_debt_short','financial_debt_long','cash']),('capital_employed_close',ce_fields)]:
             bad=[fields[f] for f in dependencies if f in fields and not fields[f]['comparable']]
-            if bad:quality[target]={'status':'NAO_COMPARAVEL','reason':'; '.join(p['reason'] for p in bad)}
+            if bad:quality[target]={'status':'NAO_COMPARAVEL','reason':unique_reasons(p['reason'] for p in bad)}
         # Operating tax must match the EBIT adjustment perimeter, never synthetic rates.
         if row['operating_tax'] is not None:
             ebit=fields.get('ebit_adjusted')
@@ -103,6 +115,18 @@ def rows():
                 row['operating_tax']=(row['ebit_adjusted']-affiliates)*Decimal(alternative['rate'])
                 row['_tax_method']='NORMALIZED_RATE'
                 quality['operating_tax']={'status':'NAO_COMPARAVEL','reason':'Alternativa Petrobras aprovada: imposto estimado normalizado de 34% sobre EBIT ajustado sem investidas; investidas mantidas já líquidas. Capital reconstruído RADAR; não reproduz ROCE divulgado nem imposto incorrido.'}
+        shell_method=data.RULES.get('ebitda_policy',{}).get('shell_reconstruction',{})
+        if company=='Shell' and shell_method.get('status')=='PENDENTE' and fields.get('ebit_adjusted',{}).get('details',{}).get('adjustment_set')=='SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST':
+            reason=shell_method['strict_gate']
+            row['ebit_adjusted']=None
+            row['ebitda']=None
+            quality['ebit_adjusted']={'status':'INDISPONIVEL','reason':reason}
+            quality['ebitda']={'status':'INDISPONIVEL','reason':reason}
+        if company in data.RULES.get('ebitda_policy',{}).get('disclosed_alternative',{}).get('companies',[]) and 'ebitda_reported' in fields:
+            row['ebitda']=compose('ebitda',[('ebitda_reported',1)])
+            row['_ebitda_method']='DISCLOSED_ALTERNATIVE'
+        if company=='Shell' and fields.get('capex',{}).get('details',{}).get('policy_note','').startswith('Investimento orgânico ampliado'):
+            row['_capex_method']='DISCLOSED_BROAD'
         row['_quality']=quality
         row['_scope']={k:p['details']['scope'] for k,p in fields.items()}
         result.append(row)
@@ -124,9 +148,13 @@ def quality(window, metric, leases=False, exclude_goodwill=False, include_jv=Fal
     dependencies={'cfo':['cfo'],'capex':['capex','cfo'],'distribution':['distribution','cfo'],
                   'leverage':['debt','ebitda'],'roce':['ebit_adjusted','operating_tax','capital_employed_open','capital_employed_close'],
                   'fcf':['cfo','capex'],'residual':['cfo','capex','distribution']}
+    if include_jv and metric in ('capex','fcf','residual') and any(r.get('_capex_method')=='DISCLOSED_BROAD' for r in window):
+        return {'status':'INDISPONIVEL','reason':'Sensibilidade JV indisponível: investimento orgânico ampliado Shell já inclui JV e títulos; somar aportes duplicaria valores.'}
     keys=dependencies[metric][:]
     if metric=='roce' and all(r.get('nopat_disclosed') is not None for r in window):
         keys=['nopat_disclosed','capital_employed_open','capital_employed_close']
+    if metric=='roce' and window and window[-1].get('nopat_ltm') is not None:
+        keys=['nopat_ltm','capital_employed_open','capital_employed_close']
     if include_jv and metric in ('capex','fcf','residual'):
         keys+=['jv_organic_contributions']
     if leases and metric in ('leverage','roce'):
@@ -145,6 +173,7 @@ def quality(window, metric, leases=False, exclude_goodwill=False, include_jv=Fal
         if metric=='leverage' and index!=3:use=[k for k in keys if k not in ('debt','leases')]
         if metric=='roce':
             use=[k for k in keys if (not k.endswith('_open') or index==0) and (k not in ('capital_employed_close','goodwill_close','leases') or index==3)]
+        if index!=3:use=[k for k in use if k!='nopat_ltm']
         for k in use:
             if row.get(k) is None:
                 reason=row.get('_quality',{}).get(k,{}).get('reason', 'Componente ausente: '+k)
@@ -158,9 +187,9 @@ def quality(window, metric, leases=False, exclude_goodwill=False, include_jv=Fal
             scopes={r.get('_scope',{}).get(field) for r in window if r.get('_scope',{}).get(field)}
             if len(scopes)>1:
                 relevant.append({'status':'NAO_COMPARAVEL','reason':'Mudança de perímetro sem conciliação: '+field})
-    if metric=='leverage' and any(r.get('_ebitda_method')=='DISCLOSED_ALTERNATIVE' for r in window):
+    if metric=='leverage' and any(r.get('_ebitda_method')=='DISCLOSED_ALTERNATIVE' for r in window) and window[0]['company']!='Chevron':
         relevant.append({'status':'NAO_COMPARAVEL','reason':'Alternativa aprovada: dívida líquida reconstruída / EBITDA ajustado divulgado. Equivalência à regra comum não comprovada; comparabilidade entre peers pendente.'})
     if relevant:
         return {'status':'NAO_COMPARAVEL' if any(p['status']=='NAO_COMPARAVEL' for p in relevant) else 'INDISPONIVEL',
-                'reason':'; '.join(dict.fromkeys(p['reason'] for p in relevant))}
+                'reason':unique_reasons(p['reason'] for p in relevant)}
     return {'status':'COMPARAVEL','reason':('Método alternativo aprovado: numerador ajustado divulgado + capital empregado reconstruído; caixa integral como aproximação PoC. Comparabilidade entre peers requer revisão.' if metric=='roce' and 'nopat_disclosed' in keys else 'Componentes reais aprovados; regra comum aplicada.')}

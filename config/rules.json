@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.10.0",
   "currency": "USD",
   "scale": "milhões",
   "leases": "excluídos",
@@ -27,7 +27,7 @@
       "name": "CAPEX / FCO",
       "unit": "%",
       "formula": "CAPEX orgânico de caixa LTM / FCO LTM",
-      "note": "CAPEX orgânico de caixa no perímetro consolidado; excluir M&A, aplicações financeiras e itens sem caixa. Aportes orgânicos em JVs separados da base."
+      "note": "CAPEX orgânico de caixa no perímetro consolidado; excluir M&A, aplicações financeiras e itens sem caixa. Aportes orgânicos em JVs separados da base. Chevron: alternativa aprovada com CAPEX orgânico divulgado, mantendo Hess pós-aquisição; NÃO COMPARÁVEL."
     },
     "distribution": {
       "name": "Distribuições / FCO",
@@ -225,7 +225,19 @@
     "status": "APROVADO",
     "approved_on": "2026-10-05",
     "base": "CAPEX orgânico de caixa no perímetro consolidado; excluir M&A, aplicações financeiras e itens sem caixa.",
-    "jv_sensitivity": "Adicionar somente aportes orgânicos de caixa em JVs identificados e conciliados, em sensibilidade separada; excluir aquisições de participação e empréstimos financeiros. Sem componentes, sensibilidade indisponível."
+    "jv_sensitivity": "Adicionar somente aportes orgânicos de caixa em JVs identificados e conciliados, em sensibilidade separada; excluir aquisições de participação e empréstimos financeiros. Sem componentes, sensibilidade indisponível.",
+    "disclosed_alternative": {
+      "status": "APROVADO",
+      "approved_on": "2026-10-05",
+      "companies": [
+        "Chevron"
+      ],
+      "method": "CAPEX orgânico trimestral divulgado / FCO estatutário LTM; somar trimestres publicados, sem ratear nem forçar o anual.",
+      "definition": "Exclui custos de aquisição, lease bonus payments e custos associados à criação de novos negócios, conforme definição Chevron.",
+      "hess": "Manter investimentos operacionais pós-aquisição no perímetro consolidado. Não subtrair ações adquiridas nem contraprestação sem caixa novamente do CAPEX. A diferença anual aproximada de US$ 2,1 bilhões da proxy 2026 é contextual, não ajuste trimestral.",
+      "limitation": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "rounding": "Cada trimestre publicado em US$ bilhões com uma decimal: ±US$ 50 milhões. Ponte soma de quatro trimestres versus anual: limite acumulado de US$ 250 milhões; não alterar tolerância global."
+    }
   },
   "ebitda_policy": {
     "standard": "EBIT ajustado normalizado + DDA com mesmos ajustes.",
@@ -233,10 +245,51 @@
       "status": "APROVADO",
       "approved_on": "2026-10-05",
       "companies": [
-        "TotalEnergies"
+        "TotalEnergies",
+        "Chevron",
+        "Shell"
       ],
       "method": "Dívida líquida reconstruída / EBITDA ajustado divulgado, conciliado em quatro trimestres.",
       "limitation": "Equivalência integral ao EBITDA normalizado não comprovada. Manter valor identificado como alternativa e NÃO COMPARÁVEL entre peers, fora da série comparável. Não fabricar EBIT nem usar NOPAT para inferir EBITDA."
+    },
+    "chevron_approximation": {
+      "status": "APROVADO",
+      "method": "EBITDA aproximado = lucro antes de impostos + despesas de juros e dívida + DDA estatutária.",
+      "limitation": "NÃO COMPARÁVEL: mantém receitas financeiras, ajustes especiais e alterações de perímetro; não equivale ao EBITDA ajustado normalizado."
+    },
+    "shell_reconstruction": {
+      "status": "PENDENTE",
+      "method": "Reconstruir EBIT com earnings CCS, imposto CCS, juros ajustados e receita de juros; reverter CCS pré-imposto de compras e investidas para custo histórico. DDA estatutária menos impairments identificados, com mesmos ajustes. EBITDA = EBIT + DDA; manter exploração ordinária, sem adicionar exploration write-offs.",
+      "reconciliation": "Conferir EBIT contra PBT estatutário + juros − receita de juros e ponte dos itens identificados; DDA contra DDA estatutária − impairment.",
+      "tax": "Sem aprovação de numerador divulgado ou alíquota estimada para Shell. ROCE indisponível até conciliar imposto operacional. Imposto identificado, CCS e corrente/diferido preservados em shell-tax-evidence-2024-2025.json.",
+      "strict_gate": "Comparabilidade pendente: segregar câmbio sobre financiamentos, dividendos de aplicações e outros resultados financeiros remanescentes no EBIT. Ponte aritmética não comprova natureza operacional. Não habilitar alavancagem por alternativa não aprovada."
     }
+  },
+  "debt_policy": {
+    "retained_finance_leases": {
+      "status": "APROVADO",
+      "companies": [
+        "Chevron"
+      ],
+      "method": "Dívida CP + LP publicada, incluindo leases financeiros e excluindo operacionais, menos caixa integral. Capital = patrimônio incluindo NCI + dívida publicada − caixa integral.",
+      "limitation": "NÃO COMPARÁVEL. Sensibilidade leases adiciona apenas leases operacionais; não somar financeiros novamente. Sem saldos operacionais trimestrais, sensibilidade indisponível."
+    }
+  },
+  "chevron_roce_alternative": {
+    "status": "APROVADO",
+    "method": "NOPAT alternativo = Adjusted ROCE earnings divulgado (lucro ajustado + NCI + juros após imposto); capital reconstruído incluindo leases financeiros e caixa integral.",
+    "limitation": "NÃO COMPARÁVEL; não reproduz o ROCE publicado. Q4 = anual menos Q1–Q3, nunca anualizado dividido por quatro."
+  },
+  "chevron_distribution_alternative": {
+    "status": "APROVADO",
+    "method": "Dividendos pagos + recompras de caixa na DFC, incluindo ações retidas em planos de empregados; excluir excise tax e compra de ações Hess.",
+    "limitation": "NÃO COMPARÁVEL: sem segregação exata de caixa dos planos."
+  },
+  "shell_alternatives": {
+    "status": "APROVADO",
+    "roce": "Numerador ajustado ROACE divulgado LTM / capital médio RADAR sem leases, caixa integral; NÃO COMPARÁVEL. Fonte já LTM, nunca somar quatro LTM.",
+    "leverage": "Dívida CP + LP − leases − caixa / EBITDA ajustado divulgado LTM; NÃO COMPARÁVEL, CCS e exploration write-offs próprios Shell.",
+    "capex": "Cash CAPEX divulgado − inorgânicos agregados, somados em LTM / FCO estatutário LTM. Investimento orgânico ampliado, incluindo JV/títulos; NÃO COMPARÁVEL.",
+    "jv": "Sensibilidade de aportes JV indisponível nesta base ampliada para evitar duplicidade."
   }
 }

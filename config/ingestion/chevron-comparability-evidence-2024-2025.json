@@ -1,0 +1,211 @@
+{
+  "company": "Chevron",
+  "as_of": "2026-10-05",
+  "status": "PUBLIC_DISCLOSURE_INSUFFICIENT_FOR_STRICT_COMPARABILITY",
+  "repurchases": [
+    {
+      "period": "2024Q1",
+      "total_shares": 19737687,
+      "program_shares": 19734180,
+      "nonprogram_shares": 3507,
+      "average_price_all_purchases": "150.88",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000021/cvx-20240331.htm",
+      "document_sha256": "73234c2e630d5e6a418e5268f302466cd9e997427db6c103db47e3526ae51584",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2024Q2",
+      "total_shares": 19034424,
+      "program_shares": 19034311,
+      "nonprogram_shares": 113,
+      "average_price_all_purchases": "157.64",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000040/cvx-20240630.htm",
+      "document_sha256": "e52a7aafd057d25c3607a1dc2f22d4c4e569eddcb34017a3ff47eb58a8246a02",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2024Q3",
+      "total_shares": 32209398,
+      "program_shares": 32209398,
+      "nonprogram_shares": 0,
+      "average_price_all_purchases": "147.47",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000059/cvx-20240930.htm",
+      "document_sha256": "8f96240ea9a2d0f3594d236496b369a0eee3f6639222a439b3d2994d9486de6a",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2024Q4",
+      "total_shares": 29463099,
+      "program_shares": 29462320,
+      "nonprogram_shares": 779,
+      "average_price_all_purchases": "152.74",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000009/cvx-20241231.htm",
+      "document_sha256": "3d56d6ad50458cfb35d028330ee66b409f27510d5c8cdd6b20c46d62df06a76d",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2025Q1",
+      "total_shares": 25087428,
+      "program_shares": 24973121,
+      "nonprogram_shares": 114307,
+      "average_price_all_purchases": "156.15",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000019/cvx-20250331.htm",
+      "document_sha256": "b676e083ce9b5ff7522b9ac70519ed6c9a5e82d6131b8fe10a23722b484b9224",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2025Q2",
+      "total_shares": 18620920,
+      "program_shares": 18606376,
+      "nonprogram_shares": 14544,
+      "average_price_all_purchases": "139.48",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000062/cvx-20250630.htm",
+      "document_sha256": "3879263f18168d1ffeb3c5e02a060f10b08a937a96299169d8e7ba270be9c2af",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2025Q3",
+      "total_shares": 16623281,
+      "program_shares": 16620000,
+      "nonprogram_shares": 3281,
+      "average_price_all_purchases": "154.38",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000108/cvx-20250930.htm",
+      "document_sha256": "a01a04f10115dd5b8520839fe3cf6a54b638d4082c6f6e1ed693a456c4d8c9e3",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    },
+    {
+      "period": "2025Q4",
+      "total_shares": 19741188,
+      "program_shares": 19739300,
+      "nonprogram_shares": 1888,
+      "average_price_all_purchases": "151.84",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+      "document_sha256": "47e1ce02bc53515f41711c55c952ca298d834a96965751f93ffd2016d68cda4d",
+      "locator": "Issuer Purchases of Equity Securities; Total row",
+      "limitation": "Preço médio de todas as compras; não é preço exclusivo de retenções nem valor de caixa liquidado. Não converter automaticamente diferença de ações em ajuste monetário."
+    }
+  ],
+  "roce": {
+    "decision": "DISCLOSED_NOPAT_ALTERNATIVE_APPROVED",
+    "missing": [
+      "Imposto atribuível a juros recebidos e demais componentes não operacionais no mesmo perímetro de EBIT ajustado",
+      "Abertura de leases intermediários para capital médio LTM"
+    ],
+    "interest_evidence": {
+      "2024": {
+        "interest_and_debt_expense_pretax_million": 594,
+        "interest_expense_aftertax_disclosed_million": 539
+      },
+      "2025": {
+        "interest_and_debt_expense_pretax_million": 1217,
+        "interest_expense_aftertax_disclosed_million": 1096
+      }
+    },
+    "constraint": "Diferença aritmética entre juros antes/depois de imposto é evidência candidata, não reconstrução integral aprovada. Verificar correspondência de perímetros e itens especiais; usar NOPAT divulgado como alternativa aprovada e NÃO COMPARÁVEL."
+  },
+  "leases": {
+    "annual_opening_available": true,
+    "interim_disclosed_split_found": false,
+    "constraint": "Não interpolar nem reutilizar saldo anual nos trimestres."
+  },
+  "capex": {
+    "constraint": "Não equiparar orgânico Chevron ao RADAR sem ponte das exclusões por natureza."
+  },
+  "conclusion_scope": "Divulgações oficiais 2024–2025 examinadas: oito 10-Q/10-K, CompanyFacts e inline XBRL, oito releases, oito apresentações, oito suplementos XLSX, oito transcrições e anexos completos do 10-K 2025. Não é afirmação de inexistência universal ou futura.",
+  "stop_reason": "Busca adicional nas famílias oficiais examinadas não forneceu as variáveis independentes necessárias; decomposição permanece indeterminada. Novas divulgações públicas ou esclarecimento público do RI podem mudar a conclusão.",
+  "unidentifiable_components": [
+    {
+      "metric": "ROCE",
+      "why": "Imposto consolidado não individualiza imposto financeiro e não operacional compatível com todos os ajustes; tabela suplementar upstream usa alíquotas estatutárias e perímetro restrito. Numerador alternativo posteriormente aprovado, mantendo NÃO COMPARÁVEL.",
+      "needed": "Ponte pública do EBIT/imposto operacional; leases trimestrais e capital inicial."
+    },
+    {
+      "metric": "Dívida líquida/EBITDA",
+      "why": "Leases financeiros e operacionais divulgados em datas anuais, não nos seis fechamentos intermediários; caixa/total de dívida e notas não fornecem movimentos suficientes para reconstruir aqueles saldos. EBIT/DDA ajustados ainda dependem de ponte homogênea.",
+      "needed": "Saldos trimestrais segregados de leases e reconciliação EBIT/DDA no mesmo perímetro."
+    },
+    {
+      "metric": "Distribuições/FCO",
+      "why": "Quantidade total, quantidade do programa e preço médio do conjunto não identificam preço/custo exclusivo das retenções; a DFC informa caixa conjunto e não a liquidação por finalidade.",
+      "needed": "Caixa de recompra do programa segregado, ou preço/valor das retenções e ponte de saldos de liquidação."
+    },
+    {
+      "metric": "CAPEX/FCO",
+      "why": "Orgânico divulgado exclui categorias mais amplas que a base RADAR. Abertura da DFC imobilizado/investimentos/poços secos e números arredondados não individualizam aquisição, bônus, aporte JV e implantação de ativos por trimestre.",
+      "needed": "Ponte trimestral de investimentos orgânicos conforme regra comum."
+    }
+  ],
+  "additional_sources": [
+    {
+      "name": "full-10k-2025",
+      "url": "https://chevroncorp.gcs-web.com/static-files/6beae4d6-142e-4a4d-bee9-1714cad041a3",
+      "hash": "55966b9cab4120777b5d13087b0cacb2ef24cb4706d9f2ea0b94637a5511bb29",
+      "pages": 353
+    },
+    {
+      "name": "transcript-2025Q1",
+      "url": "https://chevroncorp.gcs-web.com/static-files/9524c0a9-6b86-45dd-b046-f1ec7f705b53",
+      "hash": "013f43c5a7b9e842828ec4291759b57452a0a56b3287e53583cee85615311895",
+      "pages": 14
+    },
+    {
+      "name": "transcript-2025Q2",
+      "url": "https://chevroncorp.gcs-web.com/static-files/77dbc798-44c8-44b5-958e-b10dc988fc72",
+      "hash": "3461b29b05d0de2c3afefb6033069993f8a18d5b526152a592c86d97f933da1d",
+      "pages": 15
+    },
+    {
+      "name": "transcript-2025Q4",
+      "url": "https://chevroncorp.gcs-web.com/static-files/f0f72c1f-b4ee-46ff-ac07-b123b7603857",
+      "hash": "3e4150853516192e438a8f6cb7808f3b0d554b1913592407f409a29717e9bb94",
+      "pages": 17
+    },
+    {
+      "name": "transcript-2025Q3",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e61c72a3-e5bd-4849-963f-9f09729b2316",
+      "hash": "24d7bc3057f658992462ce55b8a4c8b2177d20e336e517ba6138307a15c6e83f",
+      "pages": 14
+    },
+    {
+      "name": "transcript-2024Q4",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e08e9838-5f69-4854-8822-edf77113cd2f",
+      "hash": "b87b666dc85081abbf922dd766a79c0124738e0cb0f1b211bbea9d614204e4f2",
+      "pages": 20
+    },
+    {
+      "name": "transcript-2024Q3",
+      "url": "https://chevroncorp.gcs-web.com/static-files/a7bdb80a-d49a-4036-9d14-00f12c4f66fa",
+      "hash": "a836bfa5efb1d46078b491e74a3fcfbf1866fc5e5570aeffba9824eac8a3da1f",
+      "pages": 17
+    },
+    {
+      "name": "transcript-2024Q2",
+      "url": "https://chevroncorp.gcs-web.com/static-files/a581834c-21e9-4773-9a86-1c045d083219",
+      "hash": "ef309a4b4a67d9d36ee348de1b0eb2a002abf36f64e65fe69cbb425940d7ee5b",
+      "pages": 15
+    },
+    {
+      "name": "transcript-2024Q1",
+      "url": "https://chevroncorp.gcs-web.com/static-files/2d550ba5-4b82-4ff7-80d4-606d77716f4a",
+      "hash": "ff04d31c9f6ad14f6b8bec50c0a269d9304457f4b6388f29aeaccf7dd678fdf5",
+      "pages": 16
+    }
+  ],
+  "inline_lease_liability_presence": {
+    "2024Q1": false,
+    "2024Q2": false,
+    "2024Q3": false,
+    "2024Q4": true,
+    "2025Q1": false,
+    "2025Q2": false,
+    "2025Q3": false,
+    "2025Q4": true
+  }
+}

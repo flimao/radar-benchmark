@@ -1,0 +1,2341 @@
+{
+  "schema_version": 1,
+  "company": "Shell",
+  "accounting_standard": "IFRS",
+  "mapping_version": "shell-2024-approved-disclosed-alternatives-v1",
+  "mapping_note": "Alternativas expressamente aprovadas: NOPAT LTM divulgado / capital RADAR, EBITDA divulgado e CAPEX orgânico ampliado. Todos NÃO COMPARÁVEIS. Não fabricar imposto nem trimestres de NOPAT.",
+  "documents": [
+    {
+      "id": "quarterly",
+      "format": "xlsx",
+      "filename": "quarterly.xlsx",
+      "url": "https://www.shell.com/investors/results-and-reporting/data-supplements/_jcr_content/root/main/section/text_copy.multi.stream/1785372068656/4f3d5f6b9e47607df8218eabce15377ee3272b98/q2-2026-quarterly-databook.xlsx",
+      "expected_hash": "af37add3d5a988b5c106596820a07e39fbc4bc2b6c1fb1b1224dfa1ed7e4980f",
+      "period": "MULTIPERIOD"
+    },
+    {
+      "id": "annual",
+      "format": "xlsx",
+      "filename": "annual.xlsx",
+      "url": "https://www.shell.com/investors/results-and-reporting/data-supplements/_jcr_content/root/main/section/text_copy.multi.stream/1775009511288/4a4691b2760caa375e559d3a778a57eea2014695/shell-annual-databook-25.xlsx",
+      "expected_hash": "01e98fb0e792e803a066969554f742f2175471b59afbc36bf90ab6353672897a",
+      "period": "MULTIPERIOD"
+    }
+  ],
+  "observations": [
+    {
+      "id": "inorganic-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-capital-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-jv-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Investments in joint ventures and associates"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-securities-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Investments in equity securities"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-ref-inorganic-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V50",
+        "guards": [
+          {
+            "cell": "B50",
+            "equals": "Cash capital expenditure1"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "policy_note": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "comparable": false,
+      "comparability_reason": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "adjustments": [
+        {
+          "observation": "inorganic-2024Q1",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ]
+    },
+    {
+      "id": "ebitda_reported-earnings-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V64",
+        "guards": [
+          {
+            "cell": "B64",
+            "equals": "Adjusted Earnings"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-nci-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Earnings on a CCS basis excluding identified items attributable to non-controlling interest"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-tax-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-dda-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V86",
+        "guards": [
+          {
+            "cell": "B86",
+            "equals": "Add: Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-exploration-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V13",
+        "guards": [
+          {
+            "cell": "B13",
+            "equals": "- Exploration well write-offs"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-expense-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V87",
+        "guards": [
+          {
+            "cell": "B87",
+            "equals": "Add: Interest expense"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-income-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Less: Interest income "
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Adjusted EBITDA"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "policy_note": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat_ltm-adjusted-plus-nci-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Adjusted Earnings plus NCI excluding identified items - current and previous three quarters"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-expense-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Interest expense after tax - current and previous three quarters"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-income-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V90",
+        "guards": [
+          {
+            "cell": "B90",
+            "equals": "Add: Interest income  after tax current and previous three quarters"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V91",
+        "guards": [
+          {
+            "cell": "B91",
+            "equals": "Adjusted Earnings plus NCI excluding identified items before interest expense - current and previous three quarters"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "nopat_ltm",
+      "concept": "DISCLOSED_ADJUSTED_NOPAT_LTM",
+      "policy_note": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados.",
+      "comparable": false,
+      "comparability_reason": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados."
+    },
+    {
+      "id": "inorganic-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-capital-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-jv-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Investments in joint ventures and associates"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-securities-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Investments in equity securities"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-ref-inorganic-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W50",
+        "guards": [
+          {
+            "cell": "B50",
+            "equals": "Cash capital expenditure1"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "policy_note": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "comparable": false,
+      "comparability_reason": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "adjustments": [
+        {
+          "observation": "inorganic-2024Q2",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ]
+    },
+    {
+      "id": "ebitda_reported-earnings-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W64",
+        "guards": [
+          {
+            "cell": "B64",
+            "equals": "Adjusted Earnings"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-nci-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Earnings on a CCS basis excluding identified items attributable to non-controlling interest"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-tax-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-dda-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W86",
+        "guards": [
+          {
+            "cell": "B86",
+            "equals": "Add: Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-exploration-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W13",
+        "guards": [
+          {
+            "cell": "B13",
+            "equals": "- Exploration well write-offs"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-expense-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W87",
+        "guards": [
+          {
+            "cell": "B87",
+            "equals": "Add: Interest expense"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-income-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Less: Interest income "
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Adjusted EBITDA"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "policy_note": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat_ltm-adjusted-plus-nci-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Adjusted Earnings plus NCI excluding identified items - current and previous three quarters"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-expense-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Interest expense after tax - current and previous three quarters"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-income-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W90",
+        "guards": [
+          {
+            "cell": "B90",
+            "equals": "Add: Interest income  after tax current and previous three quarters"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W91",
+        "guards": [
+          {
+            "cell": "B91",
+            "equals": "Adjusted Earnings plus NCI excluding identified items before interest expense - current and previous three quarters"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "nopat_ltm",
+      "concept": "DISCLOSED_ADJUSTED_NOPAT_LTM",
+      "policy_note": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados.",
+      "comparable": false,
+      "comparability_reason": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados."
+    },
+    {
+      "id": "inorganic-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-capital-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-jv-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Investments in joint ventures and associates"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-securities-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Investments in equity securities"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-ref-inorganic-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X50",
+        "guards": [
+          {
+            "cell": "B50",
+            "equals": "Cash capital expenditure1"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "policy_note": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "comparable": false,
+      "comparability_reason": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "adjustments": [
+        {
+          "observation": "inorganic-2024Q3",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ]
+    },
+    {
+      "id": "ebitda_reported-earnings-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X64",
+        "guards": [
+          {
+            "cell": "B64",
+            "equals": "Adjusted Earnings"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-nci-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Earnings on a CCS basis excluding identified items attributable to non-controlling interest"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-tax-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-dda-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X86",
+        "guards": [
+          {
+            "cell": "B86",
+            "equals": "Add: Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-exploration-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X13",
+        "guards": [
+          {
+            "cell": "B13",
+            "equals": "- Exploration well write-offs"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-expense-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X87",
+        "guards": [
+          {
+            "cell": "B87",
+            "equals": "Add: Interest expense"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-income-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Less: Interest income "
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Adjusted EBITDA"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "policy_note": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat_ltm-adjusted-plus-nci-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Adjusted Earnings plus NCI excluding identified items - current and previous three quarters"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-expense-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Interest expense after tax - current and previous three quarters"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-income-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X90",
+        "guards": [
+          {
+            "cell": "B90",
+            "equals": "Add: Interest income  after tax current and previous three quarters"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X91",
+        "guards": [
+          {
+            "cell": "B91",
+            "equals": "Adjusted Earnings plus NCI excluding identified items before interest expense - current and previous three quarters"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "nopat_ltm",
+      "concept": "DISCLOSED_ADJUSTED_NOPAT_LTM",
+      "policy_note": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados.",
+      "comparable": false,
+      "comparability_reason": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados."
+    },
+    {
+      "id": "inorganic-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-capital-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-jv-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Investments in joint ventures and associates"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-securities-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Investments in equity securities"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-ref-inorganic-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y50",
+        "guards": [
+          {
+            "cell": "B50",
+            "equals": "Cash capital expenditure1"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "policy_note": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "comparable": false,
+      "comparability_reason": "Investimento orgânico ampliado: cash CAPEX − inorgânicos, inclui JV/títulos; NÃO COMPARÁVEL. Sensibilidade JV indisponível para evitar contagem dupla.",
+      "adjustments": [
+        {
+          "observation": "inorganic-2024Q4",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ]
+    },
+    {
+      "id": "ebitda_reported-earnings-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y64",
+        "guards": [
+          {
+            "cell": "B64",
+            "equals": "Adjusted Earnings"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-nci-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Earnings on a CCS basis excluding identified items attributable to non-controlling interest"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-tax-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-dda-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y86",
+        "guards": [
+          {
+            "cell": "B86",
+            "equals": "Add: Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-exploration-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y13",
+        "guards": [
+          {
+            "cell": "B13",
+            "equals": "- Exploration well write-offs"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-expense-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y87",
+        "guards": [
+          {
+            "cell": "B87",
+            "equals": "Add: Interest expense"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-income-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Less: Interest income "
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebitda_reported-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Adjusted EBITDA"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "policy_note": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "EBITDA ajustado divulgado Shell: CCS e adição de exploration write-offs; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "nopat_ltm-adjusted-plus-nci-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y88",
+        "guards": [
+          {
+            "cell": "B88",
+            "equals": "Adjusted Earnings plus NCI excluding identified items - current and previous three quarters"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-expense-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y89",
+        "guards": [
+          {
+            "cell": "B89",
+            "equals": "Add: Interest expense after tax - current and previous three quarters"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-aftertax-income-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y90",
+        "guards": [
+          {
+            "cell": "B90",
+            "equals": "Add: Interest income  after tax current and previous three quarters"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nopat_ltm-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "LTM",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y91",
+        "guards": [
+          {
+            "cell": "B91",
+            "equals": "Adjusted Earnings plus NCI excluding identified items before interest expense - current and previous three quarters"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "nopat_ltm",
+      "concept": "DISCLOSED_ADJUSTED_NOPAT_LTM",
+      "policy_note": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados.",
+      "comparable": false,
+      "comparability_reason": "Numerador ajustado ROACE divulgado LTM + capital reconstruído RADAR; NÃO COMPARÁVEL. Não é EBIT/imposto separados."
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "capex-bridge-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "capex-capital-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-jv-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-securities-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-ref-inorganic-2024Q1",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "capex-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "inorganic-2024Q1",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ],
+      "applies_to": [
+        "capex-2024Q1"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "ebitda_reported-bridge-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "ebitda_reported-earnings-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-nci-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-tax-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-dda-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-exploration-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-expense-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-income-2024Q1",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebitda_reported-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda_reported-2024Q1"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "nopat_ltm-bridge-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "nopat_ltm-adjusted-plus-nci-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-expense-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-income-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat_ltm-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat_ltm-2024Q1"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "capex-bridge-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "capex-capital-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-jv-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-securities-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-ref-inorganic-2024Q2",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "capex-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "inorganic-2024Q2",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ],
+      "applies_to": [
+        "capex-2024Q2"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "ebitda_reported-bridge-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "ebitda_reported-earnings-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-nci-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-tax-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-dda-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-exploration-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-expense-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-income-2024Q2",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebitda_reported-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda_reported-2024Q2"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "nopat_ltm-bridge-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "nopat_ltm-adjusted-plus-nci-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-expense-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-income-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat_ltm-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat_ltm-2024Q2"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "capex-bridge-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "capex-capital-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-jv-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-securities-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-ref-inorganic-2024Q3",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "capex-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "inorganic-2024Q3",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ],
+      "applies_to": [
+        "capex-2024Q3"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "ebitda_reported-bridge-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "ebitda_reported-earnings-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-nci-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-tax-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-dda-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-exploration-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-expense-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-income-2024Q3",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebitda_reported-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda_reported-2024Q3"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "nopat_ltm-bridge-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "nopat_ltm-adjusted-plus-nci-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-expense-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-income-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat_ltm-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat_ltm-2024Q3"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "capex-bridge-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "capex-capital-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-jv-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-securities-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "capex-ref-inorganic-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "capex-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "inorganic-2024Q4",
+          "coefficient": -1,
+          "reason": "Retirar inorgânicos do agregado completo, sem atribuí-los a uma linha."
+        }
+      ],
+      "applies_to": [
+        "capex-2024Q4"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "ebitda_reported-bridge-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "ebitda_reported-earnings-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-nci-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-tax-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-dda-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-exploration-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-expense-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ebitda_reported-income-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebitda_reported-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "ebitda_reported-2024Q4"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    },
+    {
+      "id": "nopat_ltm-bridge-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "nopat_ltm-adjusted-plus-nci-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-expense-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "nopat_ltm-aftertax-income-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat_ltm-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat_ltm-2024Q4"
+      ],
+      "reason": "Alternativa divulgada conciliada com componentes publicados; equivalência à regra comum não presumida."
+    }
+  ]
+}

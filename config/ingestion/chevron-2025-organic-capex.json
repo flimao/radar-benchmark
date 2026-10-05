@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "company": "Chevron",
+  "accounting_standard": "US GAAP",
+  "mapping_version": "chevron-2025-disclosed-organic-capex-v1",
+  "mapping_note": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+  "documents": [
+    {
+      "id": "2025Q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/3b7ba281-e370-4a3c-842e-138d8f153f96",
+      "filename": "organic-2025q1.pdf",
+      "period": "2025Q1",
+      "expected_hash": "a94f4322b3fc3951dd4a28b34bb3e4005bd3fe7ee19f9e082840b24014172d37"
+    },
+    {
+      "id": "2025Q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/c350b9cd-898b-47ee-bf12-e4873bc883db",
+      "filename": "organic-2025q2.pdf",
+      "period": "2025Q2",
+      "expected_hash": "fa777d67cca7ed71f774f3ed82027a8a6b5a4eaeb97380c094a4d22f33612f04"
+    },
+    {
+      "id": "2025Q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/37ef13d5-5534-4bd0-9cef-37f31848bcf0",
+      "filename": "organic-2025q3.pdf",
+      "period": "2025Q3",
+      "expected_hash": "857a03cbcbdf35f70cda1782a1589299856070c0a6cefccf6ebd91c386959e3b"
+    },
+    {
+      "id": "2025Q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e343663d-4660-404a-b99c-86c33b543bd7",
+      "filename": "organic-2025q4.pdf",
+      "period": "2025Q4",
+      "expected_hash": "72c27b0da795d40fc2d98a7f5efcfb82a1bdaede05bb5406c4c32538fe59c9a2"
+    }
+  ],
+  "observations": [
+    {
+      "id": "organic-2025Q1",
+      "document": "2025Q1",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "comparable": false,
+      "comparability_reason": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "selector": {
+        "page": 5,
+        "label": "Total capex / Organic capex",
+        "column": 0,
+        "guards": [
+          "Financial highlights",
+          "2025"
+        ],
+        "value_pattern": "\\$[0-9]+\\.[0-9] billion / \\$([0-9]+\\.[0-9]) billion"
+      }
+    },
+    {
+      "id": "organic-2025Q2",
+      "document": "2025Q2",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "comparable": false,
+      "comparability_reason": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "selector": {
+        "page": 8,
+        "label": "Total capex / Organic capex",
+        "column": 0,
+        "guards": [
+          "Financial highlights",
+          "2025"
+        ],
+        "value_pattern": "\\$[0-9]+\\.[0-9] billion / \\$([0-9]+\\.[0-9]) billion"
+      }
+    },
+    {
+      "id": "organic-2025Q3",
+      "document": "2025Q3",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "comparable": false,
+      "comparability_reason": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "selector": {
+        "page": 4,
+        "label": "Total capex / Organic capex",
+        "column": 0,
+        "guards": [
+          "Financial highlights",
+          "2025"
+        ],
+        "value_pattern": "\\$[0-9]+\\.[0-9] billion / \\$([0-9]+\\.[0-9]) billion"
+      }
+    },
+    {
+      "id": "organic-2025Q4",
+      "document": "2025Q4",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2025Q4",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "comparable": false,
+      "comparability_reason": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "selector": {
+        "page": 6,
+        "label": "Total capex / Organic capex",
+        "column": 0,
+        "guards": [
+          "Financial highlights",
+          "2025"
+        ],
+        "value_pattern": "\\$[0-9]+\\.[0-9] billion / \\$([0-9]+\\.[0-9]) billion"
+      }
+    },
+    {
+      "id": "annual-organic",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "comparable": false,
+      "comparability_reason": "Alternativa aprovada: CAPEX orgânico divulgado Chevron exclui aquisições, bônus de concessão e custos de criação de novos negócios. Equivalência integral à base RADAR não comprovada; NÃO COMPARÁVEL. Mantém investimento operacional da Hess após aquisição; mudança de perímetro em 2025. Fonte arredondada a US$ 0,1 bilhão.",
+      "selector": {
+        "page": 6,
+        "label": "Total capex / Organic capex",
+        "column": 1,
+        "guards": [
+          "Financial highlights",
+          "2025"
+        ],
+        "value_pattern": "\\$[0-9]+\\.[0-9] billion / \\$([0-9]+\\.[0-9]) billion"
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "organic-quarters-annual-2025",
+      "reference": "annual-organic",
+      "terms": [
+        {
+          "observation": "organic-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "organic-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "organic-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "organic-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "organic-2025Q1",
+        "organic-2025Q2",
+        "organic-2025Q3",
+        "organic-2025Q4"
+      ],
+      "aggregation": "SUM_QUARTERS",
+      "rounding_usd_million": 250,
+      "reason": "Soma de quatro trimestres independentes versus valor anual divulgado. Cinco números arredondados a 0,1 bilhão: erro acumulado máximo 250mi; não forçar trimestres ao anual."
+    }
+  ]
+}

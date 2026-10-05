@@ -23,6 +23,7 @@ CONCEPTS = {
     'affiliates_net': {'NET_EQUITY_ACCOUNTED_INCOME'},
     'jv_organic_contributions': {'ORGANIC_JV_CASH_CONTRIBUTIONS'},
     'nopat_disclosed': {'ADJUSTED_OPERATING_INCOME_AFTER_TAX'},
+    'nopat_ltm': {'DISCLOSED_ADJUSTED_NOPAT_LTM'},
     'cfo': {'STATUTORY_CFO', 'CFO_EX_WORKING_CAPITAL', 'DACF'},
     'capex': {'ORGANIC_CASH_CAPEX', 'REPORTED_INVESTMENTS'},
     'dividends_paid': {'DIVIDENDS_PAID'}, 'buybacks': {'SETTLED_BUYBACKS'},
@@ -166,8 +167,12 @@ def _validate_manifest(manifest):
         if o.get('basis') not in ('REPORTED','RECONSTRUCTED') or not o.get('scope'):
             raise ValueError('basis e perímetro/scope obrigatórios.')
         expected = 'BALANCE' if field in BALANCE else None
-        if o.get('period_type') not in ('QUARTER','YTD','BALANCE') or (expected and o['period_type'] != expected):
+        if o.get('period_type') not in ('QUARTER','YTD','BALANCE','LTM') or (expected and o['period_type'] != expected):
             raise ValueError('Tipo de período inválido para o campo.')
+        if o.get('period_type')=='LTM' and (field not in (None,'nopat_ltm') or o['currency']!='USD'):
+            raise ValueError('LTM direto permitido somente para NOPAT divulgado em USD.')
+        if field=='nopat_ltm' and o.get('period_type')!='LTM':
+            raise ValueError('NOPAT LTM exige período LTM explícito.')
         if field in FLOW and o['period_type'] == 'BALANCE':
             raise ValueError('Fluxo não pode ser tratado como saldo.')
         if field == 'roce_reported' and o['period_type'] != 'QUARTER':
@@ -286,7 +291,17 @@ def stage(manifest, *, base_dir=None, allow_download=False, client=None):
                 value += Decimal(other['value'])*number(adjustment['coefficient'])
                 point['lineage'].append(other['id'])
                 point['flags'].append('DOCUMENTED_ADJUSTMENT')
-            if item['period_type'] == 'YTD' and item['period'][-1] != '1':
+            if item.get('derive_q4_from_quarters'):
+                if item['period_type']!='YTD' or not item['period'].endswith('Q4') or item['currency']!='USD':
+                    raise ValueError('Derivação anual exige Q4 YTD em USD.')
+                components=[by_key.get((item['period'][:4]+'Q'+str(q),item['field'])) for q in (1,2,3)]
+                if any(c is None or c['period_type']!='QUARTER' or c.get('adjustments') or any(c[k]!=item[k] for k in ('scope','currency','concept','basis')) for c in components):
+                    raise ValueError('Três trimestres compatíveis obrigatórios para derivar Q4.')
+                value-=sum(Decimal(c['value']) for c in components)
+                point['lineage'].extend(c['id'] for c in components)
+                if any(not c.get('comparable',True) for c in components):point['comparable']=False
+                point['flags'].append('DERIVED_QUARTER')
+            elif item['period_type'] == 'YTD' and item['period'][-1] != '1':
                 previous = by_key.get((previous_period(item['period']), item['field']))
                 if not previous or any(previous[k] != item[k] for k in ('currency','period_type','scope','basis','concept')) or previous.get('adjustment_set') != item.get('adjustment_set'):
                     raise ValueError('Acumulado anterior compatível ausente; não converter para trimestre.')
@@ -417,7 +432,7 @@ def stage(manifest, *, base_dir=None, allow_download=False, client=None):
                     point['reasons'].append('Conciliação pendente/fora da tolerância: '+bridge['id'])
     for point in points:
         item=raw[point['id']]
-        if (item.get('adjustments') or item['basis']=='RECONSTRUCTED' or item.get('field') in ('ebit_adjusted','dda_adjusted','operating_tax','ebitda_reported','nopat_disclosed','jv_organic_contributions')) and not point.get('reconciliations'):
+        if (item.get('adjustments') or item['basis']=='RECONSTRUCTED' or item.get('field') in ('ebit_adjusted','dda_adjusted','operating_tax','ebitda_reported','nopat_disclosed','nopat_ltm','jv_organic_contributions')) and not point.get('reconciliations'):
             point['reasons'].append('Reconciliação documentada obrigatória para reconstrução/ajustes.')
         # Alert on current vs previous normalized quarter, with no demo fallback.
         previous=next((p for p in points if p['period']==previous_period(point['period']) and p['field']==point['field'] and p['value'] is not None),None)

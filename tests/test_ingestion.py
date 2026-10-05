@@ -382,3 +382,77 @@ def test_official_html_numeric_selector_rejects_changed_or_ambiguous_values(tmp_
     with pytest.raises(ValueError,match='ambíguo'):extract(p,'html',sel)
     sel['guards']=['Petrobras 73,24%']
     with pytest.raises(ValueError,match='Contexto'):extract(p,'html',sel)
+
+def test_pdf_currency_marker_requires_explicit_selector(tmp_path):
+    import pymupdf
+    from radar.ingestion.extract import extract, number
+    import pytest
+    p=tmp_path/'currency.pdf'
+    d=pymupdf.open();page=d.new_page();page.insert_text((72,72),'CFFO\n6.8 $');d.save(p);d.close()
+    selector={'page':1,'label':'CFFO','column':0,'guards':['CFFO']}
+    value,_=extract(p,'pdf',selector)
+    with pytest.raises(ValueError):number(value)
+    selector['strip_currency_symbol']=True
+    assert number(extract(p,'pdf',selector)[0])==Decimal('6.8')
+
+def test_pdf_explicit_organic_capex_column(tmp_path):
+    import pymupdf
+    import pytest
+    from radar.ingestion.extract import extract, number
+    p=tmp_path/'organic.pdf'
+    d=pymupdf.open();page=d.new_page();page.insert_text((72,72),'Total capex / Organic capex\n$3.9 billion / $3.5 billion');d.save(p);d.close()
+    selector={'page':1,'label':'Total capex / Organic capex','value_pattern':r'\$[0-9]+\.[0-9] billion / \$([0-9]+\.[0-9]) billion'}
+    assert number(extract(p,'pdf',selector)[0])==Decimal('3.5')
+    selector['value_pattern']=r'\$([0-9]+\.[0-9]) million'
+    with pytest.raises(ValueError,match='Formato'):extract(p,'pdf',selector)
+
+def test_sec_archive_is_restricted_to_chevron_filings():
+    from radar.ingestion.sources import official, permitted
+    url='https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm'
+    assert official(url,'Chevron') and permitted(url,'Chevron')
+    assert not official(url,'Shell')
+    assert not official(url.replace('/93410/','/12345/'),'Chevron')
+    assert not official(url.replace('www.sec.gov','www.sec.gov.evil.org'),'Chevron')
+    assert not permitted(url.replace('https://','https://user:pass@'),'Chevron')
+
+
+def test_annual_minus_three_quarters_requires_complete_compatible_inputs(prepared):
+    root,manifest=prepared
+    for o in manifest['observations'][:3]:o['period_type']='QUARTER'
+    manifest['observations'][-1]['derive_q4_from_quarters']=True
+    points=pipe.stage(manifest,base_dir=root)['report']['points']
+    assert Decimal(points[-1]['value'])==-150  # 600 - 100 - 250 - 400
+    assert points[-1]['lineage']==['q4','q1','q2','q3']
+    broken=copy.deepcopy(manifest);broken['mapping_version']='missing-quarter'
+    broken['observations']=broken['observations'][1:]
+    last=pipe.stage(broken,base_dir=root)['report']['points'][-1]
+    assert last['value'] is None and last['state']=='BLOQUEADO'
+
+
+def test_chevron_finance_leases_retained_without_operating_lease_balance(monkeypatch):
+    from radar.ingestion import financials
+    points=[]
+    for field,value in [('financial_debt_short',100),('financial_debt_long',900),('cash',200),('cash_nonoperating',200),('equity_total',1500)]:
+        points.append(dict(company='Chevron',period='2025Q1',field=field,value=Decimal(value),comparable=False,reason='Approved approximation',details=dict(scope='CONSOLIDATED',includes_leases=True)))
+    monkeypatch.setattr(financials,'published_points',lambda:points)
+    row=financials.rows()[0]
+    assert row['debt']==800 and row['capital_employed_close']==2300
+    assert row['leases'] is None
+    assert row['_quality']['debt']['status']=='NAO_COMPARAVEL'
+
+
+def test_reasons_deduplicate_nested_components_and_quarterly_propagation():
+    from radar.ingestion.financials import unique_reasons
+    assert unique_reasons(['NOPAT alternativo.; Capital reconstruído.; Capital reconstruído.',
+                          'NOPAT alternativo; Acumulado anterior não comparável.; Capital reconstruído.']) == 'NOPAT alternativo; Capital reconstruído.'
+
+
+def test_shell_pending_financial_scope_cannot_enable_leverage(monkeypatch):
+    from radar.ingestion import financials
+    fields={'ebit_adjusted':100,'dda_adjusted':20,'financial_debt_short':10,'financial_debt_long':80,'cash':30,'cash_nonoperating':30,'equity_total':200}
+    points=[dict(company='Shell',period='2025Q1',field=k,value=Decimal(v),comparable=True,reason='',details=dict(scope='CONSOLIDATED',includes_leases=False,adjustment_set='SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST')) for k,v in fields.items()]
+    monkeypatch.setattr(financials,'published_points',lambda:points)
+    row=financials.rows()[0]
+    assert row['debt']==60
+    assert row['ebit_adjusted'] is None and row['ebitda'] is None
+    assert row['_quality']['ebitda']['status']=='INDISPONIVEL'

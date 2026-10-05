@@ -22,7 +22,8 @@ def roce(rows, leases=False, exclude_goodwill=False):
             return None
     required = ['ebit_adjusted', 'operating_tax']
     direct = all(r.get('nopat_disclosed') is not None and Decimal(str(r['nopat_disclosed'])).is_finite() for r in rows)
-    if not direct and any(r.get(k) is None or not Decimal(str(r[k])).is_finite() for r in rows for k in required):
+    direct_ltm=rows[-1].get('nopat_ltm') is not None
+    if not direct_ltm and not direct and any(r.get(k) is None or not Decimal(str(r[k])).is_finite() for r in rows for k in required):
         return None
     start = rows[0].get('capital_employed_open')
     end = rows[-1].get('capital_employed_close')
@@ -45,7 +46,7 @@ def roce(rows, leases=False, exclude_goodwill=False):
         end += Decimal(str(closing_leases))
     if not start.is_finite() or not end.is_finite():
         return None
-    nopat = sum(Decimal(str(r['nopat_disclosed'])) for r in rows) if direct else sum(Decimal(str(r['ebit_adjusted'])) - Decimal(str(r['operating_tax'])) for r in rows)
+    nopat = Decimal(str(rows[-1]['nopat_ltm'])) if direct_ltm else sum(Decimal(str(r['nopat_disclosed'])) for r in rows) if direct else sum(Decimal(str(r['ebit_adjusted'])) - Decimal(str(r['operating_tax'])) for r in rows)
     return ratio(nopat, (start + end) / 2, 100)
 
 
@@ -73,6 +74,8 @@ def calculate(rows, leases=False, exclude_goodwill=False, include_jv=False):
         return ratio(a,b,factor) if a is not None and b is not None else None
     fcf = cfo-capex if cfo is not None and capex is not None else None
     residual = fcf-distribution if fcf is not None and distribution is not None else None
+    if include_jv and any(r.get('_capex_method')=='DISCLOSED_BROAD' for r in rows):
+        capex=fcf=residual=None
     return dict(cfo=cfo, leverage=safe_ratio(debt,ebitda), capex=safe_ratio(capex,cfo,100),
                 distribution=safe_ratio(distribution,cfo,100), fcf=fcf, residual=residual,
                 roce=roce(rows,leases,exclude_goodwill))

@@ -1,0 +1,1847 @@
+{
+  "schema_version": 1,
+  "company": "Chevron",
+  "accounting_standard": "US GAAP",
+  "mapping_version": "chevron-2024-2025-balances-v1",
+  "mapping_note": "Saldos para capital empregado e dívida líquida. Caixa integral como aproximação PoC. Leases financeiros segregados nos fechamentos anuais; trimestrais sem abertura permanecem pendentes. Não habilita ROCE sem EBIT/imposto reconstruídos.",
+  "documents": [
+    {
+      "id": "sec",
+      "format": "json",
+      "hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "expected_hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "issuer_cik": "93410",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093410.json",
+      "filename": "Chevron-companyfacts.json",
+      "period": "MULTIPERIOD"
+    },
+    {
+      "id": "2024Q1",
+      "format": "html",
+      "expected_hash": "73234c2e630d5e6a418e5268f302466cd9e997427db6c103db47e3526ae51584",
+      "period": "2024Q1",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000021/cvx-20240331.htm",
+      "filename": "accounts-2024Q1.html"
+    },
+    {
+      "id": "2024Q2",
+      "format": "html",
+      "expected_hash": "e52a7aafd057d25c3607a1dc2f22d4c4e569eddcb34017a3ff47eb58a8246a02",
+      "period": "2024Q2",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000040/cvx-20240630.htm",
+      "filename": "accounts-2024Q2.html"
+    },
+    {
+      "id": "2024Q3",
+      "format": "html",
+      "expected_hash": "8f96240ea9a2d0f3594d236496b369a0eee3f6639222a439b3d2994d9486de6a",
+      "period": "2024Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000059/cvx-20240930.htm",
+      "filename": "accounts-2024Q3.html"
+    },
+    {
+      "id": "2024Q4",
+      "format": "html",
+      "expected_hash": "3d56d6ad50458cfb35d028330ee66b409f27510d5c8cdd6b20c46d62df06a76d",
+      "period": "2024Q4",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000009/cvx-20241231.htm",
+      "filename": "accounts-2024Q4.html"
+    },
+    {
+      "id": "2025Q1",
+      "format": "html",
+      "expected_hash": "b676e083ce9b5ff7522b9ac70519ed6c9a5e82d6131b8fe10a23722b484b9224",
+      "period": "2025Q1",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000019/cvx-20250331.htm",
+      "filename": "accounts-2025Q1.html"
+    },
+    {
+      "id": "2025Q2",
+      "format": "html",
+      "expected_hash": "3879263f18168d1ffeb3c5e02a060f10b08a937a96299169d8e7ba270be9c2af",
+      "period": "2025Q2",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000062/cvx-20250630.htm",
+      "filename": "accounts-2025Q2.html"
+    },
+    {
+      "id": "2025Q3",
+      "format": "html",
+      "expected_hash": "a01a04f10115dd5b8520839fe3cf6a54b638d4082c6f6e1ed693a456c4d8c9e3",
+      "period": "2025Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000108/cvx-20250930.htm",
+      "filename": "accounts-2025Q3.html"
+    },
+    {
+      "id": "2025Q4",
+      "format": "html",
+      "expected_hash": "47e1ce02bc53515f41711c55c952ca298d834a96965751f93ffd2016d68cda4d",
+      "period": "2025Q4",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+      "filename": "accounts-2025Q4.html"
+    }
+  ],
+  "observations": [
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q1",
+      "document": "2024Q1",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q1",
+      "document": "2024Q1",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q1",
+      "document": "2024Q1",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q1",
+      "document": "2024Q1",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q1",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q1",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q2",
+      "document": "2024Q2",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q2",
+      "document": "2024Q2",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q2",
+      "document": "2024Q2",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q2",
+      "document": "2024Q2",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q2",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q2",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q3",
+      "document": "2024Q3",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q3",
+      "document": "2024Q3",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q3",
+      "document": "2024Q3",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q3",
+      "document": "2024Q3",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q3",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q3",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": false,
+      "adjustments": [
+        {
+          "observation": "finance-cp-2024Q4",
+          "coefficient": -1,
+          "reason": "Excluir lease financeiro do prazo correspondente; lease operacional fora da dívida publicada."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": false,
+      "adjustments": [
+        {
+          "observation": "finance-lp-2024Q4",
+          "coefficient": -1,
+          "reason": "Excluir lease financeiro do prazo correspondente; lease operacional fora da dívida publicada."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q4",
+      "document": "2024Q4",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q4",
+      "document": "2024Q4",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q4",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-cp-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Short-term debt — ([\\d,]+) — [\\d,]+ Current lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-lp-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Long-term debt — ([\\d,]+) — [\\d,]+ Noncurrent lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-cp-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityCurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_short-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2024"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ Long-term debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-lp-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityNoncurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_long-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2024"
+        ],
+        "pattern": "Long-term debt ([\\d,]+) [\\d,]+ [\\d,]+ Total debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "leases-2024Q4",
+      "document": "2024Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Total lease liabilities \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ \\$ [\\d,]+ Weighted-average"
+      },
+      "adjustments": [
+        {
+          "observation": "finance-cp-2024Q4",
+          "coefficient": 1,
+          "reason": "Somar lease financeiro corrente à obrigação operacional."
+        },
+        {
+          "observation": "finance-lp-2024Q4",
+          "coefficient": 1,
+          "reason": "Somar lease financeiro não corrente à obrigação operacional."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-op-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "OperatingLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-fin-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q1",
+      "document": "2025Q1",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q1",
+      "document": "2025Q1",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q1",
+      "document": "2025Q1",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q1",
+      "document": "2025Q1",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q1",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q1",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q2",
+      "document": "2025Q2",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q2",
+      "document": "2025Q2",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q2",
+      "document": "2025Q2",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q2",
+      "document": "2025Q2",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q2",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q2",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q3",
+      "document": "2025Q3",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q3",
+      "document": "2025Q3",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q3",
+      "document": "2025Q3",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q3",
+      "document": "2025Q3",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q3",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q3",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q4",
+      "document": "2025Q4",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": false,
+      "adjustments": [
+        {
+          "observation": "finance-cp-2025Q4",
+          "coefficient": -1,
+          "reason": "Excluir lease financeiro do prazo correspondente; lease operacional fora da dívida publicada."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q4",
+      "document": "2025Q4",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": false,
+      "adjustments": [
+        {
+          "observation": "finance-lp-2025Q4",
+          "coefficient": -1,
+          "reason": "Excluir lease financeiro do prazo correspondente; lease operacional fora da dívida publicada."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q4",
+      "document": "2025Q4",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q4",
+      "document": "2025Q4",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q4",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-cp-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Short-term debt — ([\\d,]+) — [\\d,]+ Current lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-lp-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Long-term debt — ([\\d,]+) — [\\d,]+ Noncurrent lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-cp-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityCurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_short-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2025"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ Long-term debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-lp-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityNoncurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_long-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2025"
+        ],
+        "pattern": "Long-term debt ([\\d,]+) [\\d,]+ [\\d,]+ Total debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "leases-2025Q4",
+      "document": "2025Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Total lease liabilities \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ \\$ [\\d,]+ Weighted-average"
+      },
+      "adjustments": [
+        {
+          "observation": "finance-cp-2025Q4",
+          "coefficient": 1,
+          "reason": "Somar lease financeiro corrente à obrigação operacional."
+        },
+        {
+          "observation": "finance-lp-2025Q4",
+          "coefficient": 1,
+          "reason": "Somar lease financeiro não corrente à obrigação operacional."
+        }
+      ]
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-op-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "OperatingLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-fin-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "debt-ex-lease-financial_debt_short-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "gross-financial_debt_short-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "sec-finance-cp-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "financial_debt_short-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-cp-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [
+        "financial_debt_short-2024Q4"
+      ],
+      "reason": "Dívida do balanço menos lease financeiro da nota versus dívida MD&A menos lease financeiro XBRL."
+    },
+    {
+      "id": "debt-ex-lease-financial_debt_long-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "gross-financial_debt_long-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "sec-finance-lp-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "financial_debt_long-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-lp-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [
+        "financial_debt_long-2024Q4"
+      ],
+      "reason": "Dívida do balanço menos lease financeiro da nota versus dívida MD&A menos lease financeiro XBRL."
+    },
+    {
+      "id": "total-leases-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "ref-op-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-fin-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "leases-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-cp-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-lp-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "leases-2024Q4"
+      ],
+      "reason": "Total leases operacionais e financeiros em nota e XBRL."
+    },
+    {
+      "id": "debt-ex-lease-financial_debt_short-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "gross-financial_debt_short-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "sec-finance-cp-2025Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "financial_debt_short-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-cp-2025Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [
+        "financial_debt_short-2025Q4"
+      ],
+      "reason": "Dívida do balanço menos lease financeiro da nota versus dívida MD&A menos lease financeiro XBRL."
+    },
+    {
+      "id": "debt-ex-lease-financial_debt_long-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "gross-financial_debt_long-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "sec-finance-lp-2025Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "financial_debt_long-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-lp-2025Q4",
+          "coefficient": -1
+        }
+      ],
+      "applies_to": [
+        "financial_debt_long-2025Q4"
+      ],
+      "reason": "Dívida do balanço menos lease financeiro da nota versus dívida MD&A menos lease financeiro XBRL."
+    },
+    {
+      "id": "total-leases-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "ref-op-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-fin-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "leases-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-cp-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "finance-lp-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "leases-2025Q4"
+      ],
+      "reason": "Total leases operacionais e financeiros em nota e XBRL."
+    }
+  ]
+}

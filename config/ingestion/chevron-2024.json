@@ -1,0 +1,893 @@
+{
+  "schema_version": 1,
+  "company": "Chevron",
+  "accounting_standard": "US GAAP",
+  "mapping_version": "chevron-2024-statutory-cash-v1",
+  "mapping_note": "FCO estatutário USD com capital de giro; DFC YTD convertida em trimestres antes do LTM. CAPEX consolidado de caixa exclui M&A e ações Hess; dividendos comuns pagos e recompra Chevron liquidada. Não usar adjusted free cash flow, affiliate capex ou alíquotas fictícias. Mudança de perímetro Hess em 2025 explicitada.",
+  "documents": [
+    {
+      "id": "sec",
+      "format": "json",
+      "hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "expected_hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "issuer_cik": "93410",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093410.json",
+      "filename": "Chevron-companyfacts.json",
+      "period": "MULTIPERIOD"
+    },
+    {
+      "id": "release-2024q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/d6e0b7a2-bc43-42cf-aa0b-56ee0eedb3b0",
+      "filename": "chevron-2024q1.pdf",
+      "period": "2024Q1",
+      "expected_hash": "9dab420d5949d3f920d421f83c3a3d6dff482cd22d8114d9a890083b37b4c53c"
+    },
+    {
+      "id": "release-2024q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/035f56c4-2f35-4b39-9117-77cb2eb6100d",
+      "filename": "chevron-2024q2.pdf",
+      "period": "2024Q2",
+      "expected_hash": "36fc92787f27f9ead64f4d115bd23e0c51c84a1a9db9085da775154920d9c0f4"
+    },
+    {
+      "id": "release-2024q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/da53ad36-206f-40ca-ab9e-ee33da972e90",
+      "filename": "chevron-2024q3.pdf",
+      "period": "2024Q3",
+      "expected_hash": "48373460c056776f88a3fff044a67de86570a6913ceab939935f15101720eb4d"
+    },
+    {
+      "id": "release-2024q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/ff3969e6-39cd-4be6-a0ee-f67ee2fcebc6",
+      "filename": "chevron-2024q4.pdf",
+      "period": "2024Q4",
+      "expected_hash": "06066379080b654021f91323d25b19b93009d36f574d1e7c9a6bd1da9466398c"
+    }
+  ],
+  "observations": [
+    {
+      "id": "cfo-2024q1",
+      "document": "sec",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "NetCashProvidedByUsedInOperatingActivities",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024q1",
+      "document": "sec",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsToAcquireProductiveAssets",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "CAPEX de caixa divulgado inclui adições a fixed asset ou investment accounts; exclusão de M&A/Hess identificada, mas classificação integral como orgânico e eventual aporte JV não conciliada. Não substituir por Affiliate Capex."
+    },
+    {
+      "id": "dividends_paid-2024q1",
+      "document": "sec",
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsOfDividendsCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "buybacks-2024q1",
+      "document": "sec",
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsForRepurchaseOfCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "Pagamento por ações inclui share repurchase e deferred compensation plans (retenção de imposto de participantes); parcela exclusiva de recompra para distribuição ainda não segregada. Excise tax separado e não somado; ações Hess excluídas."
+    },
+    {
+      "id": "cfo-release-2024q1",
+      "document": "release-2024q1",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": 1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Net Cash Provided by Operating Activities",
+        "offset": 2,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "capex-release-2024q1",
+      "document": "release-2024q1",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": -1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Capital expenditures (Capex)",
+        "offset": 2,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cfo-2024q2",
+      "document": "sec",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "NetCashProvidedByUsedInOperatingActivities",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024q2",
+      "document": "sec",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsToAcquireProductiveAssets",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "CAPEX de caixa divulgado inclui adições a fixed asset ou investment accounts; exclusão de M&A/Hess identificada, mas classificação integral como orgânico e eventual aporte JV não conciliada. Não substituir por Affiliate Capex."
+    },
+    {
+      "id": "dividends_paid-2024q2",
+      "document": "sec",
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsOfDividendsCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "buybacks-2024q2",
+      "document": "sec",
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsForRepurchaseOfCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "Pagamento por ações inclui share repurchase e deferred compensation plans (retenção de imposto de participantes); parcela exclusiva de recompra para distribuição ainda não segregada. Excise tax separado e não somado; ações Hess excluídas."
+    },
+    {
+      "id": "cfo-release-2024q2",
+      "document": "release-2024q2",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": 1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Net Cash Provided by Operating Activities",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "capex-release-2024q2",
+      "document": "release-2024q2",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": -1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Capital expenditures (Capex)",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cfo-2024q3",
+      "document": "sec",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "NetCashProvidedByUsedInOperatingActivities",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024q3",
+      "document": "sec",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsToAcquireProductiveAssets",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "CAPEX de caixa divulgado inclui adições a fixed asset ou investment accounts; exclusão de M&A/Hess identificada, mas classificação integral como orgânico e eventual aporte JV não conciliada. Não substituir por Affiliate Capex."
+    },
+    {
+      "id": "dividends_paid-2024q3",
+      "document": "sec",
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsOfDividendsCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "buybacks-2024q3",
+      "document": "sec",
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsForRepurchaseOfCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "Pagamento por ações inclui share repurchase e deferred compensation plans (retenção de imposto de participantes); parcela exclusiva de recompra para distribuição ainda não segregada. Excise tax separado e não somado; ações Hess excluídas."
+    },
+    {
+      "id": "cfo-release-2024q3",
+      "document": "release-2024q3",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": 1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Net Cash Provided by Operating Activities",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "capex-release-2024q3",
+      "document": "release-2024q3",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": -1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 9,
+        "label": "Capital expenditures (Capex)",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "cfo-2024q4",
+      "document": "sec",
+      "field": "cfo",
+      "concept": "STATUTORY_CFO",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "NetCashProvidedByUsedInOperatingActivities",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "capex-2024q4",
+      "document": "sec",
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsToAcquireProductiveAssets",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "CAPEX de caixa divulgado inclui adições a fixed asset ou investment accounts; exclusão de M&A/Hess identificada, mas classificação integral como orgânico e eventual aporte JV não conciliada. Não substituir por Affiliate Capex."
+    },
+    {
+      "id": "dividends_paid-2024q4",
+      "document": "sec",
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsOfDividendsCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "buybacks-2024q4",
+      "document": "sec",
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "PaymentsForRepurchaseOfCommonStock",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "comparability_reason": "Pagamento por ações inclui share repurchase e deferred compensation plans (retenção de imposto de participantes); parcela exclusiva de recompra para distribuição ainda não segregada. Excise tax separado e não somado; ações Hess excluídas."
+    },
+    {
+      "id": "cfo-release-2024q4",
+      "document": "release-2024q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": 1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 10,
+        "label": "Net Cash Provided by Operating Activities",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    },
+    {
+      "id": "capex-release-2024q4",
+      "document": "release-2024q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "billions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "sign": -1,
+      "selector": {
+        "occurrence": 0,
+        "strip_currency_symbol": true,
+        "page": 10,
+        "label": "Capital expenditures (Capex)",
+        "offset": 4,
+        "column": 0,
+        "guards": [
+          "SUMMARIZED STATEMENT OF CASH FLOWS",
+          "2024"
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "cfo-release-control-2024q1",
+      "reference": "cfo-release-2024q1",
+      "terms": [
+        {
+          "observation": "cfo-2024q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-2024q1"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "capex-release-control-2024q1",
+      "reference": "capex-release-2024q1",
+      "terms": [
+        {
+          "observation": "capex-2024q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "capex-2024q1"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "cfo-release-control-2024q2",
+      "reference": "cfo-release-2024q2",
+      "terms": [
+        {
+          "observation": "cfo-2024q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-2024q2"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "capex-release-control-2024q2",
+      "reference": "capex-release-2024q2",
+      "terms": [
+        {
+          "observation": "capex-2024q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "capex-2024q2"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "cfo-release-control-2024q3",
+      "reference": "cfo-release-2024q3",
+      "terms": [
+        {
+          "observation": "cfo-2024q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-2024q3"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "capex-release-control-2024q3",
+      "reference": "capex-release-2024q3",
+      "terms": [
+        {
+          "observation": "capex-2024q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "capex-2024q3"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "cfo-release-control-2024q4",
+      "reference": "cfo-release-2024q4",
+      "terms": [
+        {
+          "observation": "cfo-2024q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-2024q4"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    },
+    {
+      "id": "capex-release-control-2024q4",
+      "reference": "capex-release-2024q4",
+      "terms": [
+        {
+          "observation": "capex-2024q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "capex-2024q4"
+      ],
+      "rounding_usd_million": 50,
+      "reason": "Fato SEC preciso versus DFC resumida preliminar independente em US$ bilhões; tolerância explícita 50mi para arredondamento/provisional; investigar diferença maior."
+    }
+  ],
+  "pending_components": [
+    {
+      "indicator": "ROCE",
+      "reason": "Imposto operacional e EBIT ajustado reconciliados não mapeados; não aplicar 10% sintético nem alternativa Petrobras 34%."
+    },
+    {
+      "indicator": "Dívida líquida/EBITDA",
+      "reason": "Dívida excluindo finance leases, caixa não restrito e EBITDA ajustado requerem mapeamento separado; não substituir por net debt-to-CFFO."
+    },
+    {
+      "indicator": "Sensibilidades leases/goodwill/JV",
+      "reason": "Componentes de balanço e aportes orgânicos de caixa JV ainda não mapeados; não inferir zero."
+    },
+    {
+      "indicator": "CAPEX/FCO, FCL e residual",
+      "reason": "Valores preservados, NÃO COMPARÁVEL até classificação da linha de investments no CAPEX de caixa."
+    },
+    {
+      "indicator": "Distribuições/FCO e residual",
+      "reason": "Recompras incluem plano de remuneração diferida; requer segregação para comparar distribuição estrita."
+    }
+  ]
+}

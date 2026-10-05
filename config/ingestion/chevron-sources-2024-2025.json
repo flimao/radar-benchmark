@@ -1,0 +1,243 @@
+{
+  "company": "Chevron",
+  "accounting_standard": "US GAAP",
+  "status": "SOURCES_DOWNLOADED_NOT_PUBLISHED",
+  "documents": [
+    {
+      "id": "release-2024q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/d6e0b7a2-bc43-42cf-aa0b-56ee0eedb3b0",
+      "filename": "chevron-2024q1.pdf",
+      "period": "2024Q1",
+      "expected_hash": "9dab420d5949d3f920d421f83c3a3d6dff482cd22d8114d9a890083b37b4c53c",
+      "hash": "9dab420d5949d3f920d421f83c3a3d6dff482cd22d8114d9a890083b37b4c53c"
+    },
+    {
+      "id": "release-2024q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/035f56c4-2f35-4b39-9117-77cb2eb6100d",
+      "filename": "chevron-2024q2.pdf",
+      "period": "2024Q2",
+      "expected_hash": "36fc92787f27f9ead64f4d115bd23e0c51c84a1a9db9085da775154920d9c0f4",
+      "hash": "36fc92787f27f9ead64f4d115bd23e0c51c84a1a9db9085da775154920d9c0f4"
+    },
+    {
+      "id": "release-2024q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/da53ad36-206f-40ca-ab9e-ee33da972e90",
+      "filename": "chevron-2024q3.pdf",
+      "period": "2024Q3",
+      "expected_hash": "48373460c056776f88a3fff044a67de86570a6913ceab939935f15101720eb4d",
+      "hash": "48373460c056776f88a3fff044a67de86570a6913ceab939935f15101720eb4d"
+    },
+    {
+      "id": "release-2024q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/ff3969e6-39cd-4be6-a0ee-f67ee2fcebc6",
+      "filename": "chevron-2024q4.pdf",
+      "period": "2024Q4",
+      "expected_hash": "06066379080b654021f91323d25b19b93009d36f574d1e7c9a6bd1da9466398c",
+      "hash": "06066379080b654021f91323d25b19b93009d36f574d1e7c9a6bd1da9466398c"
+    },
+    {
+      "id": "release-2025q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/f31e9006-9b41-41c4-b4e4-d51f8b4a61f8",
+      "filename": "chevron-2025q1.pdf",
+      "period": "2025Q1",
+      "expected_hash": "d5b10ca998a5db355795ad98e33797cf10d0290d15412b4d4526397249bb040f",
+      "hash": "d5b10ca998a5db355795ad98e33797cf10d0290d15412b4d4526397249bb040f"
+    },
+    {
+      "id": "release-2025q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/589e888d-11df-4cdf-a481-1d6a6183fb7f",
+      "filename": "chevron-2025q2.pdf",
+      "period": "2025Q2",
+      "expected_hash": "a19020c14f9ca25c26bac813b1b001c0c9ee1d099d24b0b55c7abfb65549dc4d",
+      "hash": "a19020c14f9ca25c26bac813b1b001c0c9ee1d099d24b0b55c7abfb65549dc4d"
+    },
+    {
+      "id": "release-2025q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/4aaa3d8c-2f68-49fd-a253-378fb877f5a8",
+      "filename": "chevron-2025q3.pdf",
+      "period": "2025Q3",
+      "expected_hash": "503461071466a07e2826c71f2e8bc06eb0afe045def7fb59a9ba1fc7d02c6322",
+      "hash": "503461071466a07e2826c71f2e8bc06eb0afe045def7fb59a9ba1fc7d02c6322"
+    },
+    {
+      "id": "release-2025q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/3aa983d7-ae60-4ce2-add3-b008b42f7165",
+      "filename": "chevron-2025q4.pdf",
+      "period": "2025Q4",
+      "expected_hash": "0cc7d57259520c097362df618da6ee84bea881c5e24c091ba61d181e07f16d46",
+      "hash": "0cc7d57259520c097362df618da6ee84bea881c5e24c091ba61d181e07f16d46"
+    },
+    {
+      "id": "supplement-2024Q1",
+      "format": "xlsx",
+      "period": "2024Q1",
+      "url": "https://chevroncorp.gcs-web.com/static-files/3f09ff5f-bc28-4810-95eb-fe08d43c457d",
+      "filename": "supplement-2024Q1.xlsx",
+      "hash": "a4c77782751e7c5e9a347f842b4c1c551277c8e59843b876aeb1ccd726965b5e",
+      "expected_hash": "a4c77782751e7c5e9a347f842b4c1c551277c8e59843b876aeb1ccd726965b5e"
+    },
+    {
+      "id": "supplement-2024Q2",
+      "format": "xlsx",
+      "period": "2024Q2",
+      "url": "https://chevroncorp.gcs-web.com/static-files/669584ae-b09a-4089-a2bb-bdcb4b0765bb",
+      "filename": "supplement-2024Q2.xlsx",
+      "hash": "9801618d0f872da082a40350a47985151359d844b7a320202fee29176935f8dd",
+      "expected_hash": "9801618d0f872da082a40350a47985151359d844b7a320202fee29176935f8dd"
+    },
+    {
+      "id": "supplement-2024Q3",
+      "format": "xlsx",
+      "period": "2024Q3",
+      "url": "https://chevroncorp.gcs-web.com/static-files/8783661f-c78f-4cd9-b852-323fe20ba54b",
+      "filename": "supplement-2024Q3.xlsx",
+      "hash": "dfff1be749039ea29a4141c820cc5e6200b8bc78c4b1eca65a56c74029c3d530",
+      "expected_hash": "dfff1be749039ea29a4141c820cc5e6200b8bc78c4b1eca65a56c74029c3d530"
+    },
+    {
+      "id": "supplement-2024Q4",
+      "format": "xlsx",
+      "period": "2024Q4",
+      "url": "https://chevroncorp.gcs-web.com/static-files/c1135c91-d9ce-4695-8575-e51c0bc6c925",
+      "filename": "supplement-2024Q4.xlsx",
+      "hash": "3cd9da837ac89b0f65723410374caefb3110810ecc93bcb249b836ff3ccea191",
+      "expected_hash": "3cd9da837ac89b0f65723410374caefb3110810ecc93bcb249b836ff3ccea191"
+    },
+    {
+      "id": "supplement-2025Q1",
+      "format": "xlsx",
+      "period": "2025Q1",
+      "url": "https://chevroncorp.gcs-web.com/static-files/aad4eccb-f4da-4afb-95dd-4b84636d21e0",
+      "filename": "supplement-2025Q1.xlsx",
+      "hash": "60af487a4cffcec1f6898051c681335a93da2307701439e806d3e8038847d4d9",
+      "expected_hash": "60af487a4cffcec1f6898051c681335a93da2307701439e806d3e8038847d4d9"
+    },
+    {
+      "id": "supplement-2025Q2",
+      "format": "xlsx",
+      "period": "2025Q2",
+      "url": "https://chevroncorp.gcs-web.com/static-files/74af4776-5d00-4f17-807f-951926fda4bf",
+      "filename": "supplement-2025Q2.xlsx",
+      "hash": "280c2bbb0c94fe5cd1216579d8f4e1f9ce686a13f0fb03d0d63b231ffa332ca2",
+      "expected_hash": "280c2bbb0c94fe5cd1216579d8f4e1f9ce686a13f0fb03d0d63b231ffa332ca2"
+    },
+    {
+      "id": "supplement-2025Q3",
+      "format": "xlsx",
+      "period": "2025Q3",
+      "url": "https://chevroncorp.gcs-web.com/static-files/c6ebfecf-b3f7-4daa-abf7-6956bd627fbf",
+      "filename": "supplement-2025Q3.xlsx",
+      "hash": "ebaf463efc1604a626421171ded9413ce868851251b707262ab78054ef174ef3",
+      "expected_hash": "ebaf463efc1604a626421171ded9413ce868851251b707262ab78054ef174ef3"
+    },
+    {
+      "id": "supplement-2025Q4",
+      "format": "xlsx",
+      "period": "2025Q4",
+      "url": "https://chevroncorp.gcs-web.com/static-files/36d8ea19-b2ad-40e1-8152-5e3f591370f7",
+      "filename": "supplement-2025Q4.xlsx",
+      "hash": "3ef342ba9e587aa97b2a630c05d92c8c0207203aa98c976fa844568e32a19830",
+      "expected_hash": "3ef342ba9e587aa97b2a630c05d92c8c0207203aa98c976fa844568e32a19830"
+    },
+    {
+      "id": "full-10k-2025",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/6beae4d6-142e-4a4d-bee9-1714cad041a3",
+      "filename": "full-10k-2025.pdf",
+      "period": "2025",
+      "hash": "55966b9cab4120777b5d13087b0cacb2ef24cb4706d9f2ea0b94637a5511bb29",
+      "expected_hash": "55966b9cab4120777b5d13087b0cacb2ef24cb4706d9f2ea0b94637a5511bb29"
+    },
+    {
+      "id": "transcript-2025Q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/9524c0a9-6b86-45dd-b046-f1ec7f705b53",
+      "filename": "transcript-2025Q1.pdf",
+      "period": "2025Q1",
+      "hash": "013f43c5a7b9e842828ec4291759b57452a0a56b3287e53583cee85615311895",
+      "expected_hash": "013f43c5a7b9e842828ec4291759b57452a0a56b3287e53583cee85615311895"
+    },
+    {
+      "id": "transcript-2025Q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/77dbc798-44c8-44b5-958e-b10dc988fc72",
+      "filename": "transcript-2025Q2.pdf",
+      "period": "2025Q2",
+      "hash": "3461b29b05d0de2c3afefb6033069993f8a18d5b526152a592c86d97f933da1d",
+      "expected_hash": "3461b29b05d0de2c3afefb6033069993f8a18d5b526152a592c86d97f933da1d"
+    },
+    {
+      "id": "transcript-2025Q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/f0f72c1f-b4ee-46ff-ac07-b123b7603857",
+      "filename": "transcript-2025Q4.pdf",
+      "period": "2025Q4",
+      "hash": "3e4150853516192e438a8f6cb7808f3b0d554b1913592407f409a29717e9bb94",
+      "expected_hash": "3e4150853516192e438a8f6cb7808f3b0d554b1913592407f409a29717e9bb94"
+    },
+    {
+      "id": "transcript-2025Q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e61c72a3-e5bd-4849-963f-9f09729b2316",
+      "filename": "transcript-2025Q3.pdf",
+      "period": "2025Q3",
+      "hash": "24d7bc3057f658992462ce55b8a4c8b2177d20e336e517ba6138307a15c6e83f",
+      "expected_hash": "24d7bc3057f658992462ce55b8a4c8b2177d20e336e517ba6138307a15c6e83f"
+    },
+    {
+      "id": "transcript-2024Q4",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e08e9838-5f69-4854-8822-edf77113cd2f",
+      "filename": "transcript-2024Q4.pdf",
+      "period": "2024Q4",
+      "hash": "b87b666dc85081abbf922dd766a79c0124738e0cb0f1b211bbea9d614204e4f2",
+      "expected_hash": "b87b666dc85081abbf922dd766a79c0124738e0cb0f1b211bbea9d614204e4f2"
+    },
+    {
+      "id": "transcript-2024Q3",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/a7bdb80a-d49a-4036-9d14-00f12c4f66fa",
+      "filename": "transcript-2024Q3.pdf",
+      "period": "2024Q3",
+      "hash": "a836bfa5efb1d46078b491e74a3fcfbf1866fc5e5570aeffba9824eac8a3da1f",
+      "expected_hash": "a836bfa5efb1d46078b491e74a3fcfbf1866fc5e5570aeffba9824eac8a3da1f"
+    },
+    {
+      "id": "transcript-2024Q2",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/a581834c-21e9-4773-9a86-1c045d083219",
+      "filename": "transcript-2024Q2.pdf",
+      "period": "2024Q2",
+      "hash": "ef309a4b4a67d9d36ee348de1b0eb2a002abf36f64e65fe69cbb425940d7ee5b",
+      "expected_hash": "ef309a4b4a67d9d36ee348de1b0eb2a002abf36f64e65fe69cbb425940d7ee5b"
+    },
+    {
+      "id": "transcript-2024Q1",
+      "format": "pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/2d550ba5-4b82-4ff7-80d4-606d77716f4a",
+      "filename": "transcript-2024Q1.pdf",
+      "period": "2024Q1",
+      "hash": "ff04d31c9f6ad14f6b8bec50c0a269d9304457f4b6388f29aeaccf7dd678fdf5",
+      "expected_hash": "ff04d31c9f6ad14f6b8bec50c0a269d9304457f4b6388f29aeaccf7dd678fdf5"
+    }
+  ],
+  "sec_snapshot": {
+    "cik": "93410",
+    "company": "Chevron",
+    "entity_name": "Chevron Corp",
+    "hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+    "note": "Mapear namespace, tag, unidade, datas e accession; duplicidades de filing exigem seleção explícita.",
+    "provider": "SEC",
+    "scope": "Chevron:93410",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093410.json"
+  },
+  "research_status": "PUBLIC_DISCLOSURE_INSUFFICIENT_FOR_STRICT_COMPARABILITY"
+}

@@ -115,10 +115,10 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
         content.append(panel('Como ler os drivers',html.Div([
             html.P('Brent e câmbio são contexto comum: não mudam ao filtrar empresas. Mix de produção e margem de refino respondem à seleção de empresas; o trimestre limita o histórico e define o recorte do mix.'),
             html.P('Na base real, Brent usa contexto Yahoo BZ=F se disponível e câmbio usa PTAX Bacen coletada. Mix e margem permanecem indisponíveis até mapeamento homologado.' if dataset=='REAL' else 'Mix de gás é participação no volume de produção em boe, não na receita. As séries aqui são inteiramente sintéticas, sem correlação calculada com o desempenho financeiro. Leases, goodwill e visão financeira não alteram esses drivers.'),
-            html.P('Fontes candidatas para a carga real (não são origem dos valores fictícios):'),
-            html.Div([html.A('Bacen · PTAX ↗',href=RULES['fx']['source_url'],target='_blank',rel='noopener noreferrer'),html.A('Shell · databooks e contexto ↗',href='https://www.shell.com/investors/results-and-reporting/data-supplements.html',target='_blank',rel='noopener noreferrer'),html.A('TotalEnergies · resultados trimestrais ↗',href=data.SOURCES['TotalEnergies'],target='_blank',rel='noopener noreferrer')],className='driver-sources'),
+            html.P('Fontes candidatas para a carga real (não são origem dos valores fictícios):') if dataset!='REAL' else None,
+            html.Div([html.A('Bacen · PTAX ↗',href=RULES['fx']['source_url'],target='_blank',rel='noopener noreferrer'),html.A('Shell · databooks e contexto ↗',href='https://www.shell.com/investors/results-and-reporting/data-supplements.html',target='_blank',rel='noopener noreferrer'),html.A('TotalEnergies · resultados trimestrais ↗',href=data.SOURCES['TotalEnergies'],target='_blank',rel='noopener noreferrer')],className='driver-sources') if dataset!='REAL' else None,
         ])))
-        content.append(html.Div([panel('Capital de giro e impostos',html.P('Shell: trading e capital de giro. TotalEnergies: separar fluxo operacional estatutário das medidas ajustadas que excluem capital de giro. Esses fatores exigem reconciliação e não são ajustes automáticos.')),panel('Investimento e perímetro',html.P('Separar CAPEX orgânico, M&A e alienações. Mudanças de perímetro devem gerar flags e versões.'))],className='two-col'))
+        content.append(panel('Capital de giro e impostos',html.P('Shell: trading e capital de giro. TotalEnergies: separar fluxo operacional estatutário das medidas ajustadas que excluem capital de giro. Esses fatores exigem reconciliação e não são ajustes automáticos.')))
     elif key=='quality' and dataset=='REAL':
         content.append(panel('Qualidade dos dados reais',table([{'empresa':r['company'],'KPI':k,'estado':v['status'],'motivo':v['reason']} for r in rows for k,v in r['quality'].items()])))
         from radar.ingestion.pipeline import batches
@@ -134,10 +134,12 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
         content.append(panel('Imposto operacional · OPEN-03 aprovada',html.Div([html.P(RULES['operating_tax']['basis']),html.Ol([html.Li(step['description']) for step in RULES['operating_tax']['hierarchy']]),html.P('A pipeline exige imposto operacional divulgado ou reconstruído e conciliado com o EBIT. Alíquotas fictícias são usadas somente na base demonstrativa.') ])))
         content.append(panel('ROCE · alternativa com NOPAT divulgado',html.Div([html.P(RULES['operating_tax']['nopat_alternative']['method']),html.P(RULES['operating_tax']['nopat_alternative']['constraint'])])))
         content.append(panel('Alavancagem · alternativa aprovada para TotalEnergies',html.Div([html.P(RULES['ebitda_policy']['disclosed_alternative']['method']),html.P(RULES['ebitda_policy']['disclosed_alternative']['limitation'])])))
+        content.append(panel('Shell · alternativas aprovadas, NÃO COMPARÁVEIS',html.Div([html.P(v) for k,v in RULES['shell_alternatives'].items() if k!='status'])))
+        content.append(panel('Chevron · alternativas aprovadas, NÃO COMPARÁVEIS',html.Div([html.P(RULES['chevron_roce_alternative']['method']),html.P(RULES['chevron_roce_alternative']['limitation']),html.P(RULES['ebitda_policy']['chevron_approximation']['method']),html.P(RULES['ebitda_policy']['chevron_approximation']['limitation']),html.P(RULES['debt_policy']['retained_finance_leases']['method']),html.P(RULES['debt_policy']['retained_finance_leases']['limitation']),html.P(RULES['chevron_distribution_alternative']['method']),html.P(RULES['chevron_distribution_alternative']['limitation'])])))
         content.append(panel('Rastreabilidade',html.Div('Documento → localização → fato bruto → ajustes → normalização → cálculo → métrica → visual',className='formula')))
         content.append(panel('Goodwill e híbridos · política aprovada',html.Div([html.P(RULES['capital_policy']['goodwill_sensitivity']),html.P(RULES['capital_policy']['hybrids_base']),html.P(RULES['capital_policy']['hybrids_sensitivity'])])))
         content.append(panel('CAPEX e perímetro operacional · decisões aprovadas',html.Div([html.P(RULES['capex_policy']['base']),html.P(RULES['capex_policy']['jv_sensitivity']),html.P(RULES['capital_policy']['operating_perimeter']),html.P(RULES['capital_policy']['cash_nonoperating'])])))
-        content.append(panel('Aprovação de dados · PoC',html.Div([html.P('Reconciliação: maior entre US$ 1 milhão, 0,1% do total de referência e arredondamento documentado. Variação superior a 30% gera alerta; base anterior zero exige revisão separada.'),html.P('Um responsável aprova mapeamentos, exceções e publicação. Valores não comparáveis preservam número e justificativa, com destaque visual, e são excluídos das séries regulares.') ])))
+        content.append(panel('Aprovação de dados · PoC',html.Div([html.P('Reconciliação: maior entre US$ 1 milhão, 0,1% do total de referência e arredondamento documentado. Variação superior a 30% gera alerta; base anterior zero exige revisão separada.'),html.P('Um responsável aprova mapeamentos, exceções e publicação. Valores não comparáveis preservam número e justificativa, com destaque visual, e aparecem nos gráficos com marcadores destacados e aviso na tooltip.') ])))
     elif key=='rules':
         content.append(panel('Regras financeiras versionadas',table([{'KPI':v['name'],'versão':RULES['version'],'fórmula':v['formula']} for v in RULES['metrics'].values()])))
         content.append(panel('Decisões metodológicas',table([{'ID':k,'decisão':v,'estado':RULES['operating_tax']['status'] if k=='OPEN-03' else RULES['fx']['status'] if k=='OPEN-02' else RULES['capital_policy']['status'] if k=='OPEN-05' else RULES['delivery']['status'] if k=='OPEN-01' else RULES['deployment']['performance_status'] if k=='OPEN-04' else 'PENDENTE'} for k,v in [('OPEN-01','06/10/2026 às 10h (São Paulo) · PoC em produção na VPS'),('OPEN-02','Fonte oficial de câmbio'),('OPEN-03','Hierarquia de imposto operacional'),('OPEN-04','Ubuntu última LTS · sem metas de desempenho na PoC'),('OPEN-05','Goodwill e híbridos'),('OPEN-06','Cores pendentes; seleção final de empresas ainda em aberto')]])))
@@ -158,6 +160,11 @@ def metric_quality(row, metric, view='standard'):
     return row.get(key, {}).get(metric, {})
 
 
+def comparability_notice(title, content, class_name='non-comparable'):
+    return html.Details([html.Summary([html.Strong(title),html.Span(' — ver detalhes',className='notice-expand-hint')]),content],
+                        className=class_name+' collapsible-notice',open=False)
+
+
 def metric_cell(row, metric, view):
     quality = metric_quality(row, metric, view)
     non_comparable = quality.get('status') == 'NAO_COMPARAVEL'
@@ -166,8 +173,7 @@ def metric_cell(row, metric, view):
     return html.Div([
         html.Span(RULES['metrics'][metric]['name']),
         html.Strong(fmt(value, suffix)),
-        html.Div([html.Strong('⚠ NÃO COMPARÁVEL'), html.Span(quality['reason'])],
-                 className='comparability-warning') if non_comparable else None,
+        comparability_notice('⚠ NÃO COMPARÁVEL',html.Span(quality['reason']),'comparability-warning') if non_comparable else None,
     ], className='metric-row non-comparable' if non_comparable else 'metric-row',
        title=RULES['metrics'][metric]['formula']+' · '+RULES['metrics'][metric]['note'])
 
@@ -183,7 +189,7 @@ def comparison(rows,view):
 
 
 def cash_table(rows):
-    records, flagged = [], []
+    records, flagged, notices = [], [], []
     dependencies = {'FCO':['cfo'], 'CAPEX':['cfo','capex'], 'FCL':['cfo','capex'],
                     'distribuições':['cfo','distribution'], 'caixa residual':['cfo','capex','distribution']}
     for index, row in enumerate(rows):
@@ -196,14 +202,29 @@ def cash_table(rows):
             reasons = [metric_quality(row,m)['reason'] for m in metrics
                        if metric_quality(row,m).get('status') == 'NAO_COMPARAVEL']
             if reasons:
-                record[key] += ' · ⚠ NÃO COMPARÁVEL: ' + '; '.join(dict.fromkeys(reasons))
+                reason='; '.join(dict.fromkeys(reasons))
+                if len(reason)>240:
+                    record[key] += ' · ⚠ NÃO COMPARÁVEL — detalhes abaixo'
+                    notices.append(html.Li(row['company']+' · '+key+': '+reason))
+                else:
+                    record[key] += ' · ⚠ NÃO COMPARÁVEL: '+reason
                 flagged.append((index,key))
         records.append(record)
-    return table(records,column_labels={'FCO':'FCO','CAPEX':'CAPEX','FCL':'FCL'},flagged_cells=flagged)
+    result=table(records,column_labels={'FCO':'FCO','CAPEX':'CAPEX','FCL':'FCL'},flagged_cells=flagged)
+    return html.Div([result,comparability_notice('⚠ NÃO COMPARÁVEL — Ponte de Caixa',html.Ul(notices))]) if notices else result
 
 def cash_chart(rows,colors):
     fig=go.Figure()
-    for label,key,color in [('FCO','cfo','#008542'),('FCL','fcf','#00a397'),('Caixa residual','residual','#b9c9bd')]: fig.add_bar(name=label,x=[r['company'] for r in rows],y=[r[key]/1000 if r[key] is not None and not any(metric_quality(r,m).get('status') == 'NAO_COMPARAVEL' for m in {'cfo':['cfo'],'fcf':['cfo','capex'],'residual':['cfo','capex','distribution']}[key]) else None for r in rows],marker_color=color,marker_cornerradius=4,hovertemplate='%{x}<br>%{y:.2f} US$ bi<extra>'+label+'</extra>')
+    for label,key,color in [('FCO','cfo','#008542'),('FCL','fcf','#00a397'),('Caixa residual','residual','#b9c9bd')]:
+        flags=[]; details=[]
+        for row in rows:
+            qualities=[metric_quality(row,m) for m in {'cfo':['cfo'],'fcf':['cfo','capex'],'residual':['cfo','capex','distribution']}[key]]
+            reasons=[q['reason'] for q in qualities if q.get('status')=='NAO_COMPARAVEL']
+            flags.append(bool(reasons))
+            details.append('NÃO-COMPARÁVEL' if reasons else '')
+        fig.add_bar(name=label,x=[r['company'] for r in rows],y=[r[key]/1000 if r[key] is not None else None for r in rows],
+                    marker_color=color,marker_pattern_shape=['/' if f else '' for f in flags],marker_cornerradius=4,customdata=details,
+                    hovertemplate='%{x}<br>%{y:.2f} US$ bi<br>%{customdata}<extra>'+label+'</extra>')
     fig.update_layout(barmode='group',bargap=.35); return graph(fig)
 
 @app.callback(Output('metric-chart','children'),Input('metric','value'),Input('companies','value'),Input('period','value'),Input('view','value'),Input('sensitivities','value'),Input('dataset','value'))
@@ -211,28 +232,30 @@ def metric_chart(metric,companies,period,view,sensitivities,dataset="DEMONSTRACA
     fig=go.Figure()
     warnings=[]
     for company in companies or []:
-        vals=[]; periods=[p for p in data.periods() if p<=period]
+        vals=[]; flags=[]; details=[]; periods=[p for p in data.periods() if p<=period]
         for p in periods:
             row=data.metrics(p,[company],'include_leases' in (sensitivities or []),exclude_goodwill='exclude_goodwill' in (sensitivities or []),dataset=dataset,include_jv='include_jv' in (sensitivities or []))[0]
             quality=metric_quality(row,metric,view)
             value=row['reported_roce'] if metric=='roce' and view=='reported' else row[metric]
             if quality.get('status') == 'NAO_COMPARAVEL':
                 warnings.append(html.Li(f"{company} · {p}: {fmt(value)} {RULES['metrics'][metric]['unit']} — {quality['reason']}"))
-                vals.append(None)
-            else:
-                vals.append(value)
-        fig.add_scatter(x=periods,y=vals,name=company,mode='lines+markers',connectgaps=False,line=dict(color=data.COMPANIES[company][0],width=3),marker=dict(size=7))
-    return panel(RULES['metrics'][metric]['name'],html.Div([graph(fig),html.Div([html.Strong('⚠ NÃO COMPARÁVEL — pontos excluídos da série'),html.Ul(warnings)],className='non-comparable') if warnings else None]),RULES['metrics'][metric]['formula']+' · '+RULES['metrics'][metric]['unit'])
+            vals.append(value)
+            flagged=quality.get('status')=='NAO_COMPARAVEL'
+            flags.append(flagged)
+            details.append('NÃO-COMPARÁVEL' if flagged else '')
+        fig.add_scatter(x=periods,y=vals,name=company,mode='lines+markers',connectgaps=False,line=dict(color=data.COMPANIES[company][0],width=3),marker=dict(size=[11 if f else 7 for f in flags],symbol=['diamond-open' if f else 'circle' for f in flags],line=dict(width=2)),customdata=details,hovertemplate='%{x}<br>%{y:.2f} '+RULES['metrics'][metric]['unit']+'<br>%{customdata}<extra>%{fullData.name}</extra>')
+    return panel(RULES['metrics'][metric]['name'],html.Div([graph(fig),comparability_notice('⚠ NÃO COMPARÁVEL — pontos destacados com losango aberto',html.Ul(warnings)) if warnings else None]),RULES['metrics'][metric]['formula']+' · '+RULES['metrics'][metric]['unit'])
 
 @app.callback(Output('driver-charts','children'),Input('driver-kpi','value'),Input('companies','value'),Input('period','value'),Input('view','value'),Input('sensitivities','value'),Input('dataset','value'))
 def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
     companies=companies or []
-    figures=(real_figures if dataset=="REAL" else driver_figures)(period,companies,{c:v[0] for c,v in data.COMPANIES.items()})
+    from radar.web.drivers import financial_periods
+    periods=financial_periods(period,companies,dataset)
+    figures=(real_figures if dataset=="REAL" else driver_figures)(period,companies,{c:v[0] for c,v in data.COMPANIES.items()},allowed_periods=periods)
     warnings=[]
     if metric and metric != 'none':
-        periods=[p for p in data.periods() if p<=period]
         for company in companies:
-            values=[]
+            values=[]; flags=[]; details=[]
             for p in periods:
                 row=data.metrics(p,[company],'include_leases' in (sensitivities or []),
                                  exclude_goodwill='exclude_goodwill' in (sensitivities or []),dataset=dataset,include_jv='include_jv' in (sensitivities or []))[0]
@@ -240,13 +263,15 @@ def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRAC
                 value=row['reported_roce'] if metric=='roce' and view=='reported' else row[metric]
                 if quality.get('status')=='NAO_COMPARAVEL':
                     warnings.append(html.Li(f"{company} · {p}: {fmt(value)} {RULES['metrics'][metric]['unit']} — {quality['reason']}"))
-                    value=None
+                flagged=quality.get('status')=='NAO_COMPARAVEL'
+                flags.append(flagged)
+                details.append('NÃO-COMPARÁVEL' if flagged else '')
                 values.append(value)
             for key in ('brent','fx','margin'):
                 figures[key].add_scatter(x=periods,y=values,name=company+' · '+RULES['metrics'][metric]['name'],
                     yaxis='y2',mode='lines+markers',connectgaps=False,
-                    line=dict(color=data.COMPANIES[company][0],dash='dash',width=2),marker=dict(symbol='diamond',size=6),
-                    hovertemplate='%{x}<br>%{y:.2f} '+RULES['metrics'][metric]['unit']+'<extra>%{fullData.name}</extra>')
+                    line=dict(color=data.COMPANIES[company][0],dash='dash',width=2),marker=dict(symbol=['diamond-open' if f else 'diamond' for f in flags],size=[11 if f else 6 for f in flags],line=dict(width=2)),customdata=details,
+                    hovertemplate='%{x}<br>%{y:.2f} '+RULES['metrics'][metric]['unit']+'<br>%{customdata}<extra>%{fullData.name}</extra>')
                 figures[key].update_layout(yaxis2=dict(title=RULES['metrics'][metric]['name']+' · '+RULES['metrics'][metric]['unit'],
                     overlaying='y',side='right',showgrid=False,automargin=True,nticks=6,zeroline=False))
     cards=[]
@@ -259,12 +284,14 @@ def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRAC
             title={'brent':'Brent futuro · Yahoo Finance','fx':'Câmbio · PTAX Bacen','gas':'Mix de produção · indisponível','margin':'Margem de refino · indisponível'}[key]
             subtitle={'brent':'US$/barril · média dos fechamentos diários disponíveis de BZ=F; não equivale ao Brent físico','fx':'R$/US$ · média trimestral da PTAX venda diária de fechamento','gas':'Nenhuma série real homologada','margin':'Nenhuma série real homologada'}[key]
         chart=graph(figures[key],height=560 if metric!='none' and key!='gas' else 460)
-        if metric!='none' and key!='gas':
-            chart.figure.update_layout(margin=dict(l=85,r=100,t=30,b=160),
-                                       legend=dict(orientation='h',y=-.3,x=0,font=dict(size=10)))
+        chart.figure.update_layout(margin=dict(l=75,r=90,t=30,b=110),
+                                   legend=dict(orientation='h',y=-.2,x=0,font=dict(size=11)))
+        if key!='gas':
+                chart.figure.update_xaxes(type='category',tickmode='array',tickvals=periods,
+                                     ticktext=[p[:4]+' T'+p[-1] for p in periods],tickangle=0,automargin=True)
         cards.append(panel(title,chart,subtitle))
     return [html.Div(cards,className='driver-grid'),
-            html.Div([html.Strong('⚠ NÃO COMPARÁVEL — pontos excluídos da sobreposição'),html.Ul(warnings)],className='non-comparable') if warnings else None]
+            comparability_notice('⚠ NÃO COMPARÁVEL — pontos destacados com losango aberto',html.Ul(warnings)) if warnings else None]
 
 @app.callback(Output('period','options'),Input('location','pathname'),Input('period-revision','data'))
 def refresh_period_options(path,revision):

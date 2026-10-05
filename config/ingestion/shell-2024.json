@@ -1,0 +1,3884 @@
+{
+  "schema_version": 1,
+  "company": "Shell",
+  "accounting_standard": "IFRS",
+  "mapping_version": "shell-2024-cash-balances-normalized-ebit-v2",
+  "mapping_note": "Fluxos trimestrais divulgados em USD milhões. FCO estatutário com capital de giro; distribuições de caixa aos acionistas Shell excluem NCI e ações em trust. CAPEX estatutário contém inorgânicos não segregados: NÃO COMPARÁVEL. Dívida financeira exclui leases na composição RADAR; caixa integral como aproximação PoC. EBITDA/imposto não presumidos. EBIT e DDA reconstruídos na base de custo histórico, excluindo mesmos itens identificados; ponte estatutária independente. Imposto operacional permanece ausente, sem NOPAT alternativo.",
+  "documents": [
+    {
+      "id": "quarterly",
+      "format": "xlsx",
+      "filename": "quarterly.xlsx",
+      "url": "https://www.shell.com/investors/results-and-reporting/data-supplements/_jcr_content/root/main/section/text_copy.multi.stream/1785372068656/4f3d5f6b9e47607df8218eabce15377ee3272b98/q2-2026-quarterly-databook.xlsx",
+      "expected_hash": "af37add3d5a988b5c106596820a07e39fbc4bc2b6c1fb1b1224dfa1ed7e4980f",
+      "period": "MULTIPERIOD"
+    },
+    {
+      "id": "annual",
+      "format": "xlsx",
+      "filename": "annual.xlsx",
+      "url": "https://www.shell.com/investors/results-and-reporting/data-supplements/_jcr_content/root/main/section/text_copy.multi.stream/1775009511288/4a4691b2760caa375e559d3a778a57eea2014695/shell-annual-databook-25.xlsx",
+      "expected_hash": "01e98fb0e792e803a066969554f742f2175471b59afbc36bf90ab6353672897a",
+      "period": "MULTIPERIOD"
+    }
+  ],
+  "observations": [
+    {
+      "id": "cfo-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V27",
+        "guards": [
+          {
+            "cell": "B27",
+            "equals": "Cash flow from operating activities"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "cfo",
+      "concept": "STATUTORY_CFO"
+    },
+    {
+      "id": "capex-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "REPORTED_INVESTMENTS",
+      "policy_note": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "dividends_paid-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V49",
+        "guards": [
+          {
+            "cell": "B49",
+            "equals": "- Shell plc shareholders1"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "buybacks-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V51",
+        "guards": [
+          {
+            "cell": "B51",
+            "equals": "Repurchases of shares2"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "financial_debt_short-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Current debt"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Non-current debt"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V65",
+        "guards": [
+          {
+            "cell": "B65",
+            "equals": "Of which lease liabilities"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES"
+    },
+    {
+      "id": "cash-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "cash_nonoperating-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Caixa integral como aproximação PoC aprovada, não separação divulgada de caixa operacional."
+    },
+    {
+      "id": "equity_total-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "V70",
+        "guards": [
+          {
+            "cell": "B70",
+            "equals": "Add: Total equity"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "cfo-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W27",
+        "guards": [
+          {
+            "cell": "B27",
+            "equals": "Cash flow from operating activities"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "cfo",
+      "concept": "STATUTORY_CFO"
+    },
+    {
+      "id": "capex-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "REPORTED_INVESTMENTS",
+      "policy_note": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "dividends_paid-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W49",
+        "guards": [
+          {
+            "cell": "B49",
+            "equals": "- Shell plc shareholders1"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "buybacks-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W51",
+        "guards": [
+          {
+            "cell": "B51",
+            "equals": "Repurchases of shares2"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "financial_debt_short-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Current debt"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Non-current debt"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W65",
+        "guards": [
+          {
+            "cell": "B65",
+            "equals": "Of which lease liabilities"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES"
+    },
+    {
+      "id": "cash-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "cash_nonoperating-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Caixa integral como aproximação PoC aprovada, não separação divulgada de caixa operacional."
+    },
+    {
+      "id": "equity_total-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "W70",
+        "guards": [
+          {
+            "cell": "B70",
+            "equals": "Add: Total equity"
+          },
+          {
+            "cell": "W6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "cfo-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X27",
+        "guards": [
+          {
+            "cell": "B27",
+            "equals": "Cash flow from operating activities"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "cfo",
+      "concept": "STATUTORY_CFO"
+    },
+    {
+      "id": "capex-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "REPORTED_INVESTMENTS",
+      "policy_note": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "dividends_paid-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X49",
+        "guards": [
+          {
+            "cell": "B49",
+            "equals": "- Shell plc shareholders1"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "buybacks-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X51",
+        "guards": [
+          {
+            "cell": "B51",
+            "equals": "Repurchases of shares2"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "financial_debt_short-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Current debt"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Non-current debt"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X65",
+        "guards": [
+          {
+            "cell": "B65",
+            "equals": "Of which lease liabilities"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES"
+    },
+    {
+      "id": "cash-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "cash_nonoperating-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Caixa integral como aproximação PoC aprovada, não separação divulgada de caixa operacional."
+    },
+    {
+      "id": "equity_total-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X70",
+        "guards": [
+          {
+            "cell": "B70",
+            "equals": "Add: Total equity"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "cfo-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y27",
+        "guards": [
+          {
+            "cell": "B27",
+            "equals": "Cash flow from operating activities"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "cfo",
+      "concept": "STATUTORY_CFO"
+    },
+    {
+      "id": "capex-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "REPORTED_INVESTMENTS",
+      "policy_note": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL.",
+      "comparable": false,
+      "comparability_reason": "CAPEX da DFC inclui aquisições e reestruturação; exclusão orgânica exata por categoria ainda não conciliada. Investimentos em JV e títulos excluídos da base; NÃO COMPARÁVEL."
+    },
+    {
+      "id": "dividends_paid-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y49",
+        "guards": [
+          {
+            "cell": "B49",
+            "equals": "- Shell plc shareholders1"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "dividends_paid",
+      "concept": "DIVIDENDS_PAID"
+    },
+    {
+      "id": "buybacks-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y51",
+        "guards": [
+          {
+            "cell": "B51",
+            "equals": "Repurchases of shares2"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "buybacks",
+      "concept": "SETTLED_BUYBACKS"
+    },
+    {
+      "id": "financial_debt_short-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Current debt"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Non-current debt"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y65",
+        "guards": [
+          {
+            "cell": "B65",
+            "equals": "Of which lease liabilities"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES"
+    },
+    {
+      "id": "cash-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "cash_nonoperating-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "policy_note": "Caixa integral como aproximação PoC aprovada, não separação divulgada de caixa operacional."
+    },
+    {
+      "id": "equity_total-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "Y70",
+        "guards": [
+          {
+            "cell": "B70",
+            "equals": "Add: Total equity"
+          },
+          {
+            "cell": "Y6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "financial_debt_short-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Current debt"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "includes_leases": true
+    },
+    {
+      "id": "financial_debt_long-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S63",
+        "guards": [
+          {
+            "cell": "B63",
+            "equals": "Non-current debt"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "includes_leases": true
+    },
+    {
+      "id": "leases-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S65",
+        "guards": [
+          {
+            "cell": "B65",
+            "equals": "Of which lease liabilities"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES"
+    },
+    {
+      "id": "cash-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS"
+    },
+    {
+      "id": "cash_nonoperating-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S68",
+        "guards": [
+          {
+            "cell": "B68",
+            "equals": "Less: Cash and cash equivalents"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH"
+    },
+    {
+      "id": "equity_total-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "S70",
+        "guards": [
+          {
+            "cell": "B70",
+            "equals": "Add: Total equity"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI"
+    },
+    {
+      "id": "annual-cfo",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Z27",
+        "guards": [
+          {
+            "cell": "B27",
+            "equals": "Cash flow from operating activities"
+          },
+          {
+            "cell": "Z7",
+            "equals": 2024
+          }
+        ]
+      }
+    },
+    {
+      "id": "annual-capex",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Z29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "Z7",
+            "equals": 2024
+          }
+        ]
+      }
+    },
+    {
+      "id": "annual-dividends_paid",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Z49",
+        "guards": [
+          {
+            "cell": "B49",
+            "equals": "- Shell plc shareholders1"
+          },
+          {
+            "cell": "Z7",
+            "equals": 2024
+          }
+        ]
+      }
+    },
+    {
+      "id": "annual-buybacks",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Z51",
+        "guards": [
+          {
+            "cell": "B51",
+            "equals": "Repurchases of shares2"
+          },
+          {
+            "cell": "Z7",
+            "equals": 2024
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebit-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "RECONSTRUCTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Earnings on a CCS basis excluding identified items"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "ebit_adjusted",
+      "concept": "ADJUSTED_EBIT",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST",
+      "policy_note": "EBIT normalizado: earnings CCS + imposto CCS + juros ajustados − receita de juros − ajuste CCS de investidas + ajuste CCS de compras. Voltar ao custo histórico; excluir itens identificados divulgados, manter exploração ordinária. Não usar EBITDA divulgado como substituto.",
+      "adjustments": [
+        {
+          "observation": "taxccs-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q1",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q1",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ]
+    },
+    {
+      "id": "taxccs-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V61",
+        "guards": [
+          {
+            "cell": "B61",
+            "equals": "Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interest-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V60",
+        "guards": [
+          {
+            "cell": "B60",
+            "equals": "Interest expense "
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interestincome-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V54",
+        "guards": [
+          {
+            "cell": "B54",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccsjv-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Share of profit of joint ventures and associates"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccspurchases-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Purchases"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V59",
+        "guards": [
+          {
+            "cell": "B59",
+            "equals": "Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "dda_adjusted",
+      "concept": "ADJUSTED_DDA",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST"
+    },
+    {
+      "id": "pbt-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V9",
+        "guards": [
+          {
+            "cell": "B9",
+            "equals": "Income before taxation for the period"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterest-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V23",
+        "guards": [
+          {
+            "cell": "B23",
+            "equals": "Interest expense"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterestincome-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V15",
+        "guards": [
+          {
+            "cell": "B15",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialrevenue-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V38",
+        "guards": [
+          {
+            "cell": "B38",
+            "equals": "Revenue: Fair value accounting of commodity derivatives and certain gas contracts"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialjv-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V39",
+        "guards": [
+          {
+            "cell": "B39",
+            "equals": "Share of profit/(loss) of joint ventures and associates: Impairments and other"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialgains-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V40",
+        "guards": [
+          {
+            "cell": "B40",
+            "equals": "Interest and other income: Gains /(losses) on divestment and other"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialpurchases-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V41",
+        "guards": [
+          {
+            "cell": "B41",
+            "equals": "Purchases: Other"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialopex-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V42",
+        "guards": [
+          {
+            "cell": "B42",
+            "equals": "Operating expenses: Redundancy and restructuring expenses and other"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "impairments-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "V43",
+        "guards": [
+          {
+            "cell": "B43",
+            "equals": "Depreciation, depletion and amortisation: Impairments"
+          },
+          {
+            "cell": "V6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statdda-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "V12",
+        "guards": [
+          {
+            "cell": "B12",
+            "equals": "- Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "V7",
+            "equals": "Q1 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebit-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "RECONSTRUCTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Earnings on a CCS basis excluding identified items"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "ebit_adjusted",
+      "concept": "ADJUSTED_EBIT",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST",
+      "policy_note": "EBIT normalizado: earnings CCS + imposto CCS + juros ajustados − receita de juros − ajuste CCS de investidas + ajuste CCS de compras. Voltar ao custo histórico; excluir itens identificados divulgados, manter exploração ordinária. Não usar EBITDA divulgado como substituto.",
+      "adjustments": [
+        {
+          "observation": "taxccs-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q2",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q2",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ]
+    },
+    {
+      "id": "taxccs-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W61",
+        "guards": [
+          {
+            "cell": "B61",
+            "equals": "Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interest-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W60",
+        "guards": [
+          {
+            "cell": "B60",
+            "equals": "Interest expense "
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interestincome-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W54",
+        "guards": [
+          {
+            "cell": "B54",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccsjv-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Share of profit of joint ventures and associates"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccspurchases-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Purchases"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W59",
+        "guards": [
+          {
+            "cell": "B59",
+            "equals": "Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "dda_adjusted",
+      "concept": "ADJUSTED_DDA",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST"
+    },
+    {
+      "id": "pbt-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W9",
+        "guards": [
+          {
+            "cell": "B9",
+            "equals": "Income before taxation for the period"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterest-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W23",
+        "guards": [
+          {
+            "cell": "B23",
+            "equals": "Interest expense"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterestincome-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W15",
+        "guards": [
+          {
+            "cell": "B15",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialrevenue-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W38",
+        "guards": [
+          {
+            "cell": "B38",
+            "equals": "Revenue: Fair value accounting of commodity derivatives and certain gas contracts"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialjv-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W39",
+        "guards": [
+          {
+            "cell": "B39",
+            "equals": "Share of profit/(loss) of joint ventures and associates: Impairments and other"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialgains-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W40",
+        "guards": [
+          {
+            "cell": "B40",
+            "equals": "Interest and other income: Gains /(losses) on divestment and other"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialpurchases-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W41",
+        "guards": [
+          {
+            "cell": "B41",
+            "equals": "Purchases: Other"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialopex-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W42",
+        "guards": [
+          {
+            "cell": "B42",
+            "equals": "Operating expenses: Redundancy and restructuring expenses and other"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "impairments-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "W43",
+        "guards": [
+          {
+            "cell": "B43",
+            "equals": "Depreciation, depletion and amortisation: Impairments"
+          },
+          {
+            "cell": "W6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statdda-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "W12",
+        "guards": [
+          {
+            "cell": "B12",
+            "equals": "- Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "W7",
+            "equals": "Q2 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebit-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "RECONSTRUCTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Earnings on a CCS basis excluding identified items"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "ebit_adjusted",
+      "concept": "ADJUSTED_EBIT",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST",
+      "policy_note": "EBIT normalizado: earnings CCS + imposto CCS + juros ajustados − receita de juros − ajuste CCS de investidas + ajuste CCS de compras. Voltar ao custo histórico; excluir itens identificados divulgados, manter exploração ordinária. Não usar EBITDA divulgado como substituto.",
+      "adjustments": [
+        {
+          "observation": "taxccs-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q3",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q3",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ]
+    },
+    {
+      "id": "taxccs-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X61",
+        "guards": [
+          {
+            "cell": "B61",
+            "equals": "Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interest-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X60",
+        "guards": [
+          {
+            "cell": "B60",
+            "equals": "Interest expense "
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interestincome-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X54",
+        "guards": [
+          {
+            "cell": "B54",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccsjv-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Share of profit of joint ventures and associates"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccspurchases-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Purchases"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X59",
+        "guards": [
+          {
+            "cell": "B59",
+            "equals": "Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "dda_adjusted",
+      "concept": "ADJUSTED_DDA",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST"
+    },
+    {
+      "id": "pbt-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X9",
+        "guards": [
+          {
+            "cell": "B9",
+            "equals": "Income before taxation for the period"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterest-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X23",
+        "guards": [
+          {
+            "cell": "B23",
+            "equals": "Interest expense"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterestincome-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X15",
+        "guards": [
+          {
+            "cell": "B15",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialrevenue-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X38",
+        "guards": [
+          {
+            "cell": "B38",
+            "equals": "Revenue: Fair value accounting of commodity derivatives and certain gas contracts"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialjv-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X39",
+        "guards": [
+          {
+            "cell": "B39",
+            "equals": "Share of profit/(loss) of joint ventures and associates: Impairments and other"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialgains-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X40",
+        "guards": [
+          {
+            "cell": "B40",
+            "equals": "Interest and other income: Gains /(losses) on divestment and other"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialpurchases-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X41",
+        "guards": [
+          {
+            "cell": "B41",
+            "equals": "Purchases: Other"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialopex-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X42",
+        "guards": [
+          {
+            "cell": "B42",
+            "equals": "Operating expenses: Redundancy and restructuring expenses and other"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "impairments-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "X43",
+        "guards": [
+          {
+            "cell": "B43",
+            "equals": "Depreciation, depletion and amortisation: Impairments"
+          },
+          {
+            "cell": "X6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statdda-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X12",
+        "guards": [
+          {
+            "cell": "B12",
+            "equals": "- Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ebit-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "RECONSTRUCTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y62",
+        "guards": [
+          {
+            "cell": "B62",
+            "equals": "Earnings on a CCS basis excluding identified items"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "ebit_adjusted",
+      "concept": "ADJUSTED_EBIT",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST",
+      "policy_note": "EBIT normalizado: earnings CCS + imposto CCS + juros ajustados − receita de juros − ajuste CCS de investidas + ajuste CCS de compras. Voltar ao custo histórico; excluir itens identificados divulgados, manter exploração ordinária. Não usar EBITDA divulgado como substituto.",
+      "adjustments": [
+        {
+          "observation": "taxccs-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q4",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q4",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ]
+    },
+    {
+      "id": "taxccs-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y61",
+        "guards": [
+          {
+            "cell": "B61",
+            "equals": "Taxation charge / (credit) (CCS basis)"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interest-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y60",
+        "guards": [
+          {
+            "cell": "B60",
+            "equals": "Interest expense "
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "interestincome-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y54",
+        "guards": [
+          {
+            "cell": "B54",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccsjv-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y30",
+        "guards": [
+          {
+            "cell": "B30",
+            "equals": "Share of profit of joint ventures and associates"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccspurchases-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y31",
+        "guards": [
+          {
+            "cell": "B31",
+            "equals": "Purchases"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y59",
+        "guards": [
+          {
+            "cell": "B59",
+            "equals": "Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      },
+      "field": "dda_adjusted",
+      "concept": "ADJUSTED_DDA",
+      "adjustment_set": "SHELL_IDENTIFIED_ITEMS_HISTORICAL_COST"
+    },
+    {
+      "id": "pbt-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y9",
+        "guards": [
+          {
+            "cell": "B9",
+            "equals": "Income before taxation for the period"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterest-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y23",
+        "guards": [
+          {
+            "cell": "B23",
+            "equals": "Interest expense"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statinterestincome-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y15",
+        "guards": [
+          {
+            "cell": "B15",
+            "equals": "Interest income"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialrevenue-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y38",
+        "guards": [
+          {
+            "cell": "B38",
+            "equals": "Revenue: Fair value accounting of commodity derivatives and certain gas contracts"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialjv-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y39",
+        "guards": [
+          {
+            "cell": "B39",
+            "equals": "Share of profit/(loss) of joint ventures and associates: Impairments and other"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialgains-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y40",
+        "guards": [
+          {
+            "cell": "B40",
+            "equals": "Interest and other income: Gains /(losses) on divestment and other"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialpurchases-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y41",
+        "guards": [
+          {
+            "cell": "B41",
+            "equals": "Purchases: Other"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialopex-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y42",
+        "guards": [
+          {
+            "cell": "B42",
+            "equals": "Operating expenses: Redundancy and restructuring expenses and other"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "impairments-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Shell",
+        "cell": "Y43",
+        "guards": [
+          {
+            "cell": "B43",
+            "equals": "Depreciation, depletion and amortisation: Impairments"
+          },
+          {
+            "cell": "Y6",
+            "equals": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "statdda-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "Y12",
+        "guards": [
+          {
+            "cell": "B12",
+            "equals": "- Depreciation, depletion and amortisation"
+          },
+          {
+            "cell": "Y7",
+            "equals": "Q4 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "goodwill-2024Q1",
+      "period": "2024Q1",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Balance Sheet",
+        "cell": "S10",
+        "guards": [
+          {
+            "cell": "B10",
+            "equals": "Goodwill"
+          },
+          {
+            "cell": "S6",
+            "equals": "Q1 2024"
+          }
+        ]
+      },
+      "field": "goodwill",
+      "concept": "GOODWILL"
+    },
+    {
+      "id": "goodwill-2024Q2",
+      "period": "2024Q2",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Balance Sheet",
+        "cell": "T10",
+        "guards": [
+          {
+            "cell": "B10",
+            "equals": "Goodwill"
+          },
+          {
+            "cell": "T6",
+            "equals": "Q2 2024"
+          }
+        ]
+      },
+      "field": "goodwill",
+      "concept": "GOODWILL"
+    },
+    {
+      "id": "goodwill-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Balance Sheet",
+        "cell": "U10",
+        "guards": [
+          {
+            "cell": "B10",
+            "equals": "Goodwill"
+          },
+          {
+            "cell": "U6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "goodwill",
+      "concept": "GOODWILL"
+    },
+    {
+      "id": "goodwill-2024Q4",
+      "period": "2024Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Balance Sheet",
+        "cell": "V10",
+        "guards": [
+          {
+            "cell": "B10",
+            "equals": "Goodwill"
+          },
+          {
+            "cell": "V6",
+            "equals": "Q4 2024"
+          }
+        ]
+      },
+      "field": "goodwill",
+      "concept": "GOODWILL"
+    },
+    {
+      "id": "goodwill-2023Q4",
+      "period": "2023Q4",
+      "document": "quarterly",
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "Balance Sheet",
+        "cell": "Q10",
+        "guards": [
+          {
+            "cell": "B10",
+            "equals": "Goodwill"
+          },
+          {
+            "cell": "Q6",
+            "equals": "Q4 2023"
+          }
+        ]
+      },
+      "field": "goodwill",
+      "concept": "GOODWILL"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "cfo-quarters-annual",
+      "reference": "annual-cfo",
+      "terms": [
+        {
+          "observation": "cfo-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "cfo-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "cfo-2024Q1",
+        "cfo-2024Q2",
+        "cfo-2024Q3",
+        "cfo-2024Q4"
+      ],
+      "aggregation": "SUM_QUARTERS",
+      "reason": "Somar quatro trimestres divulgados e conciliar com anual publicado; diferença de arredondamento sem rateio."
+    },
+    {
+      "id": "capex-quarters-annual",
+      "reference": "annual-capex",
+      "terms": [
+        {
+          "observation": "capex-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "capex-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "capex-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "capex-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "capex-2024Q1",
+        "capex-2024Q2",
+        "capex-2024Q3",
+        "capex-2024Q4"
+      ],
+      "aggregation": "SUM_QUARTERS",
+      "reason": "Somar quatro trimestres divulgados e conciliar com anual publicado; diferença de arredondamento sem rateio."
+    },
+    {
+      "id": "dividends_paid-quarters-annual",
+      "reference": "annual-dividends_paid",
+      "terms": [
+        {
+          "observation": "dividends_paid-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "dividends_paid-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dividends_paid-2024Q1",
+        "dividends_paid-2024Q2",
+        "dividends_paid-2024Q3",
+        "dividends_paid-2024Q4"
+      ],
+      "aggregation": "SUM_QUARTERS",
+      "reason": "Somar quatro trimestres divulgados e conciliar com anual publicado; diferença de arredondamento sem rateio."
+    },
+    {
+      "id": "buybacks-quarters-annual",
+      "reference": "annual-buybacks",
+      "terms": [
+        {
+          "observation": "buybacks-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "buybacks-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "buybacks-2024Q1",
+        "buybacks-2024Q2",
+        "buybacks-2024Q3",
+        "buybacks-2024Q4"
+      ],
+      "aggregation": "SUM_QUARTERS",
+      "reason": "Somar quatro trimestres divulgados e conciliar com anual publicado; diferença de arredondamento sem rateio."
+    },
+    {
+      "id": "ebit-statutory-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "pbt-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterest-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterestincome-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialrevenue-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialjv-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialgains-2024Q1",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialpurchases-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "specialopex-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebit-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "taxccs-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q1",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q1",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q1",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ],
+      "applies_to": [
+        "ebit-2024Q1"
+      ],
+      "reason": "EBIT custo histórico reconciliado contra PBT estatutário, despesas/receitas financeiras e efeitos pré-imposto dos itens identificados."
+    },
+    {
+      "id": "dda-statutory-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "statdda-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q1",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "dda-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dda-2024Q1"
+      ],
+      "reason": "DDA ajustada = DDA estatutária menos impairment identificado na mesma linha da DRE."
+    },
+    {
+      "id": "ebit-statutory-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "pbt-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterest-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterestincome-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialrevenue-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialjv-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialgains-2024Q2",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialpurchases-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "specialopex-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebit-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "taxccs-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q2",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q2",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q2",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ],
+      "applies_to": [
+        "ebit-2024Q2"
+      ],
+      "reason": "EBIT custo histórico reconciliado contra PBT estatutário, despesas/receitas financeiras e efeitos pré-imposto dos itens identificados."
+    },
+    {
+      "id": "dda-statutory-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "statdda-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q2",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "dda-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dda-2024Q2"
+      ],
+      "reason": "DDA ajustada = DDA estatutária menos impairment identificado na mesma linha da DRE."
+    },
+    {
+      "id": "ebit-statutory-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "pbt-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterest-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterestincome-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialrevenue-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialjv-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialgains-2024Q3",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialpurchases-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "specialopex-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebit-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "taxccs-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q3",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q3",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q3",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ],
+      "applies_to": [
+        "ebit-2024Q3"
+      ],
+      "reason": "EBIT custo histórico reconciliado contra PBT estatutário, despesas/receitas financeiras e efeitos pré-imposto dos itens identificados."
+    },
+    {
+      "id": "dda-statutory-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "statdda-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q3",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "dda-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dda-2024Q3"
+      ],
+      "reason": "DDA ajustada = DDA estatutária menos impairment identificado na mesma linha da DRE."
+    },
+    {
+      "id": "ebit-statutory-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "pbt-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterest-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "statinterestincome-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialrevenue-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialjv-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialgains-2024Q4",
+          "coefficient": -1
+        },
+        {
+          "observation": "specialpurchases-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "specialopex-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "ebit-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "taxccs-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interest-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "interestincome-2024Q4",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccsjv-2024Q4",
+          "coefficient": -1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        },
+        {
+          "observation": "ccspurchases-2024Q4",
+          "coefficient": 1,
+          "reason": "Ponte para EBIT sem juros e em custo histórico com ajustes identificados."
+        }
+      ],
+      "applies_to": [
+        "ebit-2024Q4"
+      ],
+      "reason": "EBIT custo histórico reconciliado contra PBT estatutário, despesas/receitas financeiras e efeitos pré-imposto dos itens identificados."
+    },
+    {
+      "id": "dda-statutory-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "statdda-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "impairments-2024Q4",
+          "coefficient": -1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "dda-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "dda-2024Q4"
+      ],
+      "reason": "DDA ajustada = DDA estatutária menos impairment identificado na mesma linha da DRE."
+    }
+  ]
+}

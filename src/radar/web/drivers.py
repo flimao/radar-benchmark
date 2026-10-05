@@ -5,9 +5,20 @@ import os
 import plotly.graph_objects as go
 
 
-def figures(period, companies, colors):
+def financial_periods(period, companies, dataset):
+    from radar import data
+    frame=data.facts(dataset)
+    if frame.empty or not companies:return []
+    frame=frame[frame.company.isin(companies) & (frame.period<=period)]
+    flows=[k for k in ('cfo','capex','ebitda','nopat_disclosed','ebit_adjusted') if k in frame]
+    frame=frame[frame[flows].notna().any(axis=1)] if flows else frame.iloc[:0]
+    if frame.empty:return []
+    return [p for p in data.periods() if frame.period.min()<=p<=frame.period.max()]
+
+
+def figures(period, companies, colors, allowed_periods=None):
     dataset=json.loads((Path(os.environ.get('RADAR_PROJECT_DIR','.'))/'config/drivers-demo.json').read_text())
-    periods=[p for p in dataset['periods'] if p<=period]
+    periods=[p for p in dataset['periods'] if p<=period and (allowed_periods is None or p in allowed_periods)]
     indices=[dataset['periods'].index(p) for p in periods]
     result={}
     for key, series, title, color in [
@@ -42,7 +53,7 @@ def figures(period, companies, colors):
     return result
 
 
-def real_figures(period, companies, colors):
+def real_figures(period, companies, colors, allowed_periods=None):
     """Real context only; missing series stay empty, never reuse demo context."""
     from decimal import Decimal
     from radar.ingestion.pipeline import snapshots, period_dates
@@ -51,7 +62,7 @@ def real_figures(period, companies, colors):
     result={key:go.Figure() for key in ('brent','fx','gas','margin')}
     for key,symbol,unit in [('brent','BZ=F','US$/barril'),('fx',None,'R$/US$')]:
         periods=[];values=[]
-        for p in data.periods():
+        for p in (data.periods() if allowed_periods is None else allowed_periods):
             if p>period:continue
             start,end=period_dates(p)
             eligible=[s for s in source if (s['provider']=='Yahoo' and s.get('symbol')==symbol) or (key=='fx' and s['provider']=='Bacen')]

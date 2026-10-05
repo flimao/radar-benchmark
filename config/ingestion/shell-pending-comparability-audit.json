@@ -1,0 +1,225 @@
+{
+  "company": "Shell",
+  "status": "CONCLUDED_INSUFFICIENT_PUBLIC_DISCLOSURE_UNDER_APPROVED_STRICT_RULES",
+  "documents": [
+    {
+      "id": "q2-2024",
+      "url": "https://www.shell.com/content/experience-fragments/shell/corporate/quarterly/master/_jcr_content/root/tabs/tab/text_copy_copy_94812/links/item1.stream/1722473589922/71413c6e047d46eccf36956e045d2a6b01770bca/q2-2024-qra-document.pdf",
+      "hash": "6edf0f9b832d9dc36d0cd3810f15755b6479ff8489583977ca5b81f14cee9f8a",
+      "filename": "q2-2024.pdf"
+    },
+    {
+      "id": "q4-2024",
+      "url": "https://www.shell.com/investors/investor-presentations/_jcr_content/root/main/section_1529014047_c_540020954/tabs/tab/text_copy_copy_94812_1071018427/links/item1.stream/1738202255123/061da40ba997fdbb6805333af18fdf3c796a0d98/q4-2024-qra-document.pdf",
+      "hash": "482f31e6f7eb27ad86b6979dcd7b49074dd9eb956d3fa95f6519f2e0890c5806",
+      "filename": "q4-2024.pdf"
+    },
+    {
+      "id": "q2-2025",
+      "url": "https://www.shell.com/content/experience-fragments/shell/corporate/quarterly/master/_jcr_content/root/tabs/tab_copy/text_copy_copy_94812/links/item1.stream/1753923133614/afc406023f4f39476f7e03727c274689a03f77a4/q2-2025-qra-document.pdf",
+      "hash": "ed69addc6743afabbc0ec259ddf937e63cd4ec01a99ce6a5293525007e98b67f",
+      "filename": "q2-2025.pdf"
+    },
+    {
+      "id": "q4-2025",
+      "url": "https://www.shell.com/investors/investor-presentations/_jcr_content/root/main/section_1529014047_c_540020954/tabs/tab_1774293805/text_copy_copy_16298/links/item1.stream/1770256401557/f1a8ad2e98a141f7a4ff0e5151d7014be79c4881/q4-2025-qra-document.pdf",
+      "hash": "86976d54c17bdd2f9407abf04c4aa38b6312ef6cde2040764f83313ae574dfc1",
+      "filename": "q4-2025.pdf"
+    }
+  ],
+  "quarterly_financial_components": [
+    {
+      "period": "2024Q2",
+      "category": "FINANCING_FX",
+      "value_usd_million": -1169,
+      "document": "q2-2024",
+      "page": 23,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "current"
+    },
+    {
+      "period": "2024Q1",
+      "category": "FINANCING_FX",
+      "value_usd_million": 66,
+      "document": "q2-2024",
+      "page": 23,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "previous"
+    },
+    {
+      "period": "2024Q2",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 30,
+      "document": "q2-2024",
+      "page": 23,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "current"
+    },
+    {
+      "period": "2024Q1",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 23,
+      "document": "q2-2024",
+      "page": 23,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "previous"
+    },
+    {
+      "period": "2024Q4",
+      "category": "FINANCING_FX",
+      "value_usd_million": 267,
+      "document": "q4-2024",
+      "page": 24,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "current"
+    },
+    {
+      "period": "2024Q3",
+      "category": "FINANCING_FX",
+      "value_usd_million": -189,
+      "document": "q4-2024",
+      "page": 24,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "previous"
+    },
+    {
+      "period": "2024Q4",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 25,
+      "document": "q4-2024",
+      "page": 24,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "current"
+    },
+    {
+      "period": "2024Q3",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 4,
+      "document": "q4-2024",
+      "page": 24,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "previous"
+    },
+    {
+      "period": "2025Q2",
+      "category": "FINANCING_FX",
+      "value_usd_million": -447,
+      "document": "q2-2025",
+      "page": 27,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "current"
+    },
+    {
+      "period": "2025Q1",
+      "category": "FINANCING_FX",
+      "value_usd_million": -137,
+      "document": "q2-2025",
+      "page": 27,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "previous"
+    },
+    {
+      "period": "2025Q2",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 44,
+      "document": "q2-2025",
+      "page": 27,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "current"
+    },
+    {
+      "period": "2025Q1",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 1,
+      "document": "q2-2025",
+      "page": 27,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "previous"
+    },
+    {
+      "period": "2025Q4",
+      "category": "FINANCING_FX",
+      "value_usd_million": -34,
+      "document": "q4-2025",
+      "page": 29,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "current"
+    },
+    {
+      "period": "2025Q3",
+      "category": "FINANCING_FX",
+      "value_usd_million": 82,
+      "document": "q4-2025",
+      "page": 29,
+      "label": "Net foreign exchange gains/(losses) on financing activities",
+      "column": "previous"
+    },
+    {
+      "period": "2025Q4",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 21,
+      "document": "q4-2025",
+      "page": 29,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "current"
+    },
+    {
+      "period": "2025Q3",
+      "category": "SECURITIES_DIVIDENDS",
+      "value_usd_million": 16,
+      "document": "q4-2025",
+      "page": 29,
+      "label": "Dividend income (from investments in equity securities)",
+      "column": "previous"
+    }
+  ],
+  "checks": [
+    {
+      "year": "2024",
+      "category": "FINANCING_FX",
+      "quarter_sum": -1025,
+      "annual_audited": -1025,
+      "difference": 0,
+      "within_usd_one_million_rounding": true
+    },
+    {
+      "year": "2024",
+      "category": "SECURITIES_DIVIDENDS",
+      "quarter_sum": 82,
+      "annual_audited": 83,
+      "difference": -1,
+      "within_usd_one_million_rounding": true
+    },
+    {
+      "year": "2025",
+      "category": "FINANCING_FX",
+      "quarter_sum": -536,
+      "annual_audited": -537,
+      "difference": 1,
+      "within_usd_one_million_rounding": true
+    },
+    {
+      "year": "2025",
+      "category": "SECURITIES_DIVIDENDS",
+      "quarter_sum": 82,
+      "annual_audited": 82,
+      "difference": 0,
+      "within_usd_one_million_rounding": true
+    }
+  ],
+  "unresolved": {
+    "financial_fx": "Segregar reclassificações já removidas em identified items; FX bruto não é ajuste incremental. Não aplicar gross FX sobre EBIT já normalizado.",
+    "other_income": "Other contém sublease operacional e outros componentes; não excluir integralmente sem abertura econômica.",
+    "operating_tax": "Imposto de dividendos de títulos e FX financeiro não segregado trimestralmente; juros após imposto de ROACE são LTM e receita restrita a caixa/equivalentes. Não equivale à receita de juros total da DRE.",
+    "organic_capex": "Inorgânicos agregados abrangem portfolio actions nas linhas de capital expenditure; falta reconciliação da parcela por linha e segregação de aquisições/reestruturação. Preço anunciado de uma aquisição não comprova pagamento trimestral líquido nem classificação na DFC."
+  },
+  "conclusion_scope": "Fontes públicas Shell 2024–2025 examinadas, mantendo as regras aprovadas e a rejeição de alternativas/estimativas; não afirma ausência de divulgação futura.",
+  "identifiability": {
+    "tax": "Mesmo com total corrente/diferido e ajustes legais, não há cruzamento por receita/despesa financeira: diferentes alocações operacional/financeira mantêm o mesmo total divulgado. Não se pode escolher uma delas como fato.",
+    "capex": "I = I_CAPEX + I_JV + I_SECURITIES. Conhecer I agregado e os totais das linhas não identifica I_CAPEX. CAPEX orgânico base = CAPEX_DFC − I_CAPEX; não assumir I_CAPEX=I.",
+    "ebitda": "FX financeiro bruto é conhecido, mas efeitos já excluídos nos identificados e natureza de Other não têm ponte completa no conjunto de fontes; não escolher zero nem excluir Other integralmente."
+  },
+  "resolved_partial": {
+    "organic_capex_2024Q3": "Inorgânicos publicados zero: CAPEX DFC USD 4.690 milhões elegível como orgânico, suplemento preparado; não resolve LTM com outros trimestres incompletos."
+  }
+}

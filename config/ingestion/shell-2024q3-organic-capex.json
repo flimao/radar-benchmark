@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "company": "Shell",
+  "accounting_standard": "IFRS",
+  "mapping_version": "shell-2024q3-organic-capex-zero-inorganic-v1",
+  "mapping_note": "Q3 2024: inorgânicos totais publicados = zero. Base DFC exclui investimentos em JV e títulos. Portanto nenhuma exclusão inorgânica de categoria foi presumida. Não generalizar aos demais trimestres.",
+  "documents": [
+    {
+      "id": "quarterly",
+      "format": "xlsx",
+      "filename": "quarterly.xlsx",
+      "url": "https://www.shell.com/investors/results-and-reporting/data-supplements/_jcr_content/root/main/section/text_copy.multi.stream/1785372068656/4f3d5f6b9e47607df8218eabce15377ee3272b98/q2-2026-quarterly-databook.xlsx",
+      "expected_hash": "af37add3d5a988b5c106596820a07e39fbc4bc2b6c1fb1b1224dfa1ed7e4980f",
+      "period": "MULTIPERIOD"
+    }
+  ],
+  "observations": [
+    {
+      "id": "organic-capex-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": -1,
+      "selector": {
+        "sheet": "Cash Flows",
+        "cell": "X29",
+        "guards": [
+          {
+            "cell": "B29",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "X7",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "field": "capex",
+      "concept": "ORGANIC_CASH_CAPEX",
+      "policy_note": "Q3 2024: inorgânicos totais publicados = zero. Base DFC exclui investimentos em JV e títulos. Portanto nenhuma exclusão inorgânica de categoria foi presumida. Não generalizar aos demais trimestres.",
+      "comparable": true
+    },
+    {
+      "id": "capex-apm-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X47",
+        "guards": [
+          {
+            "cell": "B47",
+            "equals": "Capital expenditure"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          }
+        ]
+      },
+      "policy_note": "Q3 2024: inorgânicos totais publicados = zero. Base DFC exclui investimentos em JV e títulos. Portanto nenhuma exclusão inorgânica de categoria foi presumida. Não generalizar aos demais trimestres.",
+      "comparable": true
+    },
+    {
+      "id": "inorganic-total-2024Q3",
+      "period": "2024Q3",
+      "document": "quarterly",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "scope": "CONSOLIDATED",
+      "basis": "REPORTED",
+      "sign": 1,
+      "selector": {
+        "sheet": "APM",
+        "cell": "X44",
+        "guards": [
+          {
+            "cell": "B44",
+            "equals": "Add: Cash outflows related to inorganic capital expenditure"
+          },
+          {
+            "cell": "X6",
+            "equals": "Q3 2024"
+          },
+          {
+            "cell": "X44",
+            "equals": 0
+          }
+        ]
+      },
+      "policy_note": "Q3 2024: inorgânicos totais publicados = zero. Base DFC exclui investimentos em JV e títulos. Portanto nenhuma exclusão inorgânica de categoria foi presumida. Não generalizar aos demais trimestres.",
+      "comparable": true
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "organic-capex-q3-2024",
+      "reference": "capex-apm-2024Q3",
+      "terms": [
+        {
+          "observation": "organic-capex-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "organic-capex-2024Q3"
+      ],
+      "reason": "CAPEX DFC versus CAPEX APM, com inorgânicos publicados obrigatoriamente zero; JV/títulos já excluídos da base."
+    }
+  ]
+}

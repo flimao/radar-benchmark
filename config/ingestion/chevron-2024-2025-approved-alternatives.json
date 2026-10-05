@@ -1,0 +1,5173 @@
+{
+  "schema_version": 1,
+  "company": "Chevron",
+  "accounting_standard": "US GAAP",
+  "mapping_version": "chevron-2024-2025-approved-alternatives-v2",
+  "mapping_note": "Alternativas aprovadas: NOPAT divulgado, EBITDA aproximado, capital com leases financeiros, caixa integral. Todos NÃO COMPARÁVEIS.",
+  "documents": [
+    {
+      "id": "sec",
+      "format": "json",
+      "hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "expected_hash": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+      "issuer_cik": "93410",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093410.json",
+      "filename": "Chevron-companyfacts.json",
+      "period": "MULTIPERIOD"
+    },
+    {
+      "id": "2024Q1",
+      "format": "html",
+      "expected_hash": "73234c2e630d5e6a418e5268f302466cd9e997427db6c103db47e3526ae51584",
+      "period": "2024Q1",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000021/cvx-20240331.htm",
+      "filename": "accounts-2024Q1.html"
+    },
+    {
+      "id": "2024Q2",
+      "format": "html",
+      "expected_hash": "e52a7aafd057d25c3607a1dc2f22d4c4e569eddcb34017a3ff47eb58a8246a02",
+      "period": "2024Q2",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000040/cvx-20240630.htm",
+      "filename": "accounts-2024Q2.html"
+    },
+    {
+      "id": "2024Q3",
+      "format": "html",
+      "expected_hash": "8f96240ea9a2d0f3594d236496b369a0eee3f6639222a439b3d2994d9486de6a",
+      "period": "2024Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000059/cvx-20240930.htm",
+      "filename": "accounts-2024Q3.html"
+    },
+    {
+      "id": "2024Q4",
+      "format": "html",
+      "expected_hash": "3d56d6ad50458cfb35d028330ee66b409f27510d5c8cdd6b20c46d62df06a76d",
+      "period": "2024Q4",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000009/cvx-20241231.htm",
+      "filename": "accounts-2024Q4.html"
+    },
+    {
+      "id": "2025Q1",
+      "format": "html",
+      "expected_hash": "b676e083ce9b5ff7522b9ac70519ed6c9a5e82d6131b8fe10a23722b484b9224",
+      "period": "2025Q1",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000019/cvx-20250331.htm",
+      "filename": "accounts-2025Q1.html"
+    },
+    {
+      "id": "2025Q2",
+      "format": "html",
+      "expected_hash": "3879263f18168d1ffeb3c5e02a060f10b08a937a96299169d8e7ba270be9c2af",
+      "period": "2025Q2",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000062/cvx-20250630.htm",
+      "filename": "accounts-2025Q2.html"
+    },
+    {
+      "id": "2025Q3",
+      "format": "html",
+      "expected_hash": "a01a04f10115dd5b8520839fe3cf6a54b638d4082c6f6e1ed693a456c4d8c9e3",
+      "period": "2025Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000108/cvx-20250930.htm",
+      "filename": "accounts-2025Q3.html"
+    },
+    {
+      "id": "2025Q4",
+      "format": "html",
+      "expected_hash": "47e1ce02bc53515f41711c55c952ca298d834a96965751f93ffd2016d68cda4d",
+      "period": "2025Q4",
+      "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+      "filename": "accounts-2025Q4.html"
+    },
+    {
+      "id": "nopat-2024Q1",
+      "format": "pdf",
+      "filename": "organic-2024q1.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/993b5a93-e862-4b50-bef7-e7451d69f059",
+      "expected_hash": "97ae6430f6e2fcce5a1d7bdf3073f9c67441a9bf0f2c59ad830071aa832f9bba",
+      "period": "2024Q1"
+    },
+    {
+      "id": "nopat-2024Q2",
+      "format": "pdf",
+      "filename": "organic-2024q2.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/a8fb1b28-c24d-46c9-a918-be8efab41bac",
+      "expected_hash": "c952fcd743cf00e2751c9fd556db7173967de95230d12a6bd2991f4791fdcec0",
+      "period": "2024Q2"
+    },
+    {
+      "id": "nopat-2024Q3",
+      "format": "pdf",
+      "filename": "organic-2024q3.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/5ad10f9e-2380-4d9e-9c96-5fb8b77b37e1",
+      "expected_hash": "a033f70c1cf2d1e1f6c642c8deceead4610f49417d01156ad2c2aa904064c3b3",
+      "period": "2024Q3"
+    },
+    {
+      "id": "nopat-2024Q4",
+      "format": "pdf",
+      "filename": "organic-2024q4.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/550c696d-e1b3-42b4-bb5a-e6949906d251",
+      "expected_hash": "8dade05819e8b32ba7ec6a7ce5e3fc9f82cc7b6ffef0349263571fa95ee91546",
+      "period": "2024Q4"
+    },
+    {
+      "id": "nopat-2025Q1",
+      "format": "pdf",
+      "filename": "organic-2025q1.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/3b7ba281-e370-4a3c-842e-138d8f153f96",
+      "expected_hash": "a94f4322b3fc3951dd4a28b34bb3e4005bd3fe7ee19f9e082840b24014172d37",
+      "period": "2025Q1"
+    },
+    {
+      "id": "nopat-2025Q2",
+      "format": "pdf",
+      "filename": "organic-2025q2.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/c350b9cd-898b-47ee-bf12-e4873bc883db",
+      "expected_hash": "fa777d67cca7ed71f774f3ed82027a8a6b5a4eaeb97380c094a4d22f33612f04",
+      "period": "2025Q2"
+    },
+    {
+      "id": "nopat-2025Q3",
+      "format": "pdf",
+      "filename": "organic-2025q3.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/37ef13d5-5534-4bd0-9cef-37f31848bcf0",
+      "expected_hash": "857a03cbcbdf35f70cda1782a1589299856070c0a6cefccf6ebd91c386959e3b",
+      "period": "2025Q3"
+    },
+    {
+      "id": "nopat-2025Q4",
+      "format": "pdf",
+      "filename": "organic-2025q4.pdf",
+      "url": "https://chevroncorp.gcs-web.com/static-files/e343663d-4660-404a-b99c-86c33b543bd7",
+      "expected_hash": "72c27b0da795d40fc2d98a7f5efcfb82a1bdaede05bb5406c4c32538fe59c9a2",
+      "period": "2025Q4"
+    }
+  ],
+  "observations": [
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q1",
+      "document": "2024Q1",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q1",
+      "document": "2024Q1",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q1",
+      "document": "2024Q1",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q1",
+      "document": "2024Q1",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q1",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q1",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q2",
+      "document": "2024Q2",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q2",
+      "document": "2024Q2",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q2",
+      "document": "2024Q2",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q2",
+      "document": "2024Q2",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q2",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q2",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q3",
+      "document": "2024Q3",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q3",
+      "document": "2024Q3",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q3",
+      "document": "2024Q3",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q3",
+      "document": "2024Q3",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q3",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q3",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2024Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2024Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2024Q4",
+      "document": "2024Q4",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2024Q4",
+      "document": "2024Q4",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2024Q4",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2024Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2024Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2024Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-cp-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Short-term debt — ([\\d,]+) — [\\d,]+ Current lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-lp-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Long-term debt — ([\\d,]+) — [\\d,]+ Noncurrent lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-cp-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityCurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_short-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2024"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ Long-term debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-lp-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityNoncurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_long-2024Q4",
+      "document": "2024Q4",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2024"
+        ],
+        "pattern": "Long-term debt ([\\d,]+) [\\d,]+ [\\d,]+ Total debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "leases-2024Q4",
+      "document": "2024Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2024Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Total lease liabilities \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ \\$ [\\d,]+ Weighted-average"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-op-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "OperatingLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-fin-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q1",
+      "document": "2025Q1",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q1",
+      "document": "2025Q1",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q1",
+      "document": "2025Q1",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q1",
+      "document": "2025Q1",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q1",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q1",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q1",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q1",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q2",
+      "document": "2025Q2",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q2",
+      "document": "2025Q2",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q2",
+      "document": "2025Q2",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q2",
+      "document": "2025Q2",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q2",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q2",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q2",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q2",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q3",
+      "document": "2025Q3",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q3",
+      "document": "2025Q3",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q3",
+      "document": "2025Q3",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q3",
+      "document": "2025Q3",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q3",
+      "selector": {
+        "guards": [
+          "CHEVRON CORPORATION",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q3",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q3",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q3",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2025Q4",
+      "document": "2025Q4",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2025Q4",
+      "document": "2025Q4",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?([\\d,]+) [\\d,]+ Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2025Q4",
+      "document": "2025Q4",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2025Q4",
+      "document": "2025Q4",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2025",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ ([\\d,]+) \\$ [\\d,]+ (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2025Q4",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2025Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2025Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2025Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-cp-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Short-term debt — ([\\d,]+) — [\\d,]+ Current lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "finance-lp-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Long-term debt — ([\\d,]+) — [\\d,]+ Noncurrent lease liabilities"
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-cp-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityCurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_short-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2025"
+        ],
+        "pattern": "Short-term debt \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ Long-term debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "sec-finance-lp-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiabilityNoncurrent",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "gross-financial_debt_long-2025Q4",
+      "document": "2025Q4",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Net Debt Ratio",
+          "2025"
+        ],
+        "pattern": "Long-term debt ([\\d,]+) [\\d,]+ [\\d,]+ Total debt",
+        "allow_identical_duplicates": true
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "leases-2025Q4",
+      "document": "2025Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2025Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2025"
+        ],
+        "pattern": "Total lease liabilities \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ \\$ [\\d,]+ Weighted-average"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-op-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "OperatingLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "ref-fin-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "FinanceLeaseLiability",
+        "unit": "USD",
+        "where": {
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_short-2023Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_short",
+      "concept": "FINANCIAL_DEBT_SHORT",
+      "period": "2023Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Short-term debt \\$ [\\d,]+ \\$ ([\\d,]+) Accounts payable"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "financial_debt_long-2023Q4",
+      "document": "2024Q4",
+      "field": "financial_debt_long",
+      "concept": "FINANCIAL_DEBT_LONG",
+      "period": "2023Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Long-term debt (?:1 )?[\\d,]+ ([\\d,]+) Deferred credits and other noncurrent obligations"
+      },
+      "includes_leases": true,
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash-2023Q4",
+      "document": "2024Q4",
+      "field": "cash",
+      "concept": "CASH_AND_EQUIVALENTS",
+      "period": "2023Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ [\\d,]+ \\$ ([\\d,]+) (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "cash_nonoperating-2023Q4",
+      "document": "2024Q4",
+      "field": "cash_nonoperating",
+      "concept": "NONOPERATING_CASH",
+      "period": "2023Q4",
+      "selector": {
+        "guards": [
+          "Chevron Corporation",
+          "2024",
+          "Liabilities and Equity"
+        ],
+        "pattern": "Cash and cash equivalents \\$ [\\d,]+ \\$ ([\\d,]+) (?:Time deposits|Marketable securities)"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "equity_total-2023Q4",
+      "field": "equity_total",
+      "concept": "TOTAL_EQUITY_INCLUDING_NCI",
+      "period": "2023Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        "unit": "USD",
+        "where": {
+          "end": "2023-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "goodwill-2023Q4",
+      "field": "goodwill",
+      "concept": "GOODWILL",
+      "period": "2023Q4",
+      "document": "sec",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "Goodwill",
+        "unit": "USD",
+        "where": {
+          "end": "2023-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "period_type": "BALANCE",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "leases-2023Q4",
+      "document": "2024Q4",
+      "field": "leases",
+      "concept": "LEASE_LIABILITIES",
+      "period": "2023Q4",
+      "selector": {
+        "guards": [
+          "Operating Leases Finance Leases",
+          "2024"
+        ],
+        "pattern": "Total lease liabilities \\$ [\\d,]+ \\$ ([\\d,]+) \\$ [\\d,]+ \\$ [\\d,]+ Weighted-average"
+      },
+      "comparable": false,
+      "policy_note": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL.",
+      "comparability_reason": "Alternativa Chevron aprovada: dívida incluindo leases financeiros, sensibilidade apenas operacionais; caixa integral; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2024Q1",
+      "period": "2024Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2024Q1",
+      "selector": {
+        "page": 13,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 8,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2024Q1",
+      "period": "2024Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2024Q1",
+      "selector": {
+        "page": 13,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 8,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2024Q1",
+      "period": "2024Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2024Q1",
+      "selector": {
+        "page": 13,
+        "label": "Noncontrolling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 8,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2024Q1",
+      "period": "2024Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2024Q1",
+      "selector": {
+        "page": 13,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 8,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2024Q1",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2024Q1",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2024Q1",
+      "document": "sec",
+      "period": "2024Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-03-31",
+          "accn": "0000093410-24-000021",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2024Q2",
+      "period": "2024Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2024Q2",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2024Q2",
+      "period": "2024Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2024Q2",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2024Q2",
+      "period": "2024Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2024Q2",
+      "selector": {
+        "page": 16,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2024Q2",
+      "period": "2024Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2024Q2",
+      "selector": {
+        "page": 16,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2024Q2",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2024Q2",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2024Q2",
+      "document": "sec",
+      "period": "2024Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "accn": "0000093410-24-000040",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2024Q3",
+      "period": "2024Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2024Q3",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2024Q3",
+      "period": "2024Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2024Q3",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2024Q3",
+      "period": "2024Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2024Q3",
+      "selector": {
+        "page": 16,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2024Q3",
+      "period": "2024Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2024Q3",
+      "selector": {
+        "page": 16,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "24"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2024Q3",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2024Q3",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2024Q3",
+      "document": "sec",
+      "period": "2024Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-09-30",
+          "accn": "0000093410-24-000059",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2024Q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2024Q4",
+      "selector": {
+        "page": 33,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "2024"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": true,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2024Q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2024Q4",
+      "selector": {
+        "page": 33,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "2024"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2024Q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2024Q4",
+      "selector": {
+        "page": 33,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "2024"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2024Q4",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2024Q4",
+      "selector": {
+        "page": 33,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "2024"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2024Q4",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2024Q4",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2024Q4",
+      "document": "sec",
+      "period": "2024Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "accn": "0000093410-25-000009",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2025Q1",
+      "period": "2025Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2025Q1",
+      "selector": {
+        "page": 17,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2025Q1",
+      "period": "2025Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2025Q1",
+      "selector": {
+        "page": 17,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2025Q1",
+      "period": "2025Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2025Q1",
+      "selector": {
+        "page": 17,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2025Q1",
+      "period": "2025Q1",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2025Q1",
+      "selector": {
+        "page": 17,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2025Q1",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2025Q1",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2025Q1",
+      "document": "sec",
+      "period": "2025Q1",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "accn": "0000093410-25-000019",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2025Q2",
+      "period": "2025Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2025Q2",
+      "selector": {
+        "page": 19,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2025Q2",
+      "period": "2025Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2025Q2",
+      "selector": {
+        "page": 19,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2025Q2",
+      "period": "2025Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2025Q2",
+      "selector": {
+        "page": 19,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2025Q2",
+      "period": "2025Q2",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2025Q2",
+      "selector": {
+        "page": 19,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2025Q2",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2025Q2",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2025Q2",
+      "document": "sec",
+      "period": "2025Q2",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "accn": "0000093410-25-000062",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2025Q3",
+      "period": "2025Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2025Q3",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": false,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2025Q3",
+      "period": "2025Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2025Q3",
+      "selector": {
+        "page": 16,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2025Q3",
+      "period": "2025Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2025Q3",
+      "selector": {
+        "page": 16,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2025Q3",
+      "period": "2025Q3",
+      "period_type": "QUARTER",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2025Q3",
+      "selector": {
+        "page": 16,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "25"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2025Q3",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2025Q3",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2025Q3",
+      "document": "sec",
+      "period": "2025Q3",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-09-30",
+          "accn": "0000093410-25-000108",
+          "form": "10-Q"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "document": "nopat-2025Q4",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nopat-2025Q4",
+      "selector": {
+        "page": 27,
+        "label": "Adjusted ROCE earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "2025"
+        ],
+        "column": 0,
+        "occurrence": 0
+      },
+      "field": "nopat_disclosed",
+      "concept": "ADJUSTED_OPERATING_INCOME_AFTER_TAX",
+      "comparable": false,
+      "policy_note": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL.",
+      "derive_q4_from_quarters": true,
+      "comparability_reason": "NOPAT alternativo divulgado Chevron + capital reconstruído; NÃO COMPARÁVEL."
+    },
+    {
+      "document": "nopat-2025Q4",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "adjusted-2025Q4",
+      "selector": {
+        "page": 27,
+        "label": "Adjusted earnings",
+        "guards": [
+          "Adjusted ROCE",
+          "2025"
+        ],
+        "column": 0,
+        "occurrence": 0
+      }
+    },
+    {
+      "document": "nopat-2025Q4",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "nci-2025Q4",
+      "selector": {
+        "page": 27,
+        "label": "Non-controlling interest",
+        "guards": [
+          "Adjusted ROCE",
+          "2025"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "document": "nopat-2025Q4",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "millions",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "id": "interest-2025Q4",
+      "selector": {
+        "page": 27,
+        "label": "Interest expense (A/T)",
+        "guards": [
+          "Adjusted ROCE",
+          "2025"
+        ],
+        "column": 0,
+        "occurrence": 1
+      }
+    },
+    {
+      "id": "pretax-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      },
+      "field": "ebitda_reported",
+      "concept": "REPORTED_EBITDA",
+      "comparable": false,
+      "adjustment_set": "STATUTORY_APPROXIMATION",
+      "policy_note": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL.",
+      "adjustments": [
+        {
+          "observation": "interestgross-2025Q4",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        },
+        {
+          "observation": "dda-2025Q4",
+          "coefficient": 1,
+          "reason": "Reconstrução aproximada aprovada."
+        }
+      ],
+      "comparability_reason": "EBITDA aproximado = lucro antes de impostos + juros e dívida + DDA estatutária; mantém receitas financeiras e especiais, NÃO COMPARÁVEL."
+    },
+    {
+      "id": "interestgross-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "dda-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "IncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "ProfitLoss",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-interestgross-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "InterestExpenseDebt",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref-dda-2025Q4",
+      "document": "sec",
+      "period": "2025Q4",
+      "period_type": "YTD",
+      "currency": "USD",
+      "scale": "units",
+      "basis": "REPORTED",
+      "scope": "CONSOLIDATED",
+      "selector": {
+        "taxonomy": "us-gaap",
+        "tag": "DepreciationDepletionAndAmortization",
+        "unit": "USD",
+        "where": {
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "accn": "0000093410-26-000078",
+          "form": "10-K"
+        },
+        "guards": [
+          {
+            "path": [
+              "cik"
+            ],
+            "equals": 93410
+          }
+        ]
+      }
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "nopat-bridge-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2024Q1"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2024Q1",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2024Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2024Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2024Q1"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2024Q2"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2024Q2",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2024Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2024Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2024Q2"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2024Q3"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2024Q3",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2024Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2024Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2024Q3"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2024Q4"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2024Q4",
+      "reference_terms": [
+        {
+          "observation": "net-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2024Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2024Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2024Q4"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2025Q1",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2025Q1"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2025Q1",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2025Q1",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2025Q1",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2025Q1",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2025Q1"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2025Q2",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2025Q2"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2025Q2",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2025Q2",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2025Q2",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2025Q2",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2025Q2"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2025Q3",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2025Q3"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2025Q3",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2025Q3",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2025Q3",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2025Q3",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2025Q3"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    },
+    {
+      "id": "nopat-bridge-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "adjusted-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "nci-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "interest-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "nopat-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "nopat-2025Q4"
+      ],
+      "reason": "Adjusted ROCE earnings = adjusted earnings + NCI + juros após imposto divulgados na mesma tabela."
+    },
+    {
+      "id": "ebitda-bridge-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [],
+      "reason": "Lucro antes de impostos = lucro consolidado + imposto estatutário."
+    },
+    {
+      "id": "ebitda-full-2025Q4",
+      "reference_terms": [
+        {
+          "observation": "net-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "tax-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-interestgross-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "ref-dda-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "terms": [
+        {
+          "observation": "pretax-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "interestgross-2025Q4",
+          "coefficient": 1
+        },
+        {
+          "observation": "dda-2025Q4",
+          "coefficient": 1
+        }
+      ],
+      "applies_to": [
+        "pretax-2025Q4"
+      ],
+      "reason": "Ponte EBITDA aproximado: lucro consolidado + imposto + juros + DDA. Não comprova normalização."
+    }
+  ]
+}

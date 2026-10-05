@@ -80,6 +80,13 @@ def extract(path, kind, selector):
             if index < 0 or index >= len(lines):
                 raise ValueError('Posição PDF fora das linhas da página.')
             value = lines[index]
+            if selector.get('value_pattern'):
+                match = re.fullmatch(selector['value_pattern'], value)
+                if not match or len(match.groups()) != 1:
+                    raise ValueError('Formato da célula PDF mudou; revise o mapeamento.')
+                value = match.group(1)
+            if selector.get('strip_currency_symbol'):
+                value=value.replace('$','').strip()
             return value, f"p.{page_number}; {selector['label']}; coluna {int(selector.get('column',0))+1}; ocorrência {occurrence+1}"
     if kind == 'html':
         from html.parser import HTMLParser

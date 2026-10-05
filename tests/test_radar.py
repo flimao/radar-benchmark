@@ -111,7 +111,7 @@ def test_demo_rates_and_migration(monkeypatch,tmp_path):
     assert all(r['roce'] is not None for r in data.metrics('2025Q4',list(data.COMPANIES)))
 
 
-def test_non_comparable_preserves_value_and_excludes_chart_point(monkeypatch,tmp_path):
+def test_non_comparable_preserves_value_and_highlights_chart_point(monkeypatch,tmp_path):
     from radar import data
     monkeypatch.setattr(data,'ROOT',tmp_path)
     data.initialize()
@@ -125,8 +125,10 @@ def test_non_comparable_preserves_value_and_excludes_chart_point(monkeypatch,tmp
     assert '24,7%'==cell.children[1].children
     chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',[])
     figure=chart.children[1].children[0].figure
-    assert figure.data[0].y[-1] is None
-    assert chart.children[1].children[1].className=='non-comparable'
+    assert figure.data[0].y[-1]==row['roce']
+    assert figure.data[0].marker.symbol[-1]=='diamond-open'
+    assert figure.data[0].customdata[-1]=='NÃO-COMPARÁVEL'
+    assert 'non-comparable' in chart.children[1].children[1].className
     assert 'non-comparable' not in metric_cell(row,'roce','reported').className
     row['quality']['cfo']={'status':'NAO_COMPARAVEL','reason':'Perímetro distinto'}
     cash=cash_table([row])
@@ -221,3 +223,23 @@ def test_add_quarter_persisted_without_fabricating_facts(monkeypatch,tmp_path):
     assert '2026Q2' in result[2]
     assert '2026Q2' in refresh_period_options('/upload',result[1])
     assert driver_charts('roce',['TotalEnergies'],'2026Q2','standard',[])
+
+
+def test_all_comparability_notices_start_collapsed():
+    from dash import html
+    from radar.web.app import comparability_notice
+    long= comparability_notice('⚠ NÃO COMPARÁVEL',html.Ul([html.Li('Motivo longo '*30)]))
+    assert isinstance(long,html.Details) and long.open is False
+    assert isinstance(long.children[0],html.Summary)
+    short=comparability_notice('⚠ NÃO COMPARÁVEL',html.Span('Perímetro distinto'))
+    assert isinstance(short,html.Details) and short.open is False
+
+
+def test_direct_ltm_nopat_is_used_once_and_broad_capex_blocks_jv():
+    from radar.domain import roce, calculate
+    from decimal import Decimal
+    rows=[dict(period=f'2025Q{q}',nopat_ltm=100*q,capital_employed_open=1000,capital_employed_close=1000,ebit_adjusted=None,operating_tax=None,cfo=100,capex=40,distribution=10,debt=50,ebitda=100,leases=0,_capex_method='DISCLOSED_BROAD',jv_organic_contributions=5) for q in (1,2,3,4)]
+    assert roce(rows)==Decimal(40)  # latest LTM 400, never sum 100+200+300+400
+    result=calculate(rows,include_jv=True)
+    assert result['capex'] is None and result['fcf'] is None and result['residual'] is None
+    assert result['distribution']==10
