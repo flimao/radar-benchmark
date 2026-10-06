@@ -8,3 +8,5 @@ data/curated/*
 *.egg-info/
 .DS_Store
 evidence/ingestion-*.json
+
+/design-documents/
