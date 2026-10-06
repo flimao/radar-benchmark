@@ -10,3 +10,5 @@ data/curated/*
 evidence/ingestion-*.json
 
 /design-documents/
+
+/powerbi/
