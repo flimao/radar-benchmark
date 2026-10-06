@@ -217,7 +217,7 @@ def test_real_pages_do_not_reuse_demo_drivers(prepared):
     root,manifest=prepared
     pipe.initialize()
     from radar.web.app import render,metric_chart,driver_charts,dataset_labels
-    for path in ['/','/trajectory','/cash','/quality','/upload']:
+    for path in ['/','/trajectory','/cash','/quality','/admin']:
         assert render(path,['Shell'],'2025Q4','standard',[],'REAL')[0]
     chart=metric_chart('cfo',['Shell'],'2025Q4','standard',[],'REAL')
     assert all(y is None for y in chart.children[1].children[0].figure.data[0].y)

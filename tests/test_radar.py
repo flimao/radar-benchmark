@@ -225,7 +225,7 @@ def test_add_quarter_persisted_without_fabricating_facts(monkeypatch,tmp_path):
     from radar.web.app import register_period, refresh_period_options, driver_charts
     result=register_period(1,' 2026q2 ')
     assert '2026Q2' in result[2]
-    assert '2026Q2' in refresh_period_options('/upload',result[1])
+    assert '2026Q2' in refresh_period_options('/admin',result[1])
     assert driver_charts('roce',['TotalEnergies'],'2026Q2','standard',[])
 
 

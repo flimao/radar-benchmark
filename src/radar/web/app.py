@@ -62,7 +62,7 @@ def original(digest):
     return send_file(path,as_attachment=True,download_name=filename)
 
 app=Dash(__name__,server=server,title='RADAR · Benchmarking de energia',assets_folder=str(Path(__file__).parent/'assets'),suppress_callback_exceptions=True)
-NAV=[('overview','◫','Resumo executivo'),('trajectory','↗','Posição e trajetória'),('compare','≋','Comparação por KPI'),('drivers','◎','Drivers e contexto'),('cash','⇄','Ponte de caixa'),('quality','◇','Qualidade dos dados'),('method','▤','Metodologia e fontes'),('rules','⤺','Regras e revisões'),('upload','⊕','Administração de carga')]
+NAV=[('overview','◫','Resumo executivo'),('trajectory','↗','Posição e trajetória'),('compare','≋','Comparação por KPI'),('drivers','◎','Drivers e contexto'),('cash','⇄','Ponte de caixa'),('quality','◇','Qualidade dos dados'),('method','▤','Metodologia e fontes'),('rules','⤺','Regras e revisões'),('admin','⊕','Administração de carga')]
 def badge(text,kind=''): return html.Span(text,className='badge '+kind)
 def panel(title,children,subtitle=None): return html.Section([html.Div([html.H3(title),html.P(subtitle) if subtitle else None],className='panel-head'),children],className='panel')
 def graph(fig, height=300):
@@ -153,9 +153,9 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
     elif key=='rules':
         content.append(panel('Regras financeiras versionadas',table([{'KPI':v['name'],'versão':RULES['version'],'fórmula':v['formula']} for v in RULES['metrics'].values()])))
         content.append(panel('Restatements',html.P('Lotes reais preservam mapeamento, regra, hash, conciliação e responsável. Novas publicações mantêm versões anteriores e nunca sobrescrevem os documentos.')))
-    elif key=='upload':
+    elif key=='admin':
         content.append(panel('Adicionar trimestre',html.Div([html.P('Cadastre um período no formato AAAAQn. O cadastro não gera fatos nem aprova resultados; os indicadores ficam indisponíveis até a carga.'),html.Div([dcc.Input(id='new-period',placeholder='Exemplo: 2026Q1',type='text',maxLength=6,className='text-input'),html.Button('Adicionar trimestre',id='add-period',n_clicks=0,className='button')],className='period-form'),html.Div(id='period-result',role='status')])))
-        content.append(panel('Preservar documento original',html.Div([html.P('PDF, XLSX, CSV ou HTML · até 20 MB. O upload preserva o original e registra sua origem para revisão. Não publica valores automaticamente.'),html.Div([dcc.Dropdown(list(data.COMPANIES),'Petrobras',id='upload-company',clearable=False),dcc.Dropdown(data.periods(),period,id='upload-period',clearable=False)],className='two-col'),dcc.Input(id='source-url',placeholder='URL pública original (https://...)',type='url',className='text-input'),dcc.Input(id='locator',placeholder='Localização: página, tabela, linha ou célula',className='text-input'),dcc.Upload(id='upload-file',children=html.Div(['↑',html.H3('Selecione ou arraste um documento'),html.P('O original será preservado com hash SHA-256')]),className='upload-zone',multiple=False),html.Div(id='upload-result',role='status') ])))
+        content.append(panel('Preservar documento original',html.Div([html.P('PDF, XLSX, CSV ou HTML · até 20 MB. O upload preserva o original e registra sua origem para revisão. Não publica valores automaticamente.'),html.Div([dcc.Dropdown(list(data.COMPANIES),'Petrobras',id='upload-company',clearable=False),dcc.Dropdown(data.periods(),period,id='upload-period',clearable=False)],className='two-col'),dcc.Input(id='source-url',placeholder='URL pública original (https://...)',type='url',className='text-input'),dcc.Input(id='locator',placeholder='Localização: página, tabela, linha ou célula',className='text-input'),html.Div([html.Div(['↑',html.H3(['Selecione ou arraste um documento ',html.Small('(bloqueado pela SI Petrobras)',className='upload-blocked-note')]),html.P('O original será preservado com hash SHA-256')],className='upload-zone upload-disabled',title='A Segurança da Informação da Petrobras bloqueia automaticamente sites que ofereçam funcionalidade de upload de arquivos.',**{'aria-disabled':'true'}),dcc.Store(id='upload-file'),dcc.Store(id='upload-filename')]),html.Div(id='upload-result',role='status') ])))
         docs=data.documents(); content.append(panel('Histórico de documentos',document_table(docs.astype(str).to_dict('records'))))
         from radar.web.ingestion import controls
         content.extend(controls(panel,table))
@@ -460,7 +460,7 @@ def register_period(clicks,period):
     return html.P(message),{'period':period,'revision':clicks},data.periods()
 
 
-@app.callback(Output('upload-result','children'),Input('upload-file','contents'),State('upload-file','filename'),State('upload-company','value'),State('upload-period','value'),State('source-url','value'),State('locator','value'),prevent_initial_call=True)
+@app.callback(Output('upload-result','children'),Input('upload-file','data'),State('upload-filename','data'),State('upload-company','value'),State('upload-period','value'),State('source-url','value'),State('locator','value'),prevent_initial_call=True)
 def upload(contents,filename,company,period,url,locator):
     if not contents: return no_update
     if not url or not url.startswith('https://') or not locator: return html.P('Informe a URL pública HTTPS e a localização no documento.',className='error')

@@ -9,7 +9,7 @@ def controls(panel, table):
     history=pipe.batches()
     return [panel('Preparar dados reais',html.Div([
         html.P('Envie um mapeamento JSON com hashes dos documentos já carregados. A preparação extrai, normaliza e concilia; os valores só aparecem na base real após revisão e publicação.'),
-        dcc.Upload(id='mapping-upload',children=html.Div('Selecionar mapeamento JSON'),className='upload-zone'),
+        html.Div([html.Div(['Selecionar mapeamento JSON ',html.Small('(bloqueado pela SI Petrobras)',className='upload-blocked-note')],className='upload-zone upload-disabled',title='A Segurança da Informação da Petrobras bloqueia automaticamente sites que ofereçam funcionalidade de upload de arquivos.',**{'aria-disabled':'true'}),dcc.Store(id='mapping-upload')]),
         html.Div(id='mapping-result',role='status'),
     ])),panel('Revisar e publicar',html.Div([
         dcc.Dropdown([{'label':f"{r['company']} · {r['mapping_version']} · {r['status']}",'value':r['id']} for r in history.to_dict('records')],id='ingestion-batch',placeholder='Selecione um lote'),
@@ -28,7 +28,7 @@ def controls(panel, table):
 
 
 def callbacks(app, panel, table, badge):
-    @app.callback(Output('mapping-result','children'),Output('ingestion-batch','options'),Input('mapping-upload','contents'),prevent_initial_call=True)
+    @app.callback(Output('mapping-result','children'),Output('ingestion-batch','options'),Input('mapping-upload','data'),prevent_initial_call=True)
     def prepare(contents):
         if not contents:return no_update,no_update
         try:
