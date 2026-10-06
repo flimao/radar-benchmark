@@ -110,11 +110,6 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
             html.P('Driver no eixo esquerdo (linha contínua); KPI por empresa no eixo direito (linha tracejada). Fluxos e razões usam LTM; ROCE reportado segue a visão selecionada. A sobreposição não demonstra causalidade.',className='overlay-help'),
         ])))
         content.append(html.Div(id='driver-charts'))
-        content.append(panel('Brent de equilíbrio (breakeven)',html.Div([
-            badge('INDISPONÍVEL','warning'),
-            html.P('Ainda não há série trimestral homologada com a mesma definição entre as empresas. Breakeven de projeto, equilíbrio do caixa orgânico e equilíbrio após distribuições são conceitos diferentes.'),
-            html.P('O RADAR não estima esse preço a partir dos KPIs de caixa. Precisamos de divulgação pública, escopo, período e premissas verificáveis antes de desenhar a comparação.'),
-        ])))
         content.append(panel('Como ler os drivers',html.Div([
             html.P('Brent e câmbio são contexto comum: não mudam ao filtrar empresas. Mix de produção e margem de refino respondem à seleção de empresas; o trimestre limita o histórico e define o recorte do mix.'),
             html.P('Na base real, Brent usa contexto Yahoo BZ=F se disponível e câmbio usa PTAX Bacen coletada. Mix usa volumes trimestrais divulgados pelas empresas; Petrobras cobre Brasil. Perímetros e fatores de conversão diferem: consulte as ressalvas e fontes abaixo do gráfico. Margem de refino usa um benchmark comum EIA, sem representar a margem realizada de cada empresa. Leases, goodwill, aportes em JV e visão financeira não alteram o mix.' if dataset=='REAL' else 'Mix de gás é participação no volume de produção em boe, não na receita. As séries aqui são inteiramente sintéticas, sem correlação calculada com o desempenho financeiro. Leases, goodwill e visão financeira não alteram esses drivers.'),
@@ -177,6 +172,75 @@ def metric_quality(row, metric, view='standard'):
 def comparability_notice(title, content, class_name='non-comparable'):
     return html.Details([html.Summary([html.Strong(title),html.Span(' — ver detalhes',className='notice-expand-hint')]),content],
                         className=class_name+' collapsible-notice',open=False)
+
+
+def breakeven_panel(period, rows, sensitivities=None, metric='none', view='standard'):
+    from radar.ingestion.breakeven import cash_breakeven, METHOD, LIMITATION
+    results=cash_breakeven(period,rows)
+    fig=go.Figure()
+    for key,label,pattern in [('organic','Orgânico',''),('after_distribution','Após distribuições','/')]:
+        fig.add_bar(name=label,x=[r['company'] for r in results],y=[r[key] for r in results],
+                    marker_color=[data.COMPANIES[r['company']][0] for r in results],
+                    marker_pattern=dict(shape=pattern,size=12,solidity=.06),
+                    hovertemplate='%{x}<br>%{y:.2f} US$/barril<extra>'+label+'</extra>')
+    fig.update_layout(barmode='group');fig.update_yaxes(title_text='US$/barril')
+    records=[{'empresa':r['company'],'orgânico (US$/b)':fmt(r['organic']),
+              'após distribuições (US$/b)':fmt(r['after_distribution']),
+              'Brent spot LTM (US$/b)':fmt(r['brent']),'líquidos LTM (milhões bbl)':fmt(r['volume'])} for r in results]
+    details=html.Div([html.P(METHOD),html.P(LIMITATION),value_table(records),
+        html.Ul([html.Li([html.Strong(r['company']+': '),justification(r['reason'])]) for r in results]),
+        html.P('Volumes: média diária × dias de cada trimestre; quatro trimestres consecutivos. Brent: média dos preços spot diários disponíveis, com pelo menos 40 observações por trimestre. Sem interpolação.'),
+        html.A('Brent spot · EIA ↗',href='https://www.eia.gov/dnav/pet/hist/RBRTED.htm',target='_blank',rel='noopener noreferrer'),
+        html.Ul([html.Li([r['company']+' · '+source['period']+': ',html.A('Fonte de produção ↗',href=source['source_url'],target='_blank',rel='noopener noreferrer')]) for r in results for source in r['sources']])])
+    history=[]
+    companies=[r['company'] for r in rows]
+    for p in data.periods():
+        if p<=period:
+            history.extend(dict(r,period=p) for r in cash_breakeven(p,data.metrics(p,companies,dataset='REAL',include_jv='include_jv' in (sensitivities or []))))
+    charts=[]
+    for key,label in [('organic','Equilíbrio orgânico'),('after_distribution','Equilíbrio após distribuições')]:
+        historical=go.Figure()
+        available=sorted({r['period'] for r in history if r[key] is not None})
+        for company in companies:
+            points=[r for r in history if r['company']==company and r['period'] in available]
+            historical.add_scatter(x=[r['period'] for r in points],y=[r[key] for r in points],
+                name=company,mode='lines+markers',connectgaps=False,
+                line=dict(color=data.COMPANIES[company][0],width=3),
+                marker=dict(symbol='diamond-open',size=9),
+                hovertemplate='%{x}<br>%{y:.2f} US$/barril<extra>%{fullData.name}</extra>')
+        historical.update_xaxes(type='category',categoryorder='array',categoryarray=available,
+                                tickmode='array',tickvals=available)
+        historical.update_yaxes(title_text='US$/barril')
+        if metric and metric!='none':
+            for company in companies:
+                values=[];flags=[]
+                for p in available:
+                    row=data.metrics(p,[company],leases='include_leases' in (sensitivities or []),
+                        exclude_goodwill='exclude_goodwill' in (sensitivities or []),
+                        dataset='REAL',include_jv='include_jv' in (sensitivities or []))[0]
+                    values.append(row['reported_roce'] if metric=='roce' and view=='reported' else row[metric])
+                    flags.append(metric_quality(row,metric,view).get('status')=='NAO_COMPARAVEL')
+                historical.add_scatter(x=available,y=values,name=company+' · '+RULES['metrics'][metric]['name'],
+                    yaxis='y2',mode='lines+markers',connectgaps=False,
+                    line=dict(color=data.COMPANIES[company][0],dash='dash',width=2),
+                    marker=dict(symbol=['diamond-open' if f else 'diamond' for f in flags],
+                                size=[11 if f else 6 for f in flags],line=dict(width=2)),
+                    hovertemplate='%{x}<br>%{y:.2f} '+RULES['metrics'][metric]['unit']+'<extra>%{fullData.name}</extra>')
+            historical.update_layout(yaxis2=dict(title=RULES['metrics'][metric]['name']+' · '+RULES['metrics'][metric]['unit'],
+                overlaying='y',side='right',showgrid=False,automargin=True,nticks=6,zeroline=False),
+                margin=dict(l=75,r=90,t=30,b=110),legend=dict(orientation='h',y=-.2,x=0,font=dict(size=11)))
+        if not available:
+            historical.add_annotation(text='Sem dados completos para o período selecionado.',showarrow=False,xref='paper',yref='paper',x=.5,y=.5)
+        chart=graph(historical,height=520)
+        chart.figure.update_layout(margin=dict(l=75,r=90,t=25,b=150),
+            legend=dict(orientation='h',x=0,y=-.25,yanchor='top',font=dict(size=11)))
+        charts.append(panel(label,chart,'Estimativa LTM · quatro trimestres consecutivos · até '+period))
+    return html.Div([panel('Brent de equilíbrio de caixa — estimado',html.Div([graph(fig),methodology_sources(details)]),period+' · LTM · cenário com sensibilidade de US$ 1 por barril de líquidos · demais fatores constantes'),*charts])
+
+
+def methodology_sources(content):
+    return html.Details([html.Summary('Metodologia e Fontes'),content],
+                        className='methodology-sources collapsible-notice',open=False)
 
 
 def justification(reason):
@@ -359,12 +423,12 @@ def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRAC
                                   html.A('Fonte original ↗',href=r['source_url'],target='_blank',rel='noopener noreferrer'),
                                   html.Small(' · '+r['locator'])]) for r in mix]),
                 html.P('A soma de gás e líquidos é conciliada com o total divulgado; tolerância de 2 mil boe/d para arredondamento dos componentes. Não há interpolação ou substituição por trimestre anterior.')])
-            chart=html.Div([chart,comparability_notice('⚠ NÃO COMPARÁVEL — mix de produção · metodologia e fontes',details) if mix else None])
+            chart=html.Div([chart,methodology_sources(details) if mix else None])
         if dataset=='REAL' and key=='margin':
             from radar.ingestion.refining import refining_snapshot,quarterly_margins
             snapshot=refining_snapshot()
             coverage=quarterly_margins(snapshot,periods)
-            chart=html.Div([chart,comparability_notice('⚠ BENCHMARK COMUM — metodologia e fontes',html.Div([
+            chart=html.Div([chart,methodology_sources(html.Div([
                 html.P(snapshot['method']),html.P(snapshot['limitation']),
                 table([{'trimestre':r['period'],'margem (US$/barril)':fmt(r['value']),
                         'datas comuns':r['observations'],'datas excluídas':r['excluded_dates'],
@@ -372,7 +436,11 @@ def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRAC
                 html.P('Datas excluídas não possuem todos os preços. Sem interpolação; mínimo de 40 datas comuns, 90% de cobertura e intervalo de coleta abrangendo o trimestre inteiro. Valores negativos são mantidos.'),
                 html.Ul([html.Li(html.A(v['title']+' · '+v['unit']+' ↗',href=v['url'],target='_blank',rel='noopener noreferrer')) for v in snapshot['series'].values()])]))])
         cards.append(panel(title,chart,subtitle))
-    return [html.Div(cards,className='driver-grid')]
+    result=[html.Div(cards,className='driver-grid')]
+    if dataset=='REAL':
+        rows=data.metrics(period,companies,dataset='REAL',include_jv='include_jv' in (sensitivities or []))
+        result.append(breakeven_panel(period,rows,sensitivities,metric,view))
+    return result
 
 @app.callback(Output('period','options'),Input('location','pathname'),Input('period-revision','data'))
 def refresh_period_options(path,revision):
