@@ -5,7 +5,7 @@ import duckdb
 import pandas as pd
 from radar.domain import calculate
 ROOT = Path(os.environ.get('RADAR_DATA_DIR', '.'))
-COMPANIES = {'Petrobras':('#008542','IFRS','Brasil'), 'TotalEnergies':('#008e91','IFRS','França'), 'Chevron':('#006298','US GAAP','Estados Unidos'), 'Shell':('#b28700','IFRS','Reino Unido')}
+COMPANIES = {'Petrobras':('#008542','IFRS','Brasil'), 'TotalEnergies':('#800020','IFRS','França'), 'Chevron':('#0066ff','US GAAP','Estados Unidos'), 'Shell':('#f2c500','IFRS','Reino Unido')}
 SOURCES = {'Petrobras':'https://www.investidorpetrobras.com.br/resultados-e-comunicados/central-de-resultados/', 'TotalEnergies':'https://totalenergies.com/investors/results', 'Chevron':'https://www.chevron.com/investors', 'Shell':'https://www.shell.com/investors/results-and-reporting/quarterly-results.html'}
 RULES = json.loads((Path(os.environ.get('RADAR_PROJECT_DIR', '.'))/'config/rules.json').read_text())
 ROCE_FIELDS = ['ebit_adjusted','operating_tax','tax_rate','capital_employed_open','capital_employed_close','leases_open','goodwill_open','goodwill_close']
