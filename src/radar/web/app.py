@@ -114,7 +114,7 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
         ])))
         content.append(panel('Como ler os drivers',html.Div([
             html.P('Brent e câmbio são contexto comum: não mudam ao filtrar empresas. Mix de produção e margem de refino respondem à seleção de empresas; o trimestre limita o histórico e define o recorte do mix.'),
-            html.P('Na base real, Brent usa contexto Yahoo BZ=F se disponível e câmbio usa PTAX Bacen coletada. Mix e margem permanecem indisponíveis até mapeamento homologado.' if dataset=='REAL' else 'Mix de gás é participação no volume de produção em boe, não na receita. As séries aqui são inteiramente sintéticas, sem correlação calculada com o desempenho financeiro. Leases, goodwill e visão financeira não alteram esses drivers.'),
+            html.P('Na base real, Brent usa contexto Yahoo BZ=F se disponível e câmbio usa PTAX Bacen coletada. Mix usa volumes trimestrais divulgados pelas empresas; Petrobras cobre Brasil. Perímetros e fatores de conversão diferem: consulte as ressalvas e fontes abaixo do gráfico. Margem de refino usa um benchmark comum EIA, sem representar a margem realizada de cada empresa. Leases, goodwill, aportes em JV e visão financeira não alteram o mix.' if dataset=='REAL' else 'Mix de gás é participação no volume de produção em boe, não na receita. As séries aqui são inteiramente sintéticas, sem correlação calculada com o desempenho financeiro. Leases, goodwill e visão financeira não alteram esses drivers.'),
             html.P('Fontes candidatas para a carga real (não são origem dos valores fictícios):') if dataset!='REAL' else None,
             html.Div([html.A('Bacen · PTAX ↗',href=RULES['fx']['source_url'],target='_blank',rel='noopener noreferrer'),html.A('Shell · databooks e contexto ↗',href='https://www.shell.com/investors/results-and-reporting/data-supplements.html',target='_blank',rel='noopener noreferrer'),html.A('TotalEnergies · resultados trimestrais ↗',href=data.SOURCES['TotalEnergies'],target='_blank',rel='noopener noreferrer')],className='driver-sources') if dataset!='REAL' else None,
         ])))
@@ -131,6 +131,17 @@ def render(path,companies,period,view,sensitivities,dataset="DEMONSTRACAO"):
         if dataset!='REAL':
             content.append(panel('Premissas do ROCE sintético',html.Div([html.P('EBIT ajustado = 65% do EBITDA sintético; itens especiais = zero. Imposto = EBIT × alíquota fictícia por empresa.'),table([{'empresa':c,'alíquota fictícia':f'{rate:.0%}'} for c,rate in RULES['synthetic_roce']['tax_rates'].items()]),html.P('Capital empregado sintético: PL + NCI + dívida financeira − caixa não operacional, goodwill incluído. Média dos saldos de abertura e fechamento da janela LTM. Leases excluídos na base e incluídos nos dois saldos na sensibilidade. Goodwill sintético = 10% do capital empregado em cada saldo; excluí-lo reduz apenas o denominador do ROCE. Nenhum resultado representa dados financeiros reais.') ])))
         content.append(panel('Catálogo de fontes oficiais',html.Div([html.A([html.Strong(c),html.Span(' Relações com investidores ↗')],href=url,target='_blank',rel='noopener noreferrer',className='source-link') for c,url in data.SOURCES.items()])))
+        if dataset=='REAL':
+            from radar.ingestion.production import production_dataset
+            content.append(panel('Mix de produção · volumes trimestrais divulgados',html.Div([
+                html.P(production_dataset()['method']),
+                html.P('NÃO COMPARÁVEL: Petrobras cobre Brasil e gás total produzido; Chevron cobre produção líquida global incluindo consumo próprio; Shell cobre produção disponível para venda, incluindo afiliadas; TotalEnergies cobre participação econômica global. Shell converte gás a 5,8 mil pés cúbicos/boe; Chevron a 6; Total e Petrobras usam equivalências divulgadas. Condensados e LGN pertencem aos líquidos.'),
+                html.P('A soma dos componentes deve conciliar com o total divulgado em até 2 mil boe/d, por arredondamento. Períodos ausentes permanecem indisponíveis. As fontes e localizações de cada trimestre estão nos detalhes do gráfico de mix.') ])))
+            from radar.ingestion.refining import METHOD, LIMITATION
+            content.append(panel('Margem indicativa de refino · benchmark comum',html.Div([
+                html.P(METHOD),html.P(LIMITATION),
+                html.P('Fonte: EIA, preços spot diários. Derivados em US$/galão americano multiplicados por 42; petróleo já em US$/barril. Não mistura Brent futuro Yahoo com preços spot. Datas sem algum dos três preços são excluídas, sem interpolação. Exige janela de coleta cobrindo o trimestre inteiro, pelo menos 40 datas comuns e cobertura de 90% das datas com qualquer uma das séries. Valores negativos são preservados.'),
+                html.A('Definição de crack spread · EIA ↗',href='https://www.eia.gov/todayinenergy/includes/crackspread_explain.php',target='_blank',rel='noopener noreferrer') ])))
         content.append(panel('Câmbio · fonte aprovada',html.Div([html.P('Fonte oficial: Bacen · média trimestral da PTAX venda diária de fechamento para fluxos. BRL→USD por divisão pela cotação R$/USD; converter trimestre antes da soma LTM. Saldos: PTAX venda na data do balanço ou última publicação anterior.'),html.A('Consultar publicação oficial ↗',href=RULES['fx']['source_url'],target='_blank',rel='noopener noreferrer')])))
         content.append(panel('Imposto operacional · OPEN-03 aprovada',html.Div([html.P(RULES['operating_tax']['basis']),html.Ol([html.Li(step['description']) for step in RULES['operating_tax']['hierarchy']]),html.P('A pipeline exige imposto operacional divulgado ou reconstruído e conciliado com o EBIT.' if dataset=='REAL' else 'A pipeline exige imposto operacional divulgado ou reconstruído e conciliado com o EBIT. Alíquotas fictícias são usadas somente na base demonstrativa.') ])))
         content.append(panel('ROCE · alternativa com NOPAT divulgado',html.Div([html.P(RULES['operating_tax']['nopat_alternative']['method']),html.P(RULES['operating_tax']['nopat_alternative']['constraint'])])))
@@ -173,9 +184,10 @@ def metric_cell(row, metric, view):
     suffix = {'roce':'%','cfo':' mi','leverage':'x','capex':'%','distribution':'%'}[metric]
     return html.Div([
         html.Span(RULES['metrics'][metric]['name']),
-        html.Strong(fmt(value, suffix)),
-        comparability_notice('⚠ NÃO COMPARÁVEL',html.Span(quality['reason']),'comparability-warning') if non_comparable else None,
-    ], className='metric-row non-comparable' if non_comparable else 'metric-row',
+        html.Strong([fmt(value, suffix),
+                     html.Span(' ⚠',className='metric-warning-icon',title='NÃO COMPARÁVEL: '+quality.get('reason',''),
+                               tabIndex=0,role='img',**{'aria-label':'NÃO COMPARÁVEL: '+quality.get('reason','')}) if non_comparable else None]),
+    ], className='metric-row',
        title=RULES['metrics'][metric]['formula']+' · '+RULES['metrics'][metric]['note'].replace('Demonstração: alíquotas fictícias por empresa.','').strip())
 
 
@@ -303,14 +315,38 @@ def driver_charts(metric,companies,period,view,sensitivities,dataset="DEMONSTRAC
         ('gas','Mix de produção · gás e líquidos','% da produção em boe · '+period+' · dados fictícios'),
         ('margin','Margem de refino · cenário demonstrativo','US$/barril · margem unitária fictícia em base comum')]:
         if dataset=='REAL':
-            title={'brent':'Brent futuro · Yahoo Finance','fx':'Câmbio · PTAX Bacen','gas':'Mix de produção · indisponível','margin':'Margem de refino · indisponível'}[key]
-            subtitle={'brent':'US$/barril · média dos fechamentos diários disponíveis de BZ=F; não equivale ao Brent físico','fx':'R$/US$ · média trimestral da PTAX venda diária de fechamento','gas':'Nenhuma série real homologada','margin':'Nenhuma série real homologada'}[key]
+            title={'brent':'Brent futuro · Yahoo Finance','fx':'Câmbio · PTAX Bacen','gas':'Mix de produção · gás e líquidos','margin':'Margem indicativa de refino · benchmark comum'}[key]
+            subtitle={'brent':'US$/barril · média dos fechamentos diários disponíveis de BZ=F; não equivale ao Brent físico','fx':'R$/US$ · média trimestral da PTAX venda diária de fechamento','gas':'% dos volumes médios diários em boe · '+period+' · Petrobras: Brasil; demais: global · líquidos na cor da empresa, gás em cinza','margin':'US$/barril · Brent spot e derivados do Golfo dos EUA · média trimestral 3–2–1 · mesmo benchmark para todos os peers'}[key]
         chart=graph(figures[key],height=560 if metric!='none' and key!='gas' else 460)
         chart.figure.update_layout(margin=dict(l=75,r=90,t=30,b=110),
                                    legend=dict(orientation='h',y=-.2,x=0,font=dict(size=11)))
         if key!='gas':
                 chart.figure.update_xaxes(type='category',tickmode='array',tickvals=periods,
                                      ticktext=[p[:4]+' T'+p[-1] for p in periods],tickangle=0,automargin=True)
+        if dataset=='REAL' and key=='gas':
+            from radar.ingestion.production import production_mix, production_dataset
+            mix=production_mix(period,companies,periods)
+            details=html.Div([
+                html.P(production_dataset()['method']),
+                table([{'empresa':r['company'],'perímetro':r['scope'],'líquidos (mil b/d)':fmt(r['liquids_kbd']),
+                        'gás (mil boe/d)':fmt(r['gas_kboed']),'gás (%)':fmt(r['gas_share_pct']),
+                        'diferença de conciliação (mil boe/d)':fmt(r['reconciliation_delta_kboed'])} for r in mix]),
+                html.Ul([html.Li([html.Strong(r['company']+' · '+r['period']+': '),r['note'],' ',
+                                  html.A('Fonte original ↗',href=r['source_url'],target='_blank',rel='noopener noreferrer'),
+                                  html.Small(' · '+r['locator'])]) for r in mix]),
+                html.P('A soma de gás e líquidos é conciliada com o total divulgado; tolerância de 2 mil boe/d para arredondamento dos componentes. Não há interpolação ou substituição por trimestre anterior.')])
+            chart=html.Div([chart,comparability_notice('⚠ NÃO COMPARÁVEL — mix de produção · metodologia e fontes',details) if mix else None])
+        if dataset=='REAL' and key=='margin':
+            from radar.ingestion.refining import refining_snapshot,quarterly_margins
+            snapshot=refining_snapshot()
+            coverage=quarterly_margins(snapshot,periods)
+            chart=html.Div([chart,comparability_notice('⚠ BENCHMARK COMUM — metodologia e fontes',html.Div([
+                html.P(snapshot['method']),html.P(snapshot['limitation']),
+                table([{'trimestre':r['period'],'margem (US$/barril)':fmt(r['value']),
+                        'datas comuns':r['observations'],'datas excluídas':r['excluded_dates'],
+                        'cobertura (%)':fmt(r['coverage_pct'])} for r in coverage]),
+                html.P('Datas excluídas não possuem todos os preços. Sem interpolação; mínimo de 40 datas comuns, 90% de cobertura e intervalo de coleta abrangendo o trimestre inteiro. Valores negativos são mantidos.'),
+                html.Ul([html.Li(html.A(v['title']+' · '+v['unit']+' ↗',href=v['url'],target='_blank',rel='noopener noreferrer')) for v in snapshot['series'].values()])]))])
         cards.append(panel(title,chart,subtitle))
     return [html.Div(cards,className='driver-grid'),
             comparability_notice('⚠ NÃO COMPARÁVEL — pontos destacados com losango aberto',html.Ul(warnings)) if warnings else None]

@@ -33,10 +33,10 @@ def figures(period, companies, colors, allowed_periods=None):
     for company in companies:
         if period in dataset['periods']:
             share=dataset['gas_share_pct'][company][dataset['periods'].index(period)]
-            gas.add_bar(x=[company],y=[share],name=company+' · gás',marker_color=colors[company],
+            gas.add_bar(x=[company],y=[share],name=company+' · gás',marker_color='#dce7df',
                         text=[f'{share}% gás'],textposition='inside',
                         hovertemplate='%{x}<br>Gás: %{y:.1f}% da produção em boe<extra>DEMONSTRAÇÃO</extra>',showlegend=False)
-            gas.add_bar(x=[company],y=[100-share],name=company+' · líquidos',marker_color='#dce7df',
+            gas.add_bar(x=[company],y=[100-share],name=company+' · líquidos',marker_color=colors[company],
                         text=[f'{100-share}% líquidos'],textposition='inside',
                         hovertemplate='%{x}<br>Líquidos: %{y:.1f}% da produção em boe<extra>DEMONSTRAÇÃO</extra>',showlegend=False)
         margin.add_scatter(x=periods,y=[dataset['refining_margin_usd_bbl'][company][i] for i in indices],
@@ -79,6 +79,30 @@ def real_figures(period, companies, colors, allowed_periods=None):
         result[key].update_yaxes(title_text=unit)
         if not any(v is not None for v in values):
             result[key].add_annotation(text='Série real ainda não coletada.',xref='paper',yref='paper',x=.5,y=.5,showarrow=False)
-    for key in ('gas','margin'):
-        result[key].add_annotation(text='Sem mapeamento real homologado para este driver.',xref='paper',yref='paper',x=.5,y=.5,showarrow=False)
+    from radar.ingestion.production import production_mix
+    mix=production_mix(period, companies, allowed_periods)
+    for row in mix:
+        company=row['company']
+        for field,label,color in [('liquids_share_pct','Líquidos',colors[company]),('gas_share_pct','Gás','#dce7df')]:
+            value=row[field]
+            result['gas'].add_bar(x=[company],y=[value],name=company+' · '+label,
+                marker=dict(color=color,line=dict(color=colors[company],width=1)),
+                text=[f'{value:.1f}%'],textposition='inside',showlegend=False,
+                customdata=[[period,row['scope']]],
+                hovertemplate='%{x}<br>%{customdata[0]} · %{customdata[1]}<br>'+label+': %{y:.1f}%<br>NÃO-COMPARÁVEL<extra></extra>')
+    result['gas'].update_layout(barmode='stack')
+    result['gas'].update_yaxes(title_text='% da produção em boe',range=[0,100])
+    missing=[c for c in companies if c not in [r['company'] for r in mix]]
+    if missing or not companies:
+        result['gas'].add_annotation(text=('Mix indisponível em '+period+': '+', '.join(missing)) if missing else 'Selecione uma empresa para visualizar.',
+            xref='paper',yref='paper',x=.5,y=1.08,showarrow=False)
+    from radar.ingestion.refining import refining_snapshot, quarterly_margins
+    margins=quarterly_margins(refining_snapshot(),[p for p in (data.periods() if allowed_periods is None else allowed_periods) if p<=period])
+    result['margin'].add_scatter(x=[r['period'] for r in margins],y=[r['value'] for r in margins],
+        mode='lines+markers',connectgaps=False,name='EIA · Brent–Golfo dos EUA 3–2–1',
+        customdata=[[r['observations'],r['excluded_dates']] for r in margins],
+        hovertemplate='%{x}<br>%{y:.2f} US$/barril<br>%{customdata[0]} datas comuns · %{customdata[1]} excluídas<extra>Benchmark de mercado</extra>')
+    result['margin'].update_yaxes(title_text='US$/barril')
+    if not any(r['value'] is not None for r in margins):
+        result['margin'].add_annotation(text='Benchmark indisponível para o período selecionado.',xref='paper',yref='paper',x=.5,y=.5,showarrow=False)
     return result

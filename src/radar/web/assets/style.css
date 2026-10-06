@@ -11,3 +11,4 @@
 .collapsible-notice>summary{cursor:pointer;display:list-item;font-weight:600}.collapsible-notice>summary:focus-visible{outline:2px solid #008542;outline-offset:4px}.notice-expand-hint{font-size:11px;font-weight:400}.collapsible-notice[open]>summary{margin-bottom:8px}.comparability-warning.collapsible-notice{display:block}.comparability-warning.collapsible-notice[open]>span{display:block;margin-top:6px}
 
 input.text-input{height:48px;min-height:48px;padding:12px 14px;line-height:22px;font-size:14px}textarea.text-input{min-height:120px;padding:12px 14px;line-height:22px;font-size:14px}input.text-input::placeholder,textarea.text-input::placeholder{color:#6d7c73;opacity:1}
+.metric-warning-icon{display:inline-block;color:#a33b0a;font-size:13px;margin-left:4px;cursor:help;font-weight:600}.metric-warning-icon:focus-visible{outline:2px solid #a33b0a;outline-offset:2px;border-radius:2px}

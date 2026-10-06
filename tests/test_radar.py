@@ -121,8 +121,10 @@ def test_non_comparable_preserves_value_and_highlights_chart_point(monkeypatch,t
     from radar.web.app import metric_cell, metric_chart, cash_table
     row=data.metrics('2025Q4',['Petrobras'])[0]
     cell=metric_cell(row,'roce','standard')
-    assert 'non-comparable' in cell.className
-    assert '24,7%'==cell.children[1].children
+    assert cell.className == 'metric-row'
+    assert cell.children[1].children[1].title.startswith('NÃO COMPARÁVEL:')
+    assert 'Imposto operacional sem reconstrução defensável' in cell.children[1].children[1].title
+    assert '24,7%'==cell.children[1].children[0]
     chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',[])
     figure=chart.children[1].children[0].figure
     assert figure.data[0].y[-1]==row['roce']
@@ -249,9 +251,11 @@ def test_direct_ltm_nopat_is_used_once_and_broad_capex_blocks_jv():
     assert result['distribution']==10
 
 
-def test_compare_uses_only_selected_quarter_ltm():
+def test_compare_uses_only_selected_quarter_ltm(monkeypatch,tmp_path):
     from radar.web.app import metric_chart
     from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
     result=metric_chart('cfo',['Petrobras','Shell'],'2025Q4','standard',[],pathname='/compare')
     fig=result.children[0].children[1].figure
     expected=data.metrics('2025Q4',['Petrobras','Shell'])

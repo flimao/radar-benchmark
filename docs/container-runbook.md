@@ -123,3 +123,17 @@ Imagem anterior preservada como `radar:before-real-data`.
 Diretório de deploy acessível somente ao root. O pacote inicial continha
 arquivos auxiliares AppleDouble (`._*`); removidos apenas da área de importação,
 antes de conferir os hashes dos documentos reais.
+
+## Release v2.0 — 05/10/2026
+
+Deploy do commit exato `9bffc4711954fa9e48837886ba6978920890fa61`, tag anotada `v2.0`. Imagem Linux/AMD64 construída na VPS: `radar:v2.0`, ID `sha256:8c2a20c8d41f50984d2e59906204902bea2abd2d33dce00157bd45b52dd2b253`, aplicada ao serviço Compose existente. HTTPS e configuração de acesso preservados.
+
+Os 58 testes da tag passaram no container, inicializando previamente o banco demonstrativo exigido pelo teste de comparação. A primeira execução sem esse preparo apontou ausência do banco de teste; a tag não foi alterada. O teste foi tornado independente desse estado no desenvolvimento posterior, em ft/drivers.
+
+Sincronizados 25 lotes já publicados localmente: TotalEnergies 6, Petrobras 5, Chevron 5, Shell 9. Nenhum lote em revisão foi aprovado ou publicado. Importação transacional por Parquet, preservando as identidades, revisores, datas e registros existentes. 83 documentos originais conferidos por SHA-256. Comparação local/VPS de 160 resultados (5 KPIs × 4 empresas × 8 trimestres), inclusive indisponibilidades, passou.
+
+Verificações externas: HTTPS, saúde, bloqueio anônimo, login, páginas, CSS, layout Dash e exportação REAL com as quatro empresas. Serviço confirmado healthy e imagem em execução correspondente exatamente à imagem v2.0. A exportação contém 36 linhas, incluindo saldos de abertura.
+
+Backups de código e volume em `/opt/radar-release-v2-9bffc47/code-before.tar.gz` e `volume-before.tar.gz`, acessíveis somente ao root. Imagem anterior preservada como `radar:before-v2.0`. Identificação em `/opt/radar/.release-version`. O script de implantação dispõe de rollback automático durante a troca.
+
+As funcionalidades de mix real, benchmark de refino e pictograma com tooltip dos cards pertencem ao desenvolvimento posterior na branch ft/drivers e não fazem parte desta tag congelada.
