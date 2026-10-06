@@ -121,24 +121,24 @@ def test_non_comparable_preserves_value_and_highlights_chart_point(monkeypatch,t
     from radar.web.app import metric_cell, metric_chart, cash_table
     row=data.metrics('2025Q4',['Petrobras'])[0]
     cell=metric_cell(row,'roce','standard')
-    assert 'non-comparable' in cell.className
-    assert '24,7%'==cell.children[1].children
+    assert cell.className == 'metric-row'
+    assert cell.children[1].children[1].title == 'Imposto operacional sem reconstrução defensável'
+    assert '24,7%'==cell.children[1].children[0]
     chart=metric_chart('roce',['Petrobras'],'2025Q4','standard',[])
     figure=chart.children[1].children[0].figure
     assert figure.data[0].y[-1]==row['roce']
     assert figure.data[0].marker.symbol[-1]=='diamond-open'
-    assert figure.data[0].customdata[-1]=='NÃO-COMPARÁVEL'
-    assert 'non-comparable' in chart.children[1].children[1].className
+    assert figure.data[0].customdata is None
+    assert 'COMPARÁVEL' not in figure.data[0].hovertemplate
+    assert len(chart.children[1].children)==1
     assert 'non-comparable' not in metric_cell(row,'roce','reported').className
     row['quality']['cfo']={'status':'NAO_COMPARAVEL','reason':'Perímetro distinto'}
     cash=cash_table([row])
-    cash_grid=cash.children[0]
-    assert cash_grid.data[0]['FCO'].endswith(' ⚠')
-    assert cash_grid.data[0]['FCL'].endswith(' ⚠')
-    assert 'Perímetro distinto' not in str(cash_grid.data)
-    assert 'Perímetro distinto' in str(cash.children[1])
-    assert cash.children[1].open is False
-    assert any(style.get('color')=='#852800' for style in cash_grid.style_data_conditional)
+    cells=cash.children.children[1].children[0].children
+    assert cells[1].children.children[1].children == '⚠'
+    assert cells[3].children.children[1].title == 'Perímetro distinto'
+    assert all(not getattr(cell,'style',None) for cell in cells)
+    assert cash.className == 'value-table-container'
 
 def test_goodwill_filter_preserves_other_metrics(monkeypatch,tmp_path):
     from radar import data
@@ -249,16 +249,21 @@ def test_direct_ltm_nopat_is_used_once_and_broad_capex_blocks_jv():
     assert result['distribution']==10
 
 
-def test_compare_uses_only_selected_quarter_ltm():
+def test_compare_uses_only_selected_quarter_ltm(monkeypatch,tmp_path):
     from radar.web.app import metric_chart
     from radar import data
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
     result=metric_chart('cfo',['Petrobras','Shell'],'2025Q4','standard',[],pathname='/compare')
     fig=result.children[0].children[1].figure
     expected=data.metrics('2025Q4',['Petrobras','Shell'])
     assert [trace.type for trace in fig.data]==['bar','bar']
     assert [trace.y[0] for trace in fig.data]==[row['cfo'] for row in expected]
     assert [trace.x[0] for trace in fig.data]==['Petrobras','Shell']
-    assert len(result.children[1].children[1].data)==2
+    comparison_table=result.children[1].children[1].children
+    assert [th.children for th in comparison_table.children[0].children.children]==['Empresa','Valor','Unidade']
+    assert len(comparison_table.children[1].children)==2
+    assert len(result.children)==2
 
 
 def test_real_method_hides_synthetic_assumptions(monkeypatch,tmp_path):
@@ -274,3 +279,30 @@ def test_real_method_hides_synthetic_assumptions(monkeypatch,tmp_path):
     assert 'sintét' not in text and 'fictíc' not in text
     demo=visible_text(render('/method',['Shell'],'2025Q4','standard',[])).lower()
     assert 'premissas do roce sintético' in demo
+
+
+def test_document_links_download_original_filename_and_require_auth(monkeypatch,tmp_path):
+    from radar import data
+    from radar.web import app as web
+    monkeypatch.setattr(data,'ROOT',tmp_path)
+    data.initialize()
+    digest,_=data.preserve(b'%PDF-example','relatorio (2025).pdf','Shell','2025Q4','https://example.org','p.1')
+    grid=web.document_table(data.documents().astype(str).to_dict('records'))
+    assert grid.data[0]['filename'].endswith('](/original/'+digest+')')
+    assert grid.data[0]['filename'].startswith('[relatorio \\(2025\\)\\.pdf]')
+    assert next(c for c in grid.columns if c['id']=='filename')['presentation']=='markdown'
+    monkeypatch.setattr(web,'PASSWORD_HASH','configured')
+    client=web.server.test_client()
+    assert client.get('/original/'+digest).status_code==302
+    with client.session_transaction() as session:session['authenticated']=True
+    response=client.get('/original/'+digest)
+    assert response.status_code==200 and response.data==b'%PDF-example'
+    assert 'relatorio (2025).pdf' in response.headers['Content-Disposition']
+    assert client.get('/original/'+'0'*64).status_code==404
+
+
+def test_warning_tooltip_contains_only_justification():
+    from radar.web.app import warning_icon
+    icon=warning_icon('Aproximação do imposto; NÃO COMPARÁVEL.; Capital reconstruído; NÃO-COMPARÁVEL')
+    assert icon.title=='Aproximação do imposto; Capital reconstruído'
+    assert icon.children=='⚠'
